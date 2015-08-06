@@ -1,0 +1,12 @@
+<form action="<?php echo $this->baseUrl;  ?>/sprav/<?php echo $this->curcont; ?>/<?php echo $this->curact; ?>" method="post">
+Сокр. наименование&nbsp;<input type="text" class="medinput" name="title_small" id="title_small" value="<?php echo $this->title_small; ?>" />
+<br>Полное наименование<br><textarea tabindex="1" class="typicadd" name="title"><?php
+$title=isset($entry->title)?$this->escape($entry->title):"";
+echo $title; 
+?>
+</textarea> 
+
+<input type="hidden" name="id" value="<?php echo $this->id; ?>" />
+<input type="submit" name="add" value="&nbsp;&nbsp;" class="apply_button" title="Применить"/>
+
+</form>

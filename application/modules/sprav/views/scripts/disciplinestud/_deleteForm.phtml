@@ -1,0 +1,14 @@
+<div id="formDeleteWrapper" style="display:none;">
+
+<p class="close_popup2" onclick='$("#formDeleteWrapper").togglePopup(); ' title="отмена"></p>
+<form name="formDelete" id="formDelete" method="post" 
+action="<?php echo $this->selfLink; ?>/del/">
+	<input type="hidden" value="" id="id" name="id">
+	Удалить запись <br>«<strong id="title"></strong>»
+	<br>для поддверждения операции введите фразу «<strong><?php echo $this->confirmWord; ?></strong>»
+	<br><input id="confirmWord" name="confirmWord" class="typic_input">
+	&nbsp;<input type="submit" class="apply_text" value="Подтвердить">
+	
+</form>
+
+</div>

@@ -1,0 +1,15 @@
+<h4>Создание новой записи</h4>
+<form
+<?php
+foreach ($this->formAdd->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?> />
+<?php 	echo $this->formAdd->id->removeDecorator('Description'); ?>
+<p>
+Имя учетной записи (login)<br>
+<?php 	echo $this->formAdd->title->removeDecorator('Description'); ?>
+</p>
+<p> <?php 	echo $this->formAdd->OK->removeDecorator('Description'); ?> </p>
+</form>

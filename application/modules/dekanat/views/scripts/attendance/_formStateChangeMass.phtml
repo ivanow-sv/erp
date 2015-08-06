@@ -1,0 +1,25 @@
+<div id="formStateChangeMassWrapper" style="display: none;">
+<p class="close_popup2" onclick='$("#formStateChangeMassWrapper").togglePopup(); ' title="отмена"></p>
+<h4>Групповое назначение</h4>
+<p>Студент:&nbsp;<b><span id="stateChangeMassFio"></span></b></p>
+<p>Дисциплина:<br><b><span id="stateChangeMassDis"></span></b></p>
+<form
+<?php
+
+foreach ($this->formStateChangeMass->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php echo $this->formStateChangeMass->id;?>  
+<?php echo $this->formStateChangeMass->discipline;?>
+<?php echo $this->formStateChangeMass->userid;?>
+<p><?php echo $this->formStateChangeMass->state;?></p>
+<?php //echo $this->formAdd->osnov; ?>
+<?php //echo $this->formAdd->studyYearStart;?>
+
+<?php  echo $this->formStateChangeMass->OK;?>
+
+
+</form>
+</div>

@@ -1,0 +1,25 @@
+<div id="formStateChangeWrapper" style="display: none;">
+<p class="close_popup2" onclick='$("#formStateChangeWrapper").togglePopup(); ' title="отмена"></p>
+<h4 id="stateChangeFio"></h4>
+<p>Дисциплина:<br><span id="stateChangeDis"></span></p>
+<form
+<?php
+
+foreach ($this->formStateChange->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php echo $this->formStateChange->id;?>  
+<?php echo $this->formStateChange->discipline;?>
+<?php echo $this->formStateChange->userid;?>
+<p><?php echo $this->formStateChange->state;?>&nbsp;
+комментарий<?php echo $this->formStateChange->comment;?></p>
+<?php //echo $this->formAdd->osnov; ?>
+<?php //echo $this->formAdd->studyYearStart;?>
+
+<?php  echo $this->formStateChange->OK;?>
+
+
+</form>
+</div>

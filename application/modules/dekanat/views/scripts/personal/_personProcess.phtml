@@ -1,0 +1,39 @@
+<div class="content" style="display: none;">
+	<?php //echo "<pre>".print_r($this->personLog,true)."</pre>"; ?>
+	<?php
+	if (count($this->personLog)>0)
+	{
+		?>
+		<div class="th">
+			<div class="Col_0">№</div>
+			<div class="Col_1">Дата/Время</div>
+			<div class="Col_2">Операция</div>
+			<div class="Col_3">Назначение</div>
+<!--			<div class="Col_4">Коментарий</div>-->
+			<div class="Col_5">Документ</div>
+			<div class="Col_6">Автор изменения</div>
+		</div>
+		<?php 
+		foreach ($this->personLog as $koun => $personLog) 
+		{
+			$tr=$tr==1?2:1;
+			?>		
+		<div class="tr<?php echo $tr; ?>">
+			<div class="Col_0"><?php echo ($koun + 1); ?></div>
+			<div class="Col_1"><?php echo $personLog["createdate"]; ?></div>
+			<div class="Col_2"><?php echo $personLog["operTitle"]; ?></div>
+			<div class="Col_3"><?php echo $personLog["paramTitle"]; ?></div>
+<!--			<div class="Col_4"><?php //echo $personLog["comment"]; ?></div>-->
+			<div class="Col_5"><?php  echo $personLog["docusTitle"]; ?></div>
+			<div class="Col_6"><?php echo $personLog["authorLogin"]; ?></div>
+		</div>
+			<?php 
+		}
+		
+	}
+	else 
+	{
+		echo "Нет данных";
+	}
+	?>
+	</div>

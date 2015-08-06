@@ -1,0 +1,17 @@
+<div id="formAddWrapper" style="display:none;">
+<p class="close_popup2" onclick='$("#formAddWrapper").togglePopup(); ' title="отмена"></p>
+Добавить дисциплину
+<form
+	action="<?php echo $this->baseUrl;  ?>/sprav/<?php echo $this->curcont; ?>/<?php echo $this->curact; ?>" 
+	method="post"
+	name="formAdd"
+	id="formAdd"
+	>
+
+<textarea tabindex="1" class="typicadd" name="title"></textarea> 
+<br>Шифр&nbsp;<input class="inputSmall2" name="numeric_title" id="numeric_title" >
+<input type="hidden" name="kafedra" id="kafedra" value="" />
+<input type="submit" name="add" value="&nbsp;&nbsp;" class="apply_button" title="Применить"/>
+
+</form>
+</div>

@@ -1,0 +1,17 @@
+<div id="formEditWrapper" style="display:none;">
+<p class="close_popup2" onclick='$("#formEditWrapper").togglePopup(); ' title="отмена"></p>
+<h4>Изменение </h4>
+<form
+<?php
+
+foreach ($this->formEdit->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php 	echo $this->formEdit->id; ?>
+<p> Название <?php 	echo $this->formEdit->title->removeDecorator('Description'); ?> </p>
+<p> Таблица <?php 	echo $this->formEdit->tbl->removeDecorator('Description'); ?> </p>
+<p><?php echo $this->formEdit->OK; ?></p>
+</form>
+</div>

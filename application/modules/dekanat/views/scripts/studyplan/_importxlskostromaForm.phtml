@@ -1,0 +1,18 @@
+<div id="importxlskostromaWarp" style="display:none;">
+<p class="close_popup2" onclick='$("#importxlskostromaWarp").togglePopup(); ' title="отмена"></p>
+<h3>Импорт нагрузки по семестрам из костромской программы</h3>
+<form 
+<?php
+
+foreach ($this->importxlskostromaForm->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+
+<?php echo $this->importxlskostromaForm->gosparam; ?>
+<?php echo $this->importxlskostromaForm->osnov; ?>
+<?php echo $this->importxlskostromaForm->file; ?>
+<?php echo $this->importxlskostromaForm->OK; ?>
+</form>
+</div>

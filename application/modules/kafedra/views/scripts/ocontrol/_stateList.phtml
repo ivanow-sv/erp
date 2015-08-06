@@ -1,0 +1,27 @@
+	
+	<span id="stateList">
+		<span class="<?php echo $this->listState["icoClass"];?> inlineLink" 
+		onclick="listApproveChange(<?php echo $this->listState["id"]; ?>);" >
+		</span>
+		<span class="<?php echo $this->listState["class"]; ?>">
+			<?php echo $this->listState["msg"]; ?>
+		</span>
+		<br>
+		
+		<?php
+		if ($this->listState["dekan"]==1)
+		{
+			$_cl="lockedIcoSmall";
+			$_m="подписано";
+		}
+		else 
+		{
+			$_cl="unlockedIcoSmall";
+			$_m="не подписано";
+		}
+		
+		?>
+		Декан:&nbsp;<span class="<?php echo $_cl; ?>"></span>&nbsp;<span ><?php echo $_m; ?></span> 
+		
+		
+	</span>

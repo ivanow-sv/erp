@@ -1,0 +1,18 @@
+<div id="formAddWarp" style="display:none;">
+<p class="close_popup2" onclick='$("#formAddWarp").togglePopup(); ' title="отмена"></p>
+<form 
+<?php
+
+foreach ($this->addForm->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+
+<?php echo $this->addForm->gosparam; ?>
+<?php echo $this->addForm->kurs; ?>
+<?php echo $this->addForm->osnov; ?>
+
+<?php echo $this->addForm->ok; ?>
+</form>
+</div>

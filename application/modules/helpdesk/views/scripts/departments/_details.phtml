@@ -1,0 +1,172 @@
+<div class="warning"><?php echo $this->msg ;?></div>
+<form
+<?php
+foreach ($this->formDetail->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?> >
+<?php 
+	$_warnspan=!empty($this->tickets) && $this->tickets[0]["closed"]==="0000-00-00 00:00:00" 
+	? '<span class="warningIcoSmall" title="есть не закрытые заявки" style="cursor:help;"></span>'
+	: "";
+	
+?>
+<div id="tabs_<?php echo $this->formDetail->id->getValue();?>">
+				<div class="ui-state-default ui-corner-top">
+					<?php
+					// если есть тип оборудования
+					if(  isset($this->info["typeTitle"]))
+					{
+						echo "".$this->info["typeTitle"].". "; 
+					}
+					?>
+						Инвентарный номер: <?php echo $this->formDetail->inumb->removeDecorator('Description'); ?>
+				 </div>
+	
+		<ul>
+			<li><a href="#tabs_<?php echo $this->formDetail->id->getValue();?>-1">Описание</a></li>
+			<li><a href="#tabs_<?php echo $this->formDetail->id->getValue();?>-2">Журнал</a></li>
+			<li>
+				<a href="#tabs_<?php echo $this->formDetail->id->getValue();?>-3">Заявки</a>
+				<?php echo $_warnspan; ?>
+			</li>
+			
+		</ul>
+		<!-- 			данные  -->
+		<div id="tabs_<?php echo $this->formDetail->id->getValue();?>-1">
+
+<?php
+ 	echo $this->formDetail->id->removeDecorator('Description'); ?>
+			<div id="details" class="table">
+			
+			
+			<?php
+			
+			foreach ($this->fieldNames as $name => $title) 
+			{
+				$tr=$tr==1?2:1;
+				?>
+				<div class="tr<?php echo $tr; ?>">
+					<div class="Col_1" id="<?php echo $name; ?>">
+						<?php echo $title; ?>
+					</div>
+					<div class="Col_2">
+						<?php 
+						$elem=$this->formDetail->getElement($name);
+						echo $elem->removeDecorator('Description'); 
+						?>
+					</div>
+				 </div>
+				<?php 
+				;
+			} 
+			?>
+				<div class="tr">
+					<div class="Col_1" id="comment">Примечания</div>
+					<div class="Col_2">
+						<?php echo $this->formDetail->comment->removeDecorator('Description'); ?>					
+					</div>
+				 </div>
+<?php
+// если есть кнопка отправки - показать
+if(  isset($this->formDetail->OK))
+{
+	// если есть процессор, то это системник, покажем загрузку LSHW
+	if(  isset($this->formDetail->processor))
+	{
+		?>
+		  		<div class="tr">
+		  			<div class="Col_1" id="lshwfile">XML-файл формата LSHW</div>
+		  			<div class="Col_2">
+		  				<?php echo $this->formDetail->lshwfile->removeDecorator('Description'); ?>
+		  				<br><small>Заменяет сведения о данном оборудовании</small>											
+		  			</div>
+		  		 </div>
+  		<?php 
+		  			  		
+		  	}
+		
+		?>
+		  		<div class="tr">
+		  			<div class="Col_1" id="OK"></div>
+		  			<div class="Col_2">
+		  				<?php echo $this->formDetail->OK->removeDecorator('Description'); ?>
+		  													
+		  			</div>
+		  		 </div>
+  		<?php 
+		  	
+}
+?>				 
+			</div>
+
+
+
+</form>		
+		</div>
+
+	<!-- 			журнал  -->
+		<div id="tabs_<?php echo $this->formDetail->id->getValue();?>-2">
+			<div class="table" id="journal">
+			<div class="th">
+				<div class="Col_1">Дата</div>
+				<div class="Col_2">Коментарий</div>
+				<div class="Col_3">Автор</div>
+			</div>
+				<?php
+				foreach ($this->journal as $key => $value) 
+				{
+					$tr=$tr==1?2:1;
+					?>
+			<div class="tr<?php echo $tr; ?>">
+				<div class="Col_1"><?php echo $value["createtime"]; ?></div>
+				<div class="Col_2"><?php echo $value["comment"]; ?></div>
+				<div class="Col_3"><?php echo $value["login"]; ?></div>
+			</div>
+					<?php 
+					;
+				} 
+				?>
+			</div>
+		
+		</div>
+
+		<!-- 			заявки  -->
+		<div id="tabs_<?php echo $this->formDetail->id->getValue();?>-3">
+			<div class="table" id="tickets">
+			<div class="th">
+				<div class="Col_1">ID</div>
+				<div class="Col_2">Время</div>
+				<div class="Col_3">Проблема</div>
+			</div>
+				<?php
+				if (!empty($this->tickets))
+				{ 
+					
+					foreach ($this->tickets as $key => $value) 
+					{
+						$tr=$tr==1?2:1;
+						$warn=$value["closed"]==="0000-00-00 00:00:00"
+						? "warningIcoSmall"
+						: "";
+						?>
+				<div class="tr<?php echo $tr; ?>">
+					<div class="Col_1">
+						<span class="<?php echo $warn; ?>"></span>
+						<?php echo $value["id"]; ?>
+					</div>
+					<div class="Col_2"><?php echo $value["created"]; ?></div>
+					<div class="Col_3"><?php echo $value["problem"]; ?></div>
+				</div>
+						<?php 
+						;
+					}
+				} 
+				?>
+			</div>
+		
+		</div>
+		
+	</div>
+

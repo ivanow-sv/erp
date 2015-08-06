@@ -1,0 +1,69 @@
+<form 
+<?php
+$tr=1;
+foreach ($this->formPrivs->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php echo $this->formPrivs->resource; ?>
+<?php echo $this->formPrivs->role; ?>
+<p>
+	Группа <strong><?php echo $this->roleInfo["title"];?></strong>
+</p>
+<div class="tr<?php echo $tr; ?>">
+	<div class="Col_1"></div>
+	<div class="Col_2">Наследовать</div>
+	<div class="Col_2">Запретить</div>
+	<div class="Col_2">Разрешить</div>
+</div>
+<div class="tr<?php echo $tr; ?>">
+	<div class="Col_1"><strong>Доступ</strong></div><?php echo $this->formPrivs->_ALL_; ?>
+</div>
+<?php
+ $tr=$tr===1?2:1;
+?>
+<div class="tr<?php echo $tr; ?>">
+	<div class="Col_1"><hr></div>
+	<div class="Col_2"><hr></div>
+	<div class="Col_2"><hr></div>
+	<div class="Col_2"><hr></div>
+</div>
+<?php
+ $tr=$tr===1?2:1;
+?>
+<div class="tr<?php echo $tr; ?>">
+	<div class="Col_1"><strong>Действия:</strong></div>
+	<div class="Col_2"></div>
+	<div class="Col_2"></div>
+	<div class="Col_2"></div>
+</div>
+<?php
+ $tr=$tr===1?2:1;
+?>
+<div class="tr<?php echo $tr; ?>">
+	<div class="Col_1"><small>(наследуются</small></div>
+	<div class="Col_2"><small>от доступа)</small></div>
+	<div class="Col_2"></div>
+	<div class="Col_2"></div>
+</div>
+<?php	
+$tr=$tr===1?2:1;
+if ($this->actions)
+{
+	foreach ($this->actions as $actionName => $prop) 
+	{
+	?>
+<div class="tr<?php echo $tr; ?>">
+	<div class="Col_1"><?php echo $actionName; ?></div><?php echo $this->formPrivs->$actionName; ?>
+</div>
+	<?php	
+	$tr=$tr===1?2:1;
+	
+	}
+}
+?>
+<?php echo $this->formPrivs->RES; ?>
+<?php echo $this->formPrivs->OK; ?>
+
+</form>

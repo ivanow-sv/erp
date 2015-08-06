@@ -1,0 +1,31 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+
+<div id="formWrapper" style="display:none;">
+<p class="close_popup2" onclick='$("#formWrapper").togglePopup(); ' title="отмена"></p>
+	<div id="formDetailsWrapper"> </div>
+	<hr>
+	<div id="formPrivsWrapper"> </div>
+</div>
+
+<div id="formAddWrapper" class="hidden">
+<p class="close_popup2"
+	onclick='$("#formAddWrapper").togglePopup(); ' title="отмена"></p>
+	<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_formAdd.phtml'); ?>
+</div>
+<div id="formEditWrapper" class="hidden">
+<p class="close_popup2"
+	onclick='$("#formEditWrapper").togglePopup(); ' title="отмена"></p>
+	
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_formEdit.phtml'); ?>
+	
+</div>
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_formDel.phtml'); ?>
+
+<?php echo $this->render($this->curcont.'/_formFilter.phtml'); ?> 
+<?php echo $this->render($this->curcont.'/_resourcesTree.phtml'); ?>
+
+</div>
+<?php echo $this->render('footer.phtml');
+
+?>

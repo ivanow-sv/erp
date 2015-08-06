@@ -1,0 +1,17 @@
+<div id="addFormWrapper" style="display:none;">
+
+<p class="close_popup2"
+	onclick='$("#addFormWrapper").togglePopup(); ' title="отмена"></p>
+<h4>Выберите преподавателя</h4>
+<form
+<?php
+foreach ($this->formAdd->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php echo $this->formAdd->discipline; ?>
+<?php echo $this->formAdd->teacher; ?>
+<?php echo $this->formAdd->OK; ?>
+</form>
+</div>

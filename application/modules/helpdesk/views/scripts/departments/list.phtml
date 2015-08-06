@@ -1,0 +1,76 @@
+<?php echo $this->render('header.phtml'); ?>
+
+
+<div id="workspace">
+<h4><?php echo $this->depInfo["title"]; ?></h4>
+<div id="toolbar">
+	<a href="<?php echo $this->backLink; ?>"><span class="backButton" title="К перечню подразделений" ></span></a>
+	<span class="addButtonMedium" title="Добавить единицу техники" onclick="unitAdd();"></span>
+	<span class="exportButtonMedium" title="Переместить выбранное" onclick="moveUnit(true);"></span>
+</div>
+<?php  echo $this->render($this->currentController."/".'_formAddUnit.phtml'); ?> 
+<?php  echo $this->render($this->currentController."/".'_formMoveUnit.phtml'); ?> 
+<?php 
+
+if (empty($this->depUnits)) echo "Не найдено единиц техники"; 
+else 
+{
+	?>
+<table id="unitslist">
+	<thead>
+		<tr>
+			<th><input type="checkbox" name="idAll" id="idAll" onclick="toggleCheck('id','unitslist',$(this));"></th>
+			<th>Тип оборудования</th>
+			<th>Инвентарный номер</th>
+			<th>Дата постановки</th>
+			<th>Коментарий</th>
+			<th>Действия</th>
+		</tr>
+	</thead>
+	<tbody>
+	<?php 
+	$tr=1;
+	foreach ($this->depUnits as $key => $info)
+	{
+		?>
+		<tr class="tr<?php echo $tr; ?> unitid" id="unitid_<?php echo $info["id"];?>">
+			<td><input type="checkbox" name="id[]" id="id[]" value="<?php echo $info["id"];?>"></td>
+			<td><?php echo $info["typeTitle"]; ?></td>
+			<td >
+				<span class="inlineLink" title="Показать подробности" 
+				onclick="showUnit(<?php echo $info["id"];?>)" >
+					<?php echo $info["inumb"] ; ?>
+				</span>
+			</td>
+			<td>
+				<?php echo $info["createtime"]; ?></td>
+			<td><?php echo $info["comment"]; ?></td>
+			<td>
+				<a href="<?php echo $this->baseLink."/edit/id/".$info["id"]; ?>" title="Изменить">
+				<span class="editIcoSmall" title="Изменить"></span>
+				</a>
+				<span class="removeIcoSmall" title="Удалить"></span>
+				<span class="exportIcoSmall" title="Переместить"  onclick="moveUnit(false,<?php echo $info["id"];?>);"></span>
+				<a href="<?php echo $this->baseLink."/dublicate/id/".$info["id"]; ?>" title="Создать копию">
+				<span class="dublicateIcoSmall" title="Создать копию"></span>
+				</a>
+			</td>
+		</tr>
+		<tr class="tr<?php echo $tr; ?> unitid hidden" style="display: none; " id="unitid_<?php echo $info["id"];?>_detail">
+			<td colspan="6">
+<!-- 		детальная информация -->
+			</td>
+		</tr>		
+		<?php 
+		$tr=$tr==1?2:1;
+	}
+	?>
+	</tbody>
+	
+</table>
+<?php 
+}
+?>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

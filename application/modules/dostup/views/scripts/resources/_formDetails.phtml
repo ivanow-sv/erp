@@ -1,0 +1,23 @@
+<form 
+<?php
+
+foreach ($this->formDetails->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php echo $this->formDetails->id; ?>
+<p>
+	Ресурс <strong><?php echo $this->formDetails->id->getValue(); ?></strong>
+</p>
+<p>Название
+	<br><?php echo $this->formDetails->title; ?>
+	<br>Коментарий
+	<br><?php echo $this->formDetails->coment; ?>
+	<br>Обязательные переменные, без кот. работа приложения невозможна
+	<br><small>Разделитель точка с запятой. Переменные накапливаеются с родительским ресурсом</small>
+	<br><?php echo $this->formDetails->paramNames; ?>
+	<br><?php echo $this->formDetails->OK; ?>
+</p>
+
+</form>

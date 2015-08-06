@@ -1,0 +1,20 @@
+<div id="formEditWrapper" style="display:none;">
+<p class="close_popup2" onclick='$("#formEditWrapper").togglePopup(); ' title="отмена"></p>
+<form
+<?php
+foreach ($this->editForm->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php echo $this->editForm->id; ?>
+<H4>Корректировка</H4>
+<p>Начало занятия
+	<?php echo $this->editForm->starts; ?>
+</p>
+<p>Конец занятия
+	<?php echo $this->editForm->ends; ?>
+</p>
+<?php echo $this->editForm->ok; ?>
+</form>
+</div>

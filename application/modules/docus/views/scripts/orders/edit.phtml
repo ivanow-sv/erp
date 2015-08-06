@@ -1,0 +1,8 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<a class="backButton" title="Вернуться к списку" href="<?php echo $this->baseLink;?>"></a>
+<p class="error"><?php echo $this->msg; ?></p>
+<?php echo $this->render('orders'.DIRECTORY_SEPARATOR.'_editDocumentForm.phtml'); ?>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

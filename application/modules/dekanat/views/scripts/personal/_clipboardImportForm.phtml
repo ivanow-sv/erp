@@ -1,0 +1,18 @@
+
+<p class="close_popup2"
+	onclick='$("#formClipboardImportWarp").togglePopup(); ' title="отмена"></p>
+<h4>Импорт из EXCEL</h4>
+Скопируйте состав подгруппы (от ФИО до района) и вставьте в это поле.
+<br>Максимум обрабатывается строк "за раз" - 30
+<form
+<?php
+foreach ($this->formClipboardImport->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php
+	echo $this->formClipboardImport->subgroupTo;
+	echo $this->formClipboardImport->pastedList;
+?><p><?php echo $this->formClipboardImport->OK; ?></p>
+</form>

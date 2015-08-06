@@ -1,0 +1,17 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+
+<div id="workspace">
+	<div class="toolbar">
+ 	<a class="backButton" title="вернуться к списку" href="<?php echo $this->baseLink; ?>"></a>	
+	</div>
+	
+	<div class="warning"><?php 
+	foreach ($this->msg as $m)
+	{
+		echo "<p>".$m."</p>";
+	} 
+	?></div>
+	<p>Запрошено операций: <?php echo $this->req;?></p>
+	<p>Выполнено операций: <?php echo $this->aff;?></p>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

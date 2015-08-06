@@ -1,0 +1,74 @@
+<div id="ticketsList">
+<?php 
+if (empty($this->list))
+{
+	echo "Не обнаружено";
+
+}
+else
+{
+?>
+
+
+	<div class="table">
+		<div class="th">
+			<div class="Col_1">Состояние</div>
+			<div class="Col_2">Дата закрытия</div>
+			<div class="Col_3">Подразделение</div>
+		</div>
+	<?php
+	// какойто костыль
+	$_acl=Zend_Registry::get("ACL");
+	foreach ($this->list as $item) 
+	{
+		$gr_title=empty($item["tfio"])?$item["gr_title"]:$item["tfio"].", ".$item["tdep"];
+		$gr_title.=". ".$item["place"];
+		// есть ли доступ к перечню в подразделении
+		// @TODO както криво все по другому надо
+		if($_acl->isAllowed($this->author,"helpdesk-departments","list"))
+		{
+			$lnk=$this->baseUrl."/".$this->currentModuleName."/departments/list/id/".$item["gr_id"];
+			$lnk='<a href="'.$lnk.'" >'.$gr_title."</a>";
+		}
+		else 
+		{
+			$lnk=$gr_title;
+		}
+		
+		$tr=$tr===1?2:1;
+		if ($item["closed"]==="0000-00-00 00:00:00")
+		{
+			$_closed="в работе";
+			$_closStyle="";
+		}
+		else
+		{
+			$_closed="закрыто ".substr($item["closed"],0,10);
+			$_closStyle='id="disabledTicket"';
+		}
+// 		$_closed=$item["closed"]==="0000-00-00 00:00:00"
+// 				? "в работе"
+// 				: "закрыто ".substr($item["closed"],0,10);
+		
+		?>
+		<div <?php echo $_closStyle; ?> class="tr<?php echo $tr;?>">
+			<div class="Col_1 inlineLink" onclick="ticketView(<?php echo $item["id"];?>);">
+				<?php echo substr($item["created"],0,10);?>&nbsp;<small><sup><?php echo substr($item["created"],11);?></sup></small>
+			</div>
+			<div class="Col_2"><?php echo $_closed;?></div>
+			<div class="Col_3">
+				<?php echo $lnk; ?>
+			</div>
+		<?php 
+			
+		?>
+		</div>
+		<?php		
+	}
+	?>
+	</div>
+
+	<?php
+} 
+?>	
+</div>

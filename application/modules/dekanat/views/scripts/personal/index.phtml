@@ -1,0 +1,59 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<?php echo $this->render('personal'.DIRECTORY_SEPARATOR.'_studSearchForm.phtml'); ?>
+<div id="formMoveWarp" style="display: none;"></div>
+<div id="formClipboardImportWarp" style="display: none;">
+<?php echo $this->render('personal'.DIRECTORY_SEPARATOR.'_clipboardImportForm.phtml'); ?>
+</div>
+<div id="formNewStudWarp" class="hidden">
+<p class="close_popup2"
+	onclick='$("#formNewStudWarp").togglePopup(); ' title="отмена"></p>
+
+
+<?php echo $this->render('personal'.DIRECTORY_SEPARATOR.'_newStudForm.phtml'); ?>
+</div>
+
+<div class="toolbar">
+	<span class="imglink addUserButton" title="Добавить нового студента"
+	onclick='newStudentForm();'>
+	</span>
+<!-- 	<a class="imglink usersLoadButton" title="Получить дела из приемной комиссии" 
+	href="<?php // echo $this->baseLink; ?>/import" > </a> -->
+	<img alt="Прикрепить из недавно зачисленных абитуриентов" 
+		src="<?php echo $this->baseUrl; ?>/public/images/human_o2_48x48/apps/stock_task-assigned.png" 
+		class="imglink" title="Прикрепить из недавно зачисленных абитуриентов" 
+		onclick='freeList();'
+		/>
+	<span class="imgLink copypasteFromExcelButton" title="вставить из EXCEL"
+	onclick='pastedImport();'
+	>	
+	</span>
+	<span class="imglink previewButton" title="Посещаемость группы"
+	onclick="attendance();"
+	></span>
+	<span class="imglink findreplaceButton" title="Выходной контроль группы"
+	onclick='outcontrol();'
+	></span>
+<!--	<span class="imglink exitButton" title="Приказ об отчислении"-->
+<!--	onclick=""-->
+<!--	></span>-->
+</div>
+<div class="toolbar">
+	<span class="imglink usersMoveButton32" title="Перенос студентов"
+	onclick="moveStudentsForm();"
+	></span>
+	<span class="imglink usersAttendance32" title="Сформировать аттестационный лист"
+	onclick="attListFormAdd();"
+	></span>
+	<span class="imglink usersOcontrol32" title="Сформировать документ выходного контроля для выбранных"
+	onclick="ocontrolFormAdd();"
+	></span>
+</div>
+<?php // echo $this->render('personal'.DIRECTORY_SEPARATOR.'_sendToLessonForm.phtml'); ?>
+<div id="studentsFree" style="display: none;">
+<?php echo $this->render('personal'.DIRECTORY_SEPARATOR.'_studentsFreeList.phtml'); ?>
+</div>
+<?php echo $this->render('personal'.DIRECTORY_SEPARATOR.'_studList.phtml'); ?>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

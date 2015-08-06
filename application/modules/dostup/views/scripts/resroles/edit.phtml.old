@@ -1,0 +1,116 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+
+<?php echo $this->render('_resourcesTree.phtml'); ?>
+
+<div class="acl_resources_property">
+<?php echo $this->render('_resourcesFormProperty.phtml'); ?>
+<h5>Привилегии явно заданные</h5>
+<?php
+// если задано чонить
+if (is_array($this->roles))
+{
+	?>
+	<table>
+	<tr>	
+		<th >Группа</th>
+		<th >Действие</th>
+		<th >Параметры</th>
+		<th >да</th>
+		<th >нет</th>
+		<th >??</th>
+	</tr>		
+	<?php 
+	$tr=1;
+	foreach ($this->roles as $key => $role) 
+	{
+		$rowspan=count($this->privileges[$role["role"]])+1;
+		?>
+<!-- следующая роль-->
+		<tr class="tr<?php echo $tr;?>">
+			<td class="Col_1" rowspan="<?php echo $rowspan;?>">
+				<?php echo $role["roleTitle"];?></td>
+
+			<?php
+			// перечень привилегий этой роли
+//			echo "<pre>".print_r($this->privileges[$role["role"]],true)."</pre>" ;
+			$trr=$tr;
+			
+			foreach ($this->privileges[$role["role"]] as $priv => $details) 
+			{
+				$trr=$trr==1?2:1;
+				?>
+<!-- привилегии этой роли-->
+				<tr class="tr<?php echo $trr; ?>">
+					<td class="Col_1"><?php echo $priv; ?></td>
+					<?php
+					// @TODO проверить если ACTION пуст 
+					// @TODO параметры ACTION'а
+//					$param=$priv["params"]!==''? 
+					?>
+					<td class="Col_2"><?php echo $details["params"]; ?></td>
+					<td class="Col_2"></td>
+					<td class="Col_2"></td>
+					<td class="Col_2"></td>
+				</tr>		
+				
+				<?php
+				
+				
+			} 
+			?>
+		
+		</tr>
+		<?php 
+		$tr=$tr==1?2:1;
+	}
+	?>	
+	</table>		
+	<?php 
+}
+// привилегий явно заданных к текущему ресурсу нет
+else
+{ 
+	?>
+	<p>Нет</p>
+	<?php 
+}
+?>
+<pre><?php echo print_r($this->roles ,true);?></pre>
+
+<pre><?php echo print_r($this->privileges ,true);?></pre>
+
+<h5>Привилегии унаследованные</h5>
+
+</div> <!-- END PROPERTY-->
+
+</div> <!-- END WORKSPACE-->
+
+<?php echo $this->render('footer.phtml');
+
+/*
+ * рекурсивный обход массива
+ */
+/*
+ doit('',$this->tree,$out);
+ function doit($key,$val,&$out)
+ {
+ if(is_array($val) )
+ {
+ $out.=($key!=="")?"<ul>\n".'<li class="tree_parent">'
+ .$key.'<span class="buttonInlineRight"></span>'
+ ."</li>\n"."<ul>\n":"";
+ foreach($val as $key2=>$val2) doit($key2,$val2,$out);
+ $out.="</ul>\n";
+ $out.=($key!=="")?"</ul>\n":"";
+ }
+ else
+ {
+ $out.='<li class="tree_element">'
+ .$val.'<span class="buttonInlineRight"></span>'
+ ."</li>\n";
+ }
+ }
+ */
+//$out.="</ul>";
+?>

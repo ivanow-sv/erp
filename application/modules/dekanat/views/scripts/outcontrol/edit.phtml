@@ -1,0 +1,95 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+
+<div id="workspace">
+<?php
+if (count($this->details)<1) echo "Нет прикрепленных студентов";
+else
+{
+//	echo $this->render($this->currentController .DIRECTORY_SEPARATOR.'_formStateChange.phtml');	 
+//	echo "<pre>".print_r($this->listInfo,true)."</pre>";
+	?>
+	<a class="backButton" title="Вернуться к списку"
+	href="<?php echo $this->baseLink; ?>" 
+	>	</a>
+
+	<a class="attachmentOOWriter" title="Скачать ЗАПОЛНЕННЫЙ документ в формате OpenOffice Writer"
+	href="<?php echo $this->baseLink; ?>/odt/id/<?php echo $this->listInfo["id"]; ?>/filled/1" 
+	>	</a>
+	<a class="attachmentOOBlank" title="Скачать документ БЕЗ ОЦЕНОК в формате OpenOffice Writer"
+	href="<?php echo $this->baseLink; ?>/odt/id/<?php echo $this->listInfo["id"]; ?>/filled/0" 
+	>	</a>
+	
+	<h4><?php echo $this->listInfo["docTypeTitle"]; ?> №<?php echo $this->listInfo["numb"]; ?></h4>
+	<p>Семестр <strong><?php echo $this->listInfo["semestr"]; ?></strong>&nbsp;&nbsp;<strong><?php echo $this->listInfo["studyYearStart"]."/".($this->listInfo["studyYearStart"]+1); ?></strong>&nbsp;учебного года</p>
+	<p>Форма выходного контроля&nbsp;<strong><?php echo $this->listInfo["contolTitle"];?></strong></p>
+	<p>Группа&nbsp;<strong><?php echo $this->listInfo["groupTitle"]; ?></strong>&nbsp;Курс&nbsp;<strong><?php echo $this->listInfo["kurs"]; ?></strong></p>
+	<p>Дисциплина&nbsp;<strong><?php echo $this->listInfo["disTitle"]; ?></strong></p>
+	<p>Дата проведения&nbsp;<strong><?php echo $this->listInfo["eventdate"]; ?></strong></p>
+	<?php $_m=$this->listInfo["state"]==1?"Подписан":"Не подписан";?>
+	
+	<form
+<?php
+foreach ($this->formEdit->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+	<p>Документ экзаменатором:&nbsp;<?php echo $_m; ?></p>
+	<p>	<?php echo $this->render($this->currentController .DIRECTORY_SEPARATOR.'_approveList.phtml'); ?>
+	</p>
+
+<?php echo $this->formEdit->id; ?>
+		<div class="table ocontrolList">
+			<div class="th">
+				<div class="Col_1">№</div>
+				<div class="Col_2">Ф.И.О.</div>
+				<div class="Col_3">№ зач. книжки</div>
+				<div class="Col_4">Сумма баллов за семестр</div>
+				<div class="Col_5">Количество баллов выходного контроля</div>
+				<div class="Col_6">&nbsp;</div>
+				<div class="Col_7">Итоговая оценка</div>
+			</div>
+	<?php
+	$n=1;
+	foreach ($this->details as $zach => $student) 
+	{
+		$tr=$tr==1?2:1;
+?>
+			<div class="tr<?php echo $tr; ?>">
+				<div class="Col_1"><?php echo $n; ?><?php $varname="userid".$student["userid"]; echo $this->formEdit->$varname; ?></div>
+				<div class="Col_2"><?php echo $student["fio"]; ?></div>
+				<div class="Col_3"><?php echo $student["zach"]; ?></div>
+				<div class="Col_4"><?php $varname="rating_bally".$student["userid"]; echo $this->formEdit->$varname->getValue(); ?></div>
+				<div class="Col_5"><?php $varname="result".$student["userid"];echo $this->formEdit->$varname->getValue(); ?></div>
+				<div class="Col_6"></div>
+				<div class="Col_7">
+					<?php 
+					$varname="itog".$student["userid"];
+					$_v=$this->formEdit->$varname->getValue();
+					echo $this->formEdit->$varname->getMultiOption($_v);
+//					print_r(get_class_methods($this->formEdit->$varname));
+					if  ($this->formEdit->$varname->getValue()<=2)
+					 $cl="flagRedSmall";
+					else{
+						$cl="flagGreenSmall";
+					} 
+					?>
+					<span class="<?php echo $cl; ?>"> </span>
+				</div>
+			</div>
+
+<?php 		
+		$n++;	
+	} 
+	?>
+	</div>
+	<?php // echo $this->formEdit->OK; ?>
+	</form>
+	
+	<?php 
+	
+} 
+?>
+<!--<pre><?php  //echo print_r($this->details,true); ?></pre>-->
+</div>
+<?php echo $this->render('footer.phtml'); ?>

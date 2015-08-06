@@ -1,0 +1,7 @@
+patch0	подготовка таблиц для прием данных: studyplans_discip, studyplans, attendance, attendance_list, ocontrol, ocontrol_list, disciplinestud, kafedry
+patch1	Внос данных КАФЕДРЫ
+patch2	Внос данных в Дисциплины
+patch3	Типы выходного контроля
+patch4	листы выходного контроля - група может быть NULL
+patch6	корректировка данных в GOS_PARAMS - заполнение 
+patch7	новая таблица - departments - подразделения предприятия

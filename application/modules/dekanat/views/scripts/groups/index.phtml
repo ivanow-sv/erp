@@ -1,0 +1,14 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+ <div id="assign" class="hidden"></div>
+
+<div id="workspace">
+<h3>Выберите курс и специальность</h3>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_SearchForm.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_addForm.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_deleteGroupForm.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_deleteSubGroupForm.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_renameSubGroupForm.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_renameGroupForm.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_List.phtml'); ?>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

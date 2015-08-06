@@ -1,0 +1,36 @@
+<div id="list" >
+<table>
+	<tr>
+		<th>№</th>
+		<th>Шифр</th>
+		<th>Наименование</th>
+		<th>Действие</th>
+	</tr>
+	<?php $k=1;?>
+	<?php $tr=1;
+	if (count($this->entries ) <1 )return ;
+	foreach($this->entries as $entry) : ?>
+	<tr class="tr<?php echo $tr;?>">
+
+		<td><?php echo $k;?></td>
+		<td><input disabled class="inputSmall2" value="<?php echo $this->escape($entry["numeric_title"]);?>" name="numeric_title" id="numeric_title" ></td>
+		<td><?php echo $this->escape($entry["title"]);?></td>
+		<td><img title="Изменить" class="imglink"
+			onClick="showSpravChangeForm('formWrapper',<?php echo $entry["id"]; ?>,'<?php echo $this->escape($entry["title"]);?>'); $('#SpravChangeForm #numeric_title').val('<?php echo $this->escape($entry["numeric_title"]);?>') ; "
+			src="<?php echo $this->icoPath; ?>rename.png"
+ 			alt="Изменить"></img> 
+ 			&nbsp; 
+			<img title="Удалить" class="imglink"
+			onclick='$("#formDelete #title").html("<?php echo $this->escape($entry["title"]);?>"); $("#formDelete #id").val(<?php echo $entry["id"]; ?>); $("#formDeleteWrapper").togglePopup();' 
+			src="<?php echo $this->icoPath; ?>/human_o2_16x16/actions/gtk-remove.png"
+			alt="Удалить"></img> </td>
+	</tr>
+
+	<?php $k++; ?>
+	<?php
+	$tr=$tr===1?2:1;
+endforeach; 
+?>
+</table>
+
+</div>

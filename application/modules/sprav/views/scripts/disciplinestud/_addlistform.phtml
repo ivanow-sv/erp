@@ -1,0 +1,17 @@
+<div id="formAddListWrapper" style="display:none;">
+<p class="close_popup2" onclick='$("#formAddДшыеWrapper").togglePopup(); ' title="отмена"></p>
+Добавить дисциплины списком. Не более 100 штук за раз
+<form
+	action="<?php echo $this->baseUrl;  ?>/sprav/<?php echo $this->curcont; ?>/addlist" 
+	method="post"
+	name="formAddList"
+	id="formAddList"
+	>
+
+<textarea tabindex="1" class="wideinput" name="pastedList"></textarea> 
+
+<input type="hidden" name="kafedra" id="kafedra" value="" />
+<input type="submit" name="OK" value="&nbsp;&nbsp;" class="apply_button" title="Применить"/>
+
+</form>
+</div>

@@ -1,0 +1,21 @@
+<div id="formDeleteWarp" style="display:none;">
+<p class="close_popup2" onclick='$("#formDeleteWarp").togglePopup(); ' title="отмена"></p>
+удаление<br>аттестационного листа №<b id="titleForDel"></b>
+<br>для подтверждения,
+<br>введите <b><?php echo $this->confirmDelete; ?></b>
+
+<form 
+<?php
+
+foreach ($this->formDelete->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+
+<?php echo $this->formDelete->id; ?>
+<?php echo $this->formDelete->confirm; ?>
+
+<?php echo $this->formDelete->ok; ?>
+</form>
+</div>

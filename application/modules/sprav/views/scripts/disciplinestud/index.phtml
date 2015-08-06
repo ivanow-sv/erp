@@ -1,0 +1,21 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_addform.phtml'); ?>
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_addlistform.phtml'); ?>
+
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_filterForm.phtml'); ?>
+<span 
+	onclick='$("#formAddWrapper").togglePopup(); $("#formAdd #kafedra").val($("#filterForm #kafedra").val()); '
+	title="Добавить"
+	class="addButton">
+</span>
+<span 
+	onclick='$("#formAddListWrapper").togglePopup(); $("#formAddList #kafedra").val($("#filterForm #kafedra").val()); '
+	title="Добавить списком"
+	class="copypasteFromExcelButton">
+</span>
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_deleteForm.phtml'); ?>
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_renameForm.phtml'); ?>
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_list.phtml'); ?>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

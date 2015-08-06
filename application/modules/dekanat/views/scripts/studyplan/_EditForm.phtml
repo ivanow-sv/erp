@@ -1,0 +1,115 @@
+
+<form 
+<?php
+
+foreach ($this->formEdit->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+
+<?php echo $this->formEdit->id; ?>
+<?php //echo $this->formEdit->kurs; ?>
+<div class="table">
+<div class="th">
+	<div class="Col_1">начало сессии</div>
+	<div class="Col_2">конец сессии</div>
+	
+</div>
+
+<div class="tr1">
+	<div class="Col_1"><?php echo $this->formEdit->begins; ?></div>
+	<div class="Col_2"><?php echo $this->formEdit->ends; ?></div>
+</div>
+</div>
+<div class="table">
+<div class="th">
+	<div class="Col_1">Дисциплина</div>
+	<div class="Col_2">зач.</div>
+	<div class="Col_3">экз.</div>
+	<div class="Col_4">контр.<br>раб.</div>
+	<div class="Col_5">курс.<br>раб.</div>
+	<div class="Col_6">курс.<br>пр.</div>
+	<div class="Col_7"></div>
+	
+</div>
+<?php
+//echo "<pre>".print_r($this->formEdit,true)."</pre>";
+//echo "<pre>".print_r($this->disciplines,true)."</pre>";
+$i=0;
+if (count($this->disciplines)>0)
+{
+	$tr=1;
+	foreach ($this->disciplines as $row) 
+	{
+		$tr=$tr==1?$tr=2:1;
+	?>
+<div class="tr<?php echo $tr; ?>" id="discipline_<?php echo $row["planid"]; ?>">
+	<div class="Col_1">
+		<?php //echo $row["disTitle"]; ?>
+		<?php 
+		$varname="discipline".$i; 
+		echo $this->formEdit->$varname; 
+		?>
+		</div>
+	<div class="Col_2">
+	<?php
+ 		$varname="zachetCount".$i; 
+		echo $this->formEdit->$varname; 
+	?>
+		</div>
+	<div class="Col_3">
+		<?php
+ 			$varname="examCount".$i; 
+			echo $this->formEdit->$varname; 
+		?>
+			</div>
+	<div class="Col_4">
+		<?php
+ 			$varname="kontrCount".$i; 
+			echo $this->formEdit->$varname; 
+		?>
+		</div>
+	<div class="Col_5">
+		<?php
+ 			$varname="kursWorkCount".$i; 
+			echo $this->formEdit->$varname; 
+		?>
+		</div>
+	<div class="Col_6">
+		<?php
+ 			$varname="kursProjCount".$i; 
+			echo $this->formEdit->$varname; 
+		?>
+
+		</div>
+	<div class="Col_7">
+		<img alt="Удалить" src="<?php echo $this->iconpath; ?>human_o2_16x16/actions/gtk-remove.png" class="imglink" 
+		title="Удалить дисциплину"
+		onclick='removeDiscipline($(this) ,<?php echo $row["planid"]; ?>);' 
+		/>
+		</div>
+</div>
+	<?php 
+		$i++;
+	}
+	 
+}
+$tr=$tr==1?$tr=2:1;
+
+?>
+
+</div>
+
+<img title="Добавить дисциплину" class="imglink" 
+src="<?php echo $this->iconpath; ?>icojoy/001_01.png" alt="Добавить"
+onclick='addDiscipline(<?php echo $this->formEdit->id->getValue(); ?>);' 
+/>
+<span id="buttonApply_<?php echo $this->formEdit->id->getValue(); ?>" 
+title="Применить" class="imglink buttonApplyInactive"
+onClick="applyDisciplines(<?php echo $this->formEdit->id->getValue(); ?>);" 
+>
+&nbsp;
+</span>
+
+</form>

@@ -1,0 +1,19 @@
+<div id="formAddWrapper" style="display:none;">
+<p class="close_popup2" onclick='$("#formAddWrapper").togglePopup(); ' title="отмена"></p>
+<form
+<?php
+foreach ($this->addForm->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<H4>Новый звонок</H4>
+<p>Начало занятия
+	<?php echo $this->addForm->starts; ?>
+</p>
+<p>Конец занятия
+	<?php echo $this->addForm->ends; ?>
+</p>
+<?php echo $this->addForm->ok; ?>
+</form>
+</div>

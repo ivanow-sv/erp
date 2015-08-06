@@ -1,0 +1,17 @@
+<div id="formRenameSubGroupWarp" style="display:none;">
+<p class="close_popup2" onclick='$("#formRenameSubGroupWarp").togglePopup(); ' title="отмена"></p>
+Новое название
+<form 
+<?php
+foreach ($this->renameFormSubGroup->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+
+<?php echo $this->renameFormSubGroup->id; ?>
+<?php echo $this->renameFormSubGroup->newTitle; ?>
+
+<?php echo $this->renameFormSubGroup->ok; ?>
+</form>
+</div>

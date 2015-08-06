@@ -1,0 +1,38 @@
+
+========= 2012-06-18 12:15:20, Mon =========
+2012-06-18 12:15:20, Mon	 Начало
+2012-06-18 12:15:20, Mon	 Заполнение GOS_PARAMS 
+2012-06-18 12:15:20, Mon	 SQL-запрос: UPDATE `gos_params` SET yearStart=2000 
+2012-06-18 12:15:20, Mon	 Успешно 
+2012-06-18 12:15:20, Mon	 SQL-запрос: UPDATE `gos_params` SET years2study=4
+		WHERE division=1
+		AND spec IN (SELECT id FROM specs where numeric_title LIKE '%.62') 
+2012-06-18 12:15:20, Mon	 Успешно 
+2012-06-18 12:15:20, Mon	 SQL-запрос: UPDATE `gos_params` SET years2study=5
+		WHERE division=2
+		AND spec IN (SELECT id FROM specs where numeric_title LIKE '%.62') 
+2012-06-18 12:15:20, Mon	 Успешно 
+2012-06-18 12:15:20, Mon	 SQL-запрос: UPDATE `gos_params` SET years2study=5
+		WHERE division=1
+		AND spec IN (SELECT id FROM specs where numeric_title LIKE '%.65') 
+2012-06-18 12:15:20, Mon	 Успешно 
+2012-06-18 12:15:20, Mon	 SQL-запрос: UPDATE `gos_params` SET years2study=6
+		WHERE division=2
+		AND spec IN (SELECT id FROM specs where numeric_title LIKE '%.65') 
+2012-06-18 12:15:20, Mon	 Успешно 
+2012-06-18 12:15:20, Mon	 SQL-запрос: UPDATE `gos_params` SET yearLast=2010
+		WHERE spec IN
+		(
+		SELECT id FROM `specs`
+		where numeric_title
+		IN ('080109.65' , '080502.65', '110201.65', '110301.65', '110303.65', '110304.65', '110401.65')
+		)
+		 
+2012-06-18 12:15:20, Mon	 Успешно 
+2012-06-18 12:15:20, Mon	 SQL-запрос: UPDATE `gos_params` SET yearLast = NULL WHERE yearLast=0 
+2012-06-18 12:15:20, Mon	 Успешно 
+2012-06-18 12:15:20, Mon	 SQL-запрос: ALTER TABLE `gos_params` CHANGE `yearStart` `yearStart` YEAR( 4 ) NOT NULL COMMENT 'срок действия - год первой приемной кампании' 
+2012-06-18 12:15:20, Mon	 Успешно 
+2012-06-18 12:15:20, Mon	 SQL-запрос: ALTER TABLE `gos_params` CHANGE `yearLast` `yearLast` YEAR( 4 ) NULL DEFAULT NULL COMMENT 'срок действия - год последней приемной кампании (последний студент принят)' 
+2012-06-18 12:15:20, Mon	 Успешно 
+2012-06-18 12:15:20, Mon	 Завершение

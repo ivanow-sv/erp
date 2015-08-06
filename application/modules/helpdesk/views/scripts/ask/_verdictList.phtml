@@ -1,0 +1,20 @@
+<div id="verdicts">
+<div class="table">
+<?php
+if (!empty($this->ticketlog))
+{
+	foreach ($this->ticketlog as $log) 
+	{
+		$tr=$tr==1?2:1;
+	?>
+	<div class="tr<?php echo $tr;?>">
+		<div class="Col_1"><?php echo $log["created"] ;?></div>
+		<div class="Col_3"><?php echo $log["verdict"] ;?></div>
+		<div class="Col_2"><?php echo $log["fio"] ;?></div>
+	</div>
+	<?php 
+	}	
+}
+?>
+</div>	
+</div>

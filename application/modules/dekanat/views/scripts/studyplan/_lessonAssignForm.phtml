@@ -1,0 +1,16 @@
+<form
+<?php
+
+foreach ($this->form->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+<?php echo $this->form->discipline;?>
+<br><?php echo $this->form->type;?>
+<br><?php echo $this->form->para;?>
+<br>Аудитория<?php echo $this->form->place;?>
+<br>Дата<?php echo $this->form->day_when;?>
+Добавить
+ОТМЕНА
+</form>

@@ -1,0 +1,11 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<div class="toolbar">
+	<a href="<?php echo $this->fullLink; ?>" title="Вернуться к списку">
+		<span class="backButton"></span>
+	</a>
+</div>
+<div class="warning"><?php echo $this->msg; ?></div>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_formDetails.phtml'); ?>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

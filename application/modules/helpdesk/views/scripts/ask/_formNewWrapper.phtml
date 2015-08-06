@@ -1,0 +1,7 @@
+<div id="ticketNewWrapper" class="hidden">
+	<p class="close_popup2"
+		onclick='$("#ticketNewWrapper").togglePopup(); ' title="отмена">
+	</p>
+	<h4>Подача новой заявки</h4>
+	<div id="formMsg" class="hidden"></div>
+<?php  echo $this->render($this->currentController."/".'_formNew.phtml'); ?>	

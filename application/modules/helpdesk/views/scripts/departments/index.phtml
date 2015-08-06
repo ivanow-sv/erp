@@ -1,0 +1,27 @@
+<?php echo $this->render('header.phtml'); ?>
+
+<div id="workspace">
+<div id="depsList">
+<h4>Перечень </h4>
+<?php 
+if (empty($this->deps))
+{
+	echo "Не обнаружено";
+	
+}
+else 
+{
+	?>
+	<?php 
+	foreach ($this->deps as $id=> $title) 
+	{
+		?>
+		<a class="treeItem" href="<?php echo $this->baseLink."/list/id/".$id; ?>"><?php echo $title; ?></a>
+		<?php 
+		;
+	}
+}
+?>
+</div>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

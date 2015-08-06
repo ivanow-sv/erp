@@ -1,0 +1,15 @@
+<form action="<?php echo $this->baseUrl; ?>/sprav/<?php echo $this->curcont; ?>/<?php echo $this->curact; ?>" method="post">
+<?php
+$numeric_title=isset($entry->numeric_title)?$this->escape($entry->numeric_title):"";
+?>Шифр:&nbsp;<input class="typic_input" type="text" tabindex="1" name="numeric_title" value="<?php echo $numeric_title; ?>" > 
+<br>Название:<br>
+<textarea tabindex="1" class="typicadd" name="title"><?php
+$title=isset($entry->title)?$this->escape($entry->title):"";
+echo $title; 
+?>
+</textarea> 
+
+<input type="hidden" name="id" value="<?php echo $this->id; ?>" />
+<input type="submit" name="add" value="&nbsp;&nbsp;" class="apply_button" title="Применить"/>
+
+</form>

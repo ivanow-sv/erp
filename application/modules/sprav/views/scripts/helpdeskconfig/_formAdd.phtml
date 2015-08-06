@@ -1,0 +1,16 @@
+<div id="formAddWrapper" style="display:none;">
+<p class="close_popup2" onclick='$("#formAddWrapper").togglePopup(); ' title="отмена"></p>
+<h4>Создать новый тип</h4>
+<form
+<?php
+
+foreach ($this->formAdd->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<p> Название <?php 	echo $this->formAdd->title->removeDecorator('Description'); ?> </p>
+<p> Таблица <?php 	echo $this->formAdd->tbl->removeDecorator('Description'); ?> </p>
+<p><?php echo $this->formAdd->OK; ?></p>
+</form>
+</div>

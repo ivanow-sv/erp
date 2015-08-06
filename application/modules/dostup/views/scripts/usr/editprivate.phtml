@@ -1,0 +1,142 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+
+<form
+<?php 
+foreach ($this->privateForm->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?> >
+<?php echo $this->privateForm->id;?>
+<div class="toolbarInlineRight">
+	<span id="submitInTabs"><?php echo $this->privateForm->formSubmit;?></span>
+</div>
+<div class="tr2">
+	<div class="Col_1">Имя учетной записи</div>
+	<div class="Col_2"><?php echo $this->privateForm->loginName;?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Пол</div>
+	<div class="Col_2"><?php echo $this->privateForm->gender;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Фамилия</div>
+	<div class="Col_2"><?php echo $this->privateForm->family;?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Имя</div>
+	<div class="Col_2"><?php echo $this->privateForm->name;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Отчество</div>
+	<div class="Col_2"><?php echo $this->privateForm->otch;?></div>
+</div>
+
+<ul class="tabs">
+	<li class="current">Личное</li>
+	<li>Образование стр. 1</li>
+	<li>Образование стр. 2</li>
+	
+</ul>
+
+<div class="box visible">
+<div class="tr1">
+	<div class="Col_1">Документ, удостоверяющий личность</div>
+	<div class="Col_2"><?php echo $this->privateForm->identity;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Серия</div>
+	<div class="Col_2"><?php echo $this->privateForm->iden_serial;?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Номер</div>
+	<div class="Col_2"><?php echo $this->privateForm->iden_num;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Выдан</div>
+	<div class="Col_2"><?php echo $this->privateForm->iden_give;?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Регистрация</div>
+	<div class="Col_2"><?php echo $this->privateForm->iden_reg;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Проживание</div>
+	<div class="Col_2"><?php echo $this->privateForm->iden_live;?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Дата рождения</div>
+	<div class="Col_2"><?php echo $this->privateForm->birth_date;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">место рождения</div>
+	<div class="Col_2"><?php echo $this->privateForm->birth_place;?></div>
+</div>
+</div>
+
+<div class="box">
+<div class="tr1">
+	<div class="Col_1">Документ об образовании</div>
+	<div class="Col_2"><?php echo $this->privateForm->edu_doc;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Серия</div>
+	<div class="Col_2"><?php echo $this->privateForm->edu_serial;?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Номер</div>
+	<div class="Col_2"><?php echo $this->privateForm->edu_num;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Выдан</div>
+	<div class="Col_2"><?php echo $this->privateForm->edu_give;?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Дата выдачи</div>
+	<div class="Col_2"><?php echo $this->privateForm->edu_date;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Средний балл</div>
+	<div class="Col_2"><?php echo $this->privateForm->edu_res;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Доп. информация об образовании</div>
+	<div class="Col_2"><?php echo $this->privateForm->edu_info;?></div>
+</div>
+</div>
+
+<div class="box">
+<div class="tr1">
+	<div class="Col_1">Льготы</div>
+	<div class="Col_2"><?php echo $this->privateForm->category;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Документ подтверждающий</div>
+	<div class="Col_2"><?php echo $this->privateForm->category_detail;?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Награда</div>
+	<div class="Col_2"><?php echo $this->privateForm->award;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Олимпиады</div>
+	<div class="Col_2"><?php echo $this->privateForm->olympic_detail;?></div>
+</div>
+
+<div class="tr1">
+	<div class="Col_1">Год зачисления</div>
+	<div class="Col_2"><?php echo $this->privateForm->abitur_year;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Рег. номер абитуриента</div>
+	<div class="Col_2"><?php echo $this->privateForm->abitur_id;?></div>
+</div>
+</div>
+
+
+
+</form>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

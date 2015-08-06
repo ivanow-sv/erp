@@ -1,0 +1,132 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+	<form
+<?php
+
+foreach ($this->editForm->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+<?php echo $this->editForm->id; ?>
+<p>Специальность/направление подготовки
+<br>
+<strong><?php echo $this->entry["numeric_title"];?>&nbsp;
+<?php echo $this->entry["title"];?></strong>
+</p>
+<p>Буквенное обзначение<?php echo $this->editForm->letter; ?>
+</p>
+<p>Дисциплины вступительных испытаний
+<?php echo $this->editForm->disciplines; ?>
+</p>	
+<p>Профильный вступительный экзамен	
+<br><?php echo $this->editForm->disciplineProf; ?>	
+</p>
+<a class="backButton" href="<?php echo $this->selfLink; ?>" title="к списку"></a>
+<span class="buttonApplyActive" title="ПРИМЕНИТЬ"
+onclick="$('#editForm').submit();" >
+</span>
+<span class="undoButton" title="восстановить форму" onclick="document.forms['editForm'].reset();"></span>
+</form>
+
+<div id="subspecs">
+
+<!--форма добавления специализации-->
+<div id="formAddWrapper" style="display:none;">
+<p class="close_popup2" onclick='$("#formAddWrapper").togglePopup(); ' title="отмена"></p>
+<h4>Введите название</h4>
+<form 
+<?php
+foreach ($this->formAdd->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php echo $this->formAdd->id; ?>
+<?php echo $this->formAdd->title; ?>
+<br><?php echo $this->formAdd->ok; ?>
+</form>
+</div>
+<!--конец формы добавления специализации-->
+
+<!--форма переименования специализации-->
+<div id="formRenWrapper" style="display:none;">
+<p class="close_popup2" onclick='$("#formRenWrapper").togglePopup(); ' title="отмена"></p>
+<h4>Введите новое название</h4>
+<form 
+<?php
+foreach ($this->formRen->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php echo $this->formRen->id; ?>
+<?php echo $this->formRen->specid; ?>
+<?php echo $this->formRen->title; ?>
+<br><?php echo $this->formRen->ok; ?>
+</form>
+</div>
+<!--конец формы переименования специализации-->
+
+<!--форма удаления специализации-->
+<div id="formDelWrapper" style="display:none;">
+<p class="close_popup2" onclick='$("#formDelWrapper").togglePopup(); ' title="отмена"></p>
+<form 
+<?php
+foreach ($this->formDel->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php echo $this->formDel->id; ?>
+<?php echo $this->formDel->specid; ?>
+Удалить запись
+<br><strong><span id="title"></span></strong>
+<br>для поддверждения операции введите фразу
+<br>«<strong><?php echo $this->confirmWord;?></strong>» 
+<br><?php echo $this->formDel->confirm; ?>
+<?php echo $this->formDel->ok; ?>
+</form>
+</div>
+<!--конец формы удаления специализации-->
+
+
+	<h4>Профили подготовки&nbsp;
+	<span onclick='$("#formAddWrapper").togglePopup(); ' 
+	class="addIcoSmall" title="Добавить">&nbsp;</span>
+	</h4>
+	<div id="subspecList">
+	<?php if (count($this->subspecList)>0) 
+	{
+		$tr=1;
+		foreach ($this->subspecList as $subspec) 
+		{
+			$tr=$tr===1?2:1;
+			?>
+			<div class="tr<?php echo $tr; ?>">
+				<div class="Col_1">
+					<?php echo $subspec["title"]; ?>
+				</div>
+				<div class="Col_2">
+					<span title="Удалить"
+					onclick='deleteSubspec("<?php echo $subspec["title"]; ?>",<?php echo $subspec["id"]; ?>);' 
+					class="removeIcoSmall">
+					&nbsp;</span>
+					<span 
+					onclick='renameSubspec("<?php echo $subspec["title"]; ?>",<?php echo $subspec["id"]; ?>);' 
+					class="renameIcoSmall" title="Переименовать">
+					&nbsp;</span>
+				</div>
+			</div>
+			<?php 
+		}
+	}
+	else { ?> Не задано<?php }
+	?>
+	</div>	
+</div>
+<div id="digits">
+<!-- 	<h4>Контрольные цифры приема</h4> -->
+</div>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

@@ -1,0 +1,9 @@
+<?php echo $this->render('header.phtml'); ?>
+<div id="workspace">
+Результат обработки: <pre><?php echo print_r($this->msg,true); ?></pre>
+	<div class="toolbar">
+ 	<a class="backButton" title="вернуться" href="<?php echo $this->baseLink; ?>"></a>	
+	</div>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

@@ -1,0 +1,82 @@
+<div class="table" id="peopleList">
+<?php 
+if (count($this->list)>0)
+{
+	?>
+<div class="th">
+	<div class="Col_0">
+		<input type="checkbox" id="checkAll" onclick="toggleCheck('id','peopleList',$(this))">
+	</div>
+	<div class="Col_0"></div>
+	<div class="Col_1">Ф.И.О.</div>
+	<div class="Col_2">№ зачетки</div>
+	<div class="Col_3">курс</div>
+	<div class="Col_4">группа</div>
+	<div class="Col_5">подгруппа</div>
+	<div class="Col_6"></div>
+</div>
+<?php 	
+$k=1;
+$subgr=-1;
+	foreach ($this->list as $stud) 
+	{
+		$tr=$tr==1?$tr=2:1;
+		$editLink=$this->baseLink
+//		."/".$this->currentModuleName
+//		."/".$this->currentController
+		."/"."edit/id/".$stud['userid'];
+		// если другая подгруппа
+		if ($stud["subgroupid"]!==$subgr)
+		{
+			$subgr=$stud["subgroupid"];
+//			
+?>
+<div class="th2">
+	<div class="Col_0"></div>
+	<div class="Col_0"></div>
+	<div class="Col_1">Подгруппа <?php echo $stud["subgroupTitle"]; ?></div>
+	<div class="Col_2"></div>
+	<div class="Col_3"></div>
+	<div class="Col_4"></div>
+	<div class="Col_5"></div>
+	<div class="Col_6"></div>
+</div>
+
+<?php 
+		}
+		?>
+<div class="tr<?php echo $tr; ?>">
+	<div class="Col_0">
+		<input type="checkbox" id="id" name="id[]" value="<?php echo $stud["userid"]; ?>">
+	</div>
+	<div class="Col_0"><?php echo $k;?></div>
+	<div class="Col_1">
+		<a href="<?php echo $editLink; ?>">
+			<?php echo $stud["fio"]; ?>
+		</a>
+		<br><small class="spectitle"><?php echo $stud["specTitle"]?></small>
+	</div>
+	<div class="Col_2"><?php echo $stud["zach"]; ?></div>
+	<div class="Col_3">
+		<?php 
+		echo $stud["kurs"]; 
+		?>
+	</div>
+	<div class="Col_4"><?php echo $stud["groupTitle"]; ?></div>
+	<div class="Col_5"><?php echo $stud["subgroupTitle"]; ?></div>
+	<div class="Col_6">
+		<a href="<?php echo $editLink; ?>">
+			<img class="imglink" src="<?php echo $this->baseUrl; ?>/public/images/oo_images_industrial/dbaccess/res/docedit_sc.png">
+		</a>
+	
+	</div>
+</div>
+		
+		<?php
+		$k++; 
+	}	 
+}
+else echo "Подходящих не найдено";
+?>
+
+</div>

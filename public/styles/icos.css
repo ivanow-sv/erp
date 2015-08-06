@@ -1,0 +1,685 @@
+.printerIcoMedium
+{	
+	background-image: url('../images/human_o2_24x24/devices/printer.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	cursor: pointer;
+}
+.inserttextIcoMedium
+{
+	background-image: url('../images/human_o2_24x24/actions/insert-text.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	cursor: pointer;
+}
+.rightArrowIcoMedium
+{	
+	background-image: url('../images/icojoy/002_68.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	
+	margin-right:5px;	
+	cursor: pointer;
+}
+.leftArrowIcoMedium
+{	
+	background-image: url('../images/icojoy/002_67.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	cursor: pointer;
+}
+.unlockedIcoSmall
+{
+	background-image: url('../images/crystal/16x16/actions/unlock.png');
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+/*	cursor: pointer;*/
+}
+.lockedIcoSmall
+{
+	background-image: url('../images/crystal/16x16/actions/msn_blocked.png');
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+/*	cursor: pointer;*/
+}
+.warningIcoSmall
+{
+	background-image: url('../images/crystal/16x16/actions/messagebox_warning.png');
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	/*cursor: pointer;*/
+}
+.doneIcoSmall
+{
+	background-image: url('../images/crystal/16x16/actions/apply.png');
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	cursor: pointer;
+}
+.addIcoSmall
+{
+	background-image: url('../images/add.gif');
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	
+	margin-right:5px;	
+	cursor: pointer;
+}
+.openIcoSmall
+{
+	background-image: url('../images/078_16x16.png');
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	
+	margin-right:5px;	
+	cursor: pointer;
+}
+.viewIcoSmall
+{
+	background-image: url('../images/add.gif');
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	
+	margin-right:5px;	
+	cursor: pointer;
+}
+.usersIco
+{
+	background-image: url('../images/user_group16x16.png');
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	
+	margin-right:5px;	
+	cursor: pointer;
+}
+.viewIcoSmall
+{
+	
+	background-image: url('../images/human_o2_16x16/actions/old-edit-find.png');
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	
+	margin-right:5px;	
+	cursor: pointer;
+}
+.exportIcoSmall
+{
+	
+	background-image: url('../images/human_o2_16x16/actions/document-export.png');
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	
+	margin-right:5px;	
+	cursor: pointer;
+}
+.dublicateIcoSmall
+{
+	
+	background-image: url('../images/human_o2_16x16/actions/editcopy.png');
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	
+	margin-right:5px;	
+	cursor: pointer;
+}
+.editIcoSmall
+{
+	background-image: url('../images/oo_images_industrial/dbaccess/res/docedit_sc.png');
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	
+	margin-right:5px;	
+	cursor: pointer;
+}
+.shareIcoSmall
+{
+	 
+	background-image: url('../images/1302354343_document-share.png');
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	
+	margin-right:5px;	
+	cursor: pointer;
+}
+.calendarIcoSmall
+{
+	background-image: url('../images/calendar.png');
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	
+	margin-right:5px;	
+	cursor: pointer;
+}
+.removeIcoSmall
+{
+	background-image: url('../images/human_o2_16x16/actions/gtk-remove.png');
+	width: 16px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	
+	margin-right:3px;	
+	cursor: pointer;
+}
+.renameIcoSmall
+{
+	background-image: url('../images/rename.png');
+	width: 21px;
+	height: 16px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.keyButton
+{
+	background-image: url('../images/icojoy/001_41.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	cursor: pointer;
+}
+.userLockButton
+{
+	
+	background-image: url('../images/human_o2_24x24/apps/preferences-desktop-user-password.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	cursor: pointer;
+}
+.backButton
+{
+	background-image: url('../images/icojoy/001_60_to_Left.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	cursor: pointer;
+}
+.undoButton
+{
+	background-image: url('../images/oo_images_industrial/res/lc05701.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	cursor: pointer;
+}
+.previewButton
+{
+	background-image: url('../images/human_o2_48x48/actions/old-edit-find.png');
+	width: 48px;
+	height: 48px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	cursor: pointer;
+}
+.findreplaceButton
+{
+	
+	background-image: url('..//images/crystal/48x48/apps/lassists.png');
+	width: 48px;
+	height: 48px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	cursor: pointer;
+}
+
+.userEditButton
+{
+	background-color: transparent;
+	background-image: url('../images/sem_labs_icon_pack/user_male_edit.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	/*float:right !important;*/
+	width: 48px;
+	height: 48px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.addGroupButton
+{
+	background-color: transparent;
+	background-image: url(../images/human_o2_48x48/actions/user-group-new.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	/*float:right !important;*/
+	width: 48px;
+	height: 48px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.addUserButton
+{
+	background-color: transparent;
+	background-image: url('../images/sem_labs_icon_pack/user_male_add.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	/*float:right !important;*/
+	width: 48px;
+	height: 48px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.copypasteFromExcelButton
+{
+	background-color: transparent;
+	background-image: url('../images/copypasteFromExcel.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	/*float:right !important;*/
+	width: 48px;
+	height: 48px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.exitButton
+{
+	background-color: transparent;
+	background-image: url('../images/human_o2_48x48/actions/application-exit.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	/*float:right !important;*/
+	width: 48px;
+	height: 48px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.addButton
+{
+	background-color: transparent;
+	background-image: url('../images/add1-48.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	/*float:right !important;*/
+	width: 48px;
+	height: 48px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.exportButton
+{
+	background-color: transparent;
+	background-image: url('../images/export48.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	/*float:right !important;*/
+	width: 48px;
+	height: 48px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.usersMoveButton
+{
+	background-color: transparent;
+	background-image: url('../images/sem_labs_icon_pack/users_go.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	/*float:right !important;*/
+	width: 48px;
+	height: 48px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.usersMoveButton32
+{
+	background-color: transparent;
+	background-image: url('../images/sem_labs_icon_pack/users_go_32.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	/*float:right !important;*/
+	width: 32px;
+	height: 32px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.usersAttendance32
+{
+	background-color: transparent;
+	background-image: url('../images/user/text-x-ldif_32.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	/*float:right !important;*/
+	width: 32px;
+	height: 32px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.usersOcontrol32
+{
+	background-color: transparent;
+	background-image: url('../images/lassists32.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	/*float:right !important;*/
+	width: 32px;
+	height: 32px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.usersLoadButton
+{
+	background-color: transparent;
+	background-image: url('../images/user/loadusers_48.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	/*float:right !important;*/
+	width: 48px;
+	height: 48px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.addButtonMedium
+{
+	background-image: url('../images/icojoy/001_01.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.closeButtonMedium
+{
+	background-image: url('../images/icojoy/001_05.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.lockButtonMedium
+{
+
+	background-image: url('../images/icojoy/001_42.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.exportButtonMedium
+{
+	background-image: url('../images/human_o2_24x24/actions/document-export.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.editcopyButtonMedium
+{
+	background-image: url('../images/human_o2_24x24/actions/edit-copy.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+.importXmlButtonMedium
+{
+	background-image: url('../images/human_o2_24x24/mimetypes/text-xml.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:3px;	
+	cursor: pointer;
+}
+
+.buttonApplyInactive
+{
+		background-image: url('../images/icojoy/001_06_gray.png');
+		width: 24px;
+		height: 24px;
+	display:inline-block;
+		position: relative;
+		margin-right:3px;
+		cursor: default;
+	}
+
+.buttonApplyInactive:hover
+{
+	background-image: url('../images/icojoy/001_06.png');
+	}
+
+.buttonApplyActive
+{
+		background-image: url('../images/icojoy/001_06.png');
+		width: 24px;
+		height: 24px;
+		display:inline-block;
+		position: relative;
+		margin-right:3px;	
+		cursor: pointer;
+}
+.buttonApplyActive:hover
+{
+		background-image: url('../images/icojoy/001_06_gray.png');
+}
+	
+button
+{
+	border: 1px solid darkgreen;
+	background-color: #F7FFF2;
+	color:black;
+	cursor: pointer;
+	font-size: 10px;
+}
+button:hover
+{
+	background-color: darkgreen ;
+	color:white;	
+	border: 1px solid #F7FFF2;	
+}
+.addButton:hover,.exportButton:hover
+{
+	background-color: #9ECE96;
+	}
+
+/* Attachments - вложения*/
+.attachmentOOBlank
+{
+	
+	background-image: url('../images/human_o2_24x24/mimetypes/application-msword.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	cursor: pointer;
+}
+.attachmentOOWriter
+{
+	background-image: url('../images/crystal/24x24/apps/openofficeorg-20-writer.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	cursor: pointer;
+}
+.attachmentOOCalc
+{
+	background-image: url('../images/crystal/24x24/apps/openofficeorg-20-calc.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	cursor: pointer;
+}
+.flagRedSmall
+{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background-image: url('../images/event16.png');
+}
+.flagGreenSmall
+{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background-image: url('../images/event16_green.png');
+}
+.stopSign
+{
+	background-image: url('../images/Stop_sign_24x24.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+}
+.okSign
+{
+	background-image: url('../images/OK_24x24.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+}
+.partialSign
+{
+	background-image: url('../images/partial_24x24.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+}
+
+/* ������� ��� ��������/���������� */
+.toggle {
+	display: inline-block;
+	padding: 0px;
+	margin: 0;
+	cursor: pointer;
+	top: 0;
+	right: 0;
+	position: relative;
+	width: 15px;
+	height: 15px;
+}
+/* ����������� */
+.expanded {
+ 	background-image: url("../images/expanded.png");
+}
+/* ��������� */
+.collapsed {
+	background-image: url("../images/collapsed.png");
+}
+/* ������� � ����� ����*/
+.openInNewWindow{
+	display: inline-block;
+	padding: 0px;
+	margin: 0;
+	cursor: pointer;
+	top: 0;
+	right: 0;
+	position: relative;
+	width: 16px;
+	height: 16px;	
+	background-image: url("../images/crystal/16x16/apps/windowlist.png");	
+}
+.trashFullMedium
+{
+	 
+	background-image: url('../images/human_o2_24x24/status/human-trashcan_full-new.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	cursor: pointer;
+}
+.trashEmptyMedium
+{
+	 
+	background-image: url('../images/human_o2_24x24/places/human-user-trash.png');
+	width: 24px;
+	height: 24px;
+	display:inline-block;
+	position: relative;
+	margin-right:5px;	
+	cursor: pointer;
+}

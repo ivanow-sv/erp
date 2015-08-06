@@ -1,0 +1,13 @@
+
+<form
+<?php
+
+foreach ($this->formFilter->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+
+<p> Подразделение<?php 	echo $this->formFilter->department->removeDecorator('Description'); ?> </p>
+<p> Тип оборудования <?php 	echo $this->formFilter->utype->removeDecorator('Description'); ?> </p>
+</form>

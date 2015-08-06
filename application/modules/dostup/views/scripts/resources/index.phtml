@@ -1,0 +1,20 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+
+<div id="formWrapper" style="display:none;">
+<p class="close_popup2" onclick='$("#formWrapper").togglePopup(); ' title="отмена"></p>
+<div id="formDetailsWrapper">
+</div>
+<hr>
+<div id="formPrivsWrapper">
+</div>
+
+</div>
+
+<?php echo $this->render($this->curcont.'/_formFilter.phtml'); ?>
+<?php echo $this->render($this->curcont.'/_resourcesTree.phtml'); ?>
+
+</div>
+<?php echo $this->render('footer.phtml');
+
+?>

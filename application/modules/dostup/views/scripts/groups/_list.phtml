@@ -1,0 +1,98 @@
+<?php
+// роли заданы 
+if (count($this->items)>0)
+{
+	?>
+
+	
+
+<div class="th">
+	<div class="Col_1"></div>
+	<div class="Col_2">ID</div>
+	<div class="Col_3">Название</div>
+	<div class="Col_4">Название</div>
+	<div class="Col_5">Комментарий</div>
+<!--	<div class="Col_2">выкл.?</div>-->
+	<div class="Col_6"></div>
+</div>
+
+	<?php
+
+	// это потому, что $this внутри функции не пользуется никак :(
+	$sys=array(
+	'baseUrl'=>$this->baseUrl,
+	'currentController'=>$this->currentController,
+	'currentModuleName'=>$this->currentModuleName,
+	);
+	
+	
+	function showRow(&$item,&$tr,&$deep,$sys)
+	{
+		if (is_array($item))
+		{
+		$tr=$tr===1?2:1;
+		$disabled=$item["disabled"]==1?' id="disabled" ':"";
+		$link=$sys["baseUrl"]."/".$sys["currentModuleName"]."/usr/index/aclgroup/".$item["id"];
+			?>
+		<div class="tr<?php echo $tr;?>" <?php echo $disabled; ?>>
+<!--		для чекбокса-->
+			<div class="Col_1"></div>
+			<div class="Col_2"><?php echo $item["id"]; ?></div>
+			<div class="Col_3" <?php echo $disabled; ?> title="Детали" 
+				onclick="grpShow(<?php echo $item["id"]; ?>,'<?php echo $item["title"]; ?>');"
+				style="cursor:pointer;"
+				>
+					<?php echo $deep.$item["title"]; ?>
+			</div>
+			<div class="Col_4"><?php echo $item["title_small"]; ?></div>
+			<div class="Col_5"><?php echo $item["comment"]; ?></div>
+<!--			<div class="Col_2"><?php echo $item["disabled"]==1?'Да':'';?></div>-->
+			<div class="Col_6">
+				<span class="editIcoSmall" title="Детали" onclick="grpShow(<?php echo $item["id"]; ?>,'<?php echo $item["title"]; ?>');">
+				</span>
+				<a class="usersIco" href="<?php echo $link ?>" title="Пользователи группы" >
+				</a>
+				
+				<span class="removeIcoSmall" title="Удалить" onclick="grpDel(<?php echo $item["id"]; ?>,'<?php echo $item["title"]; ?>');">
+				</span>
+				<span class="addIcoSmall" title="Добавить подгруппу" onclick="grpAdd(<?php echo $item["id"]; ?>);">
+				</span>
+			</div>
+		</div>
+		<?php 
+		}
+		//если есть "дети"
+		if (isset($item["child"])) 
+		{
+			// если нет родителей - занчит начало ветки
+			if (is_null($item["parent"])) $deep="";
+
+			// переберем "детей"
+			$childs=explode(" ",$item["child"]);
+			foreach ($childs as $name) 
+			{
+				// если нижеследующий прямой потомок
+				if ($item[$name]["parent"]==$item['id']) $dp="|".ltrim($deep."--","|");
+				else $dp=$deep;
+				showRow($item[$name],$tr,$dp,$sys);
+			}
+			
+			
+		}
+//		array_merge ();
+	}
+	
+	$tr=2;
+	$deep='';
+	foreach ($this->items as $k=>$item) 
+	{
+		showRow($item,$tr,$deep,$sys);
+
+	}
+}
+// ролей нет
+else 
+{
+	
+}
+?>

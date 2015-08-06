@@ -1,0 +1,10 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<h5>Добавить новое</h5>
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_form.phtml'); ?>
+<h5>Перечень уже существующих</h5>
+
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_list.phtml'); ?>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

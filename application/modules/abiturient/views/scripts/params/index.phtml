@@ -1,0 +1,29 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+
+<div id="workspace">
+<div class="toolbar">
+	
+</div>
+
+	<?php echo $this->render($this->currentController."/".'_formAddYear.phtml'); ?>
+<h4>Текущая приемная кампания<span class="addIcoSmall" title="Создать кампанию" onclick="yearAdd();"></span></h4>
+<form
+<?php
+
+foreach ($this->formChange->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+
+<?php
+	echo $this->formChange->year->removeDecorator('Description');
+	echo $this->formChange->OK;
+?>
+</form>
+
+<h4>Контрольные цифры приема<span class="addIcoSmall" title="Новая запись" onclick=""></span></h4>
+
+</div>
+
+<?php echo $this->render('footer.phtml'); ?>

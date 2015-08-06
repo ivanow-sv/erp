@@ -1,0 +1,14 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<!--<pre><?php // echo print_r($this->list,true);?></pre>-->
+
+<?php 
+echo $this->render($this->currentController .DIRECTORY_SEPARATOR.'_filterForm.phtml');
+
+echo $this->render($this->currentController .DIRECTORY_SEPARATOR.'_list.phtml'); 
+	
+echo $this->msg;
+?>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

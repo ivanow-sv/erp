@@ -1,0 +1,29 @@
+<div class="hidden" id="assignFormWrapper">
+<?php
+if ($this->formAssign===false)
+{ 
+	echo "<div class='warning'>Техника в отделе не числится</div>";
+}
+else 
+{
+?>
+<form
+<?php
+
+foreach ($this->formAssign->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php 	echo $this->formAssign->id->removeDecorator('Description'); ?>
+<?php 	echo $this->formAssign->unit->removeDecorator('Description'); ?>
+<!-- 
+<p> <?php 	//echo $this->formVerdict->OK->removeDecorator('Description'); ?> </p>
+ -->
+ <p><span class="button" onclick="unitAssign();">ПРИМЕНИТЬ</span></p>
+</form>
+<script type="text/javascript"> $('#assignForm .button').button();</script>
+<?php
+} 
+?>
+</div>

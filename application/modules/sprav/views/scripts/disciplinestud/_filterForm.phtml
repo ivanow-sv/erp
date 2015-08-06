@@ -1,0 +1,9 @@
+<form
+<?php
+foreach ($this->filterForm->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>Кафедра
+<br><?php echo $this->filterForm->kafedra; ?>
+</form>

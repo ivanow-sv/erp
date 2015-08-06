@@ -1,0 +1,33 @@
+<div id="sendToLessonWrapper" style="display: none;">
+<p class="close_popup2" onclick='$("#sendToLessonWrapper").togglePopup(); ' title="Отмена"></p>
+<h4>Направить на занятия</h4>
+<form
+<?php
+
+foreach ($this->formSendToLesson->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<p>Дисциплина
+	<br><?php echo $this->formSendToLesson->discipline; ?>
+</p>
+<p>Вид занятия
+	<br><?php echo $this->formSendToLesson->type; ?>
+</p>
+	<?php echo $this->formSendToLesson->studyYearStart; ?>
+	<span id="studyYearEnd" style="display: none;">
+		<?php $values= $this->formSendToLesson->getValues();
+		echo $values["studyYearStart"]+1;
+		?>
+	</span>
+<p>Срок/дата проведения
+	<br><?php echo $this->formSendToLesson->untilDate; ?>
+</p>
+<p>Время
+	<br><?php echo $this->formSendToLesson->para; ?>
+</p>
+
+<?php echo $this->formSendToLesson->ok; ?>
+</form>
+</div>

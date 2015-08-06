@@ -1,0 +1,325 @@
+
+========= 2014-06-22 10:04:46, Sun =========
+2014-06-22 10:04:46, Sun	 Начало
+2014-06-22 10:04:46, Sun	 применение конкурсных групп 
+2014-06-22 10:04:46, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:04:46, Sun	 Успешно 
+2014-06-22 10:04:46, Sun	 SQL-запрос: CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+			
+INSERT INTO my_temp_table(SELECT ab.userid FROM `abitur_2010` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where
+ab.target=0
+AND p.category >1
+AND af.payment=1);
+			
+UPDATE abitur_filed2
+SET advantage =1
+WHERE userid IN (SELECT id FROM my_temp_table);
+		 
+2014-06-22 10:04:46, Sun	 Успешно 
+2014-06-22 10:04:46, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:04:46, Sun	 Успешно 
+2014-06-22 10:04:46, Sun	 SQL-запрос: 
+CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+
+INSERT INTO my_temp_table(
+SELECT ab.userid FROM `abitur_2010` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where ab.target=1 
+AND p.category=1
+AND af.payment=1
+);
+
+UPDATE abitur_filed2 
+SET advantage =2
+WHERE userid IN (SELECT id FROM my_temp_table);
+					 
+2014-06-22 10:04:47, Sun	 Успешно 
+2014-06-22 10:04:47, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:04:47, Sun	 Успешно 
+2014-06-22 10:04:47, Sun	 SQL-запрос: 
+CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+
+INSERT INTO my_temp_table(
+SELECT ab.userid FROM `abitur_2010` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where 
+ab.target=0 
+AND p.category =1
+AND af.payment=1
+);
+
+UPDATE abitur_filed2 
+SET advantage =3
+WHERE userid IN (SELECT id FROM my_temp_table);
+					 
+2014-06-22 10:05:02, Sun	 Успешно 
+2014-06-22 10:05:02, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:05:02, Sun	 Успешно 
+2014-06-22 10:05:02, Sun	 SQL-запрос: 
+CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+			
+INSERT INTO my_temp_table(
+SELECT ab.userid FROM `abitur_2010` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where 
+ab.target=0 
+AND p.category =1
+AND af.payment=2
+		);
+			
+UPDATE abitur_filed2
+SET advantage =4
+WHERE userid IN (SELECT id FROM my_temp_table);
+					 
+2014-06-22 10:05:08, Sun	 Успешно 
+2014-06-22 10:05:08, Sun	 SQL-запрос: UPDATE abitur_filed2 SET advantage =4 WHERE payment =3; 
+2014-06-22 10:05:08, Sun	 Успешно 
+2014-06-22 10:05:08, Sun	 SQL-запрос: UPDATE abitur_filed2 SET advantage =4 WHERE advantage <1 OR advantage is null; 
+2014-06-22 10:05:09, Sun	 Успешно 
+2014-06-22 10:05:09, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:05:09, Sun	 Успешно 
+2014-06-22 10:05:09, Sun	 SQL-запрос: CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+			
+INSERT INTO my_temp_table(SELECT ab.userid FROM `abitur_2011` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where
+ab.target=0
+AND p.category >1
+AND af.payment=1);
+			
+UPDATE abitur_filed2
+SET advantage =1
+WHERE userid IN (SELECT id FROM my_temp_table);
+		 
+2014-06-22 10:05:09, Sun	 Успешно 
+2014-06-22 10:05:09, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:05:09, Sun	 Успешно 
+2014-06-22 10:05:09, Sun	 SQL-запрос: 
+CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+
+INSERT INTO my_temp_table(
+SELECT ab.userid FROM `abitur_2011` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where ab.target=1 
+AND p.category=1
+AND af.payment=1
+);
+
+UPDATE abitur_filed2 
+SET advantage =2
+WHERE userid IN (SELECT id FROM my_temp_table);
+					 
+2014-06-22 10:05:09, Sun	 Успешно 
+2014-06-22 10:05:09, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:05:09, Sun	 Успешно 
+2014-06-22 10:05:09, Sun	 SQL-запрос: 
+CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+
+INSERT INTO my_temp_table(
+SELECT ab.userid FROM `abitur_2011` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where 
+ab.target=0 
+AND p.category =1
+AND af.payment=1
+);
+
+UPDATE abitur_filed2 
+SET advantage =3
+WHERE userid IN (SELECT id FROM my_temp_table);
+					 
+2014-06-22 10:05:22, Sun	 Успешно 
+2014-06-22 10:05:22, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:05:22, Sun	 Успешно 
+2014-06-22 10:05:22, Sun	 SQL-запрос: 
+CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+			
+INSERT INTO my_temp_table(
+SELECT ab.userid FROM `abitur_2011` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where 
+ab.target=0 
+AND p.category =1
+AND af.payment=2
+		);
+			
+UPDATE abitur_filed2
+SET advantage =4
+WHERE userid IN (SELECT id FROM my_temp_table);
+					 
+2014-06-22 10:05:26, Sun	 Успешно 
+2014-06-22 10:05:26, Sun	 SQL-запрос: UPDATE abitur_filed2 SET advantage =4 WHERE payment =3; 
+2014-06-22 10:05:26, Sun	 Успешно 
+2014-06-22 10:05:26, Sun	 SQL-запрос: UPDATE abitur_filed2 SET advantage =4 WHERE advantage <1 OR advantage is null; 
+2014-06-22 10:05:26, Sun	 Успешно 
+2014-06-22 10:05:26, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:05:26, Sun	 Успешно 
+2014-06-22 10:05:26, Sun	 SQL-запрос: CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+			
+INSERT INTO my_temp_table(SELECT ab.userid FROM `abitur_2012` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where
+ab.target=0
+AND p.category >1
+AND af.payment=1);
+			
+UPDATE abitur_filed2
+SET advantage =1
+WHERE userid IN (SELECT id FROM my_temp_table);
+		 
+2014-06-22 10:05:26, Sun	 Успешно 
+2014-06-22 10:05:26, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:05:26, Sun	 Успешно 
+2014-06-22 10:05:26, Sun	 SQL-запрос: 
+CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+
+INSERT INTO my_temp_table(
+SELECT ab.userid FROM `abitur_2012` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where ab.target=1 
+AND p.category=1
+AND af.payment=1
+);
+
+UPDATE abitur_filed2 
+SET advantage =2
+WHERE userid IN (SELECT id FROM my_temp_table);
+					 
+2014-06-22 10:05:27, Sun	 Успешно 
+2014-06-22 10:05:27, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:05:27, Sun	 Успешно 
+2014-06-22 10:05:27, Sun	 SQL-запрос: 
+CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+
+INSERT INTO my_temp_table(
+SELECT ab.userid FROM `abitur_2012` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where 
+ab.target=0 
+AND p.category =1
+AND af.payment=1
+);
+
+UPDATE abitur_filed2 
+SET advantage =3
+WHERE userid IN (SELECT id FROM my_temp_table);
+					 
+2014-06-22 10:05:44, Sun	 Успешно 
+2014-06-22 10:05:44, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:05:44, Sun	 Успешно 
+2014-06-22 10:05:44, Sun	 SQL-запрос: 
+CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+			
+INSERT INTO my_temp_table(
+SELECT ab.userid FROM `abitur_2012` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where 
+ab.target=0 
+AND p.category =1
+AND af.payment=2
+		);
+			
+UPDATE abitur_filed2
+SET advantage =4
+WHERE userid IN (SELECT id FROM my_temp_table);
+					 
+2014-06-22 10:05:48, Sun	 Успешно 
+2014-06-22 10:05:48, Sun	 SQL-запрос: UPDATE abitur_filed2 SET advantage =4 WHERE payment =3; 
+2014-06-22 10:05:48, Sun	 Успешно 
+2014-06-22 10:05:48, Sun	 SQL-запрос: UPDATE abitur_filed2 SET advantage =4 WHERE advantage <1 OR advantage is null; 
+2014-06-22 10:05:48, Sun	 Успешно 
+2014-06-22 10:05:48, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:05:48, Sun	 Успешно 
+2014-06-22 10:05:48, Sun	 SQL-запрос: CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+			
+INSERT INTO my_temp_table(SELECT ab.userid FROM `abitur_2013` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where
+ab.target=0
+AND p.category >1
+AND af.payment=1);
+			
+UPDATE abitur_filed2
+SET advantage =1
+WHERE userid IN (SELECT id FROM my_temp_table);
+		 
+2014-06-22 10:05:49, Sun	 Успешно 
+2014-06-22 10:05:49, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:05:49, Sun	 Успешно 
+2014-06-22 10:05:49, Sun	 SQL-запрос: 
+CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+
+INSERT INTO my_temp_table(
+SELECT ab.userid FROM `abitur_2013` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where ab.target=1 
+AND p.category=1
+AND af.payment=1
+);
+
+UPDATE abitur_filed2 
+SET advantage =2
+WHERE userid IN (SELECT id FROM my_temp_table);
+					 
+2014-06-22 10:05:49, Sun	 Успешно 
+2014-06-22 10:05:49, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:05:49, Sun	 Успешно 
+2014-06-22 10:05:49, Sun	 SQL-запрос: 
+CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+
+INSERT INTO my_temp_table(
+SELECT ab.userid FROM `abitur_2013` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where 
+ab.target=0 
+AND p.category =1
+AND af.payment=1
+);
+
+UPDATE abitur_filed2 
+SET advantage =3
+WHERE userid IN (SELECT id FROM my_temp_table);
+					 
+2014-06-22 10:06:06, Sun	 Успешно 
+2014-06-22 10:06:06, Sun	 SQL-запрос: DROP TABLE IF EXISTS my_temp_table; 
+2014-06-22 10:06:06, Sun	 Успешно 
+2014-06-22 10:06:06, Sun	 SQL-запрос: 
+CREATE TEMPORARY TABLE my_temp_table(id int  NOT NULL);
+			
+INSERT INTO my_temp_table(
+SELECT ab.userid FROM `abitur_2013` AS ab
+LEFT JOIN abitur_filed2 AS af ON af.userid=ab.userid
+LEFT JOIN personal AS p ON p.userid=ab.userid
+where 
+ab.target=0 
+AND p.category =1
+AND af.payment=2
+		);
+			
+UPDATE abitur_filed2
+SET advantage =4
+WHERE userid IN (SELECT id FROM my_temp_table);
+					 
+2014-06-22 10:06:08, Sun	 Успешно 
+2014-06-22 10:06:08, Sun	 SQL-запрос: UPDATE abitur_filed2 SET advantage =4 WHERE payment =3; 
+2014-06-22 10:06:08, Sun	 Успешно 
+2014-06-22 10:06:08, Sun	 SQL-запрос: UPDATE abitur_filed2 SET advantage =4 WHERE advantage <1 OR advantage is null; 
+2014-06-22 10:06:08, Sun	 Успешно 
+2014-06-22 10:06:08, Sun	 Завершение

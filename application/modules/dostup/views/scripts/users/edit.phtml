@@ -1,0 +1,51 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+
+<form
+<?php 
+
+foreach ($this->form->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+<?php echo $this->form->id;?>
+<div class="tr1">
+	<div class="Col_1">Имя учетной записи</div>
+	<div class="Col_2"><?php echo $this->form->loginName;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Новый пароль</div>
+	<div class="Col_2"><?php echo $this->form->pass;?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Группа</div>
+	<div class="Col_2"><?php echo $this->form->role;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Комментарий</div>
+	<div class="Col_2"><?php echo $this->form->comment;?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Выключено</div>
+	<div class="Col_2"><?php echo $this->form->disabled;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">
+		<a href="<?php echo $this->parentLink;?>">Назад</a>
+	</div>
+	<div class="Col_2">
+		<?php echo $this->form->formSubmit;?>&nbsp;
+		<a href="<?php echo $this->selfLink;?>">Вернуть</a>	
+	</div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Персональные данные</div>
+	<div class="Col_2"><a href="<?php echo $this->editPrivateLink; ?>">Изменить</a></div>
+</div>
+
+
+
+</form>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

@@ -1,0 +1,35 @@
+
+========= 2014-06-22 10:04:32, Sun =========
+2014-06-22 10:04:32, Sun	 Начало
+2014-06-22 10:04:32, Sun	 новая таблица - advantage - Конкурсные группы 
+2014-06-22 10:04:32, Sun	 SQL-запрос: CREATE TABLE `advantage` (
+`id` int( 11 ) unsigned NOT NULL AUTO_INCREMENT ,
+`title` text CHARACTER SET utf8,
+PRIMARY KEY ( `id` )
+) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci COMMENT = 'типы наград';		
+		 
+2014-06-22 10:04:33, Sun	 Успешно 
+2014-06-22 10:04:33, Sun	 SQL-запрос: ALTER TABLE `advantage` COMMENT = 'конкурсные группы'; 
+2014-06-22 10:04:33, Sun	 Успешно 
+2014-06-22 10:04:33, Sun	 SQL-запрос: ALTER TABLE `abitur_filed2` ADD `advantage` INT UNSIGNED NULL DEFAULT NULL ,
+ADD INDEX ( `advantage` ) ;
+		 
+2014-06-22 10:04:33, Sun	 Успешно 
+2014-06-22 10:04:33, Sun	 SQL-запрос: ALTER TABLE `abitur_filed2` ADD FOREIGN KEY ( `advantage` ) REFERENCES `advantage` (
+`id`
+) ON DELETE RESTRICT ON UPDATE CASCADE ;		
+		 
+2014-06-22 10:04:34, Sun	 Успешно 
+2014-06-22 10:04:34, Sun	 SQL-запрос: ALTER TABLE `abitur_filed2` CHANGE `advantage` `advantage` INT( 10 ) UNSIGNED NOT NULL COMMENT 'Конкурсная группа' 
+2014-06-22 10:04:35, Sun	 Успешно 
+2014-06-22 10:04:35, Sun	 SQL-запрос: INSERT INTO `advantage` (`id`, `title`) VALUES(1, 'Лица, имеющих особое право') 
+2014-06-22 10:04:35, Sun	 Успешно 
+2014-06-22 10:04:35, Sun	 SQL-запрос: INSERT INTO `advantage` (`id`, `title`) VALUES(2, 'Целевой прием') 
+2014-06-22 10:04:35, Sun	 Успешно 
+2014-06-22 10:04:35, Sun	 SQL-запрос: INSERT INTO `advantage` (`id`, `title`) VALUES(3, 'Финансируемые из федерального бюджета') 
+2014-06-22 10:04:35, Sun	 Успешно 
+2014-06-22 10:04:35, Sun	 SQL-запрос: INSERT INTO `advantage` (`id`, `title`) VALUES(4, 'С полным возмещением затрат') 
+2014-06-22 10:04:35, Sun	 Успешно 
+2014-06-22 10:04:35, Sun	 SQL-запрос: ALTER TABLE `abitur_filed2` CHANGE `payment` `payment` INT( 11 ) UNSIGNED NULL COMMENT 'форма оплаты' 
+2014-06-22 10:04:36, Sun	 Успешно 
+2014-06-22 10:04:36, Sun	 Завершение

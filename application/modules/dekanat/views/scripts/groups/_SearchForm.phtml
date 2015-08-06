@@ -1,0 +1,11 @@
+<form
+<?php
+
+foreach ($this->form->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+<?php echo $this->form->gosparam;?>
+<br>Курс <?php echo $this->form->kurs;?>
+</form>

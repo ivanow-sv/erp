@@ -1,0 +1,19 @@
+<div id="formAddWrapper" style="display:none;">
+<p class="close_popup2" onclick='$("#formAddWrapper").togglePopup(); ' title="отмена"></p>
+<h4>Создать новую приемную кампанию</h4>
+<form
+<?php
+
+foreach ($this->formAdd->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+Год приемной кампании
+<?php
+	echo $this->formAdd->year->removeDecorator('Description');
+	echo $this->formAdd->OK;
+?>
+
+</form>
+</div>

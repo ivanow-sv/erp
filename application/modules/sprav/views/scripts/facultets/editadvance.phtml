@@ -1,0 +1,66 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+
+<div id="workspace">
+<h4>факультет <?php echo $this->info["title"]; ?></h4>
+<form
+<?php
+
+foreach ($this->formEdit->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+<?php echo $this->formEdit->id; ?>
+<div class="th">
+	<div class="Col_1">Специальность/направление подготвки</div>
+	<div class="Col_1">Отделение</div>
+	<div class="Col_1"></div>
+</div>
+<?php
+$k=0;
+$tr=1;
+//echo count($this->list );
+foreach ($this->list as $elem) 
+{
+	?>
+	<div id="link" class="tr<?php echo $tr; ?>">
+		<div class="Col_1">
+			<?php
+			$varname="spec".$k; 
+			echo $this->formEdit->$varname; 
+			?>
+		</div>
+		<div class="Col_2">
+			<?php
+			$varname="division".$k; 
+			echo $this->formEdit->$varname; 
+			?>
+		</div>
+		<div class="Col_3">
+			<span class="removeIcoSmall" title="Удалить"
+			onclick="facultspecDel($(this));"
+			></span>			
+		</div>
+		
+	</div>
+	
+	<?php 
+	$k++;
+	$tr=$tr==1?2:1;
+}?>
+<a class="backButton" title="Вернуться к списку"
+href="<?php echo $this->selfLink;?>"
+></a>
+<span class="addButtonMedium" title="Добавить"
+onclick="facultspecAdd();"
+></span>
+<span id="buttonApply_" 
+title="Применить" class="buttonApplyInactive"
+onClick='$("#formEdit").submit();' 
+>
+&nbsp;
+</span>
+</form>
+
+</div>
+		<?php echo $this->render('footer.phtml'); ?>

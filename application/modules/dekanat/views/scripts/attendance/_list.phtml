@@ -1,0 +1,52 @@
+<div id="list">
+<h4>
+	Аттестационные листы
+	<span title="Добавить" class="addIcoSmall" 
+	onclick="attendanceAdd();">&nbsp;</span>
+</h4>
+<?php 
+	if (count ($this->list)<1) echo "Не найдено";
+	else 
+	{
+		$k=1;
+		$tr=1;
+		?>
+		<div class="th">
+			<div class="Col_1">№</div>
+			<div class="Col_1">семестр</div>
+			<div class="Col_2">с</div>
+			<div class="Col_3">по</div>
+			<div class="Col_4"></div>
+		</div>
+		<?php 
+		foreach ($this->list as $item) 
+		{
+			$tr=$tr==1?2:1;
+			?>
+		<div class="tr<?php echo $tr; ?>">
+			<div class="Col_1"><?php echo $item["numb"]; ?></div>
+			<div class="Col_1"><?php echo $item["semestr"]; ?></div>
+			<div class="Col_2"><?php echo $item["starts"]; ?></div>
+			<div class="Col_3"><?php echo $item["ends"]; ?></div>
+			<div class="Col_4">
+				<span class="removeIcoSmall" title="Удалить"
+				onclick="attendanceDel(<?php echo $item["id"] ; ?>,'<?php echo $item["numb"]; ?>');"
+				>
+				</span>
+				<span class="calendarIcoSmall" title="Поменять сроки"
+				onclick="attendanceEditDate(<?php echo $item["id"] ; ?>);"
+				>
+				</span>
+				<a class="editIcoSmall" title="Подробнее"
+				href="<?php echo $this->baseLink."/edit/id/".$item["id"] ; ?>"
+				>
+				</a>
+			</div>
+		</div>
+			
+			<?php 
+			
+		}
+	} 
+?>
+</div>

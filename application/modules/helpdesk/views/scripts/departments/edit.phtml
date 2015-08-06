@@ -1,0 +1,16 @@
+<?php echo $this->render('header.phtml'); ?>
+
+
+<div id="workspace">
+<h4><?php echo $this->info["depTitle"]; ?></h4>
+<div id="toolbar">
+	<a href="<?php echo $this->backLink; ?>"><span class="backButton" title="К перечню" ></span></a>
+</div>
+<?php  echo $this->render($this->currentController."/".'_details.phtml'); ?> 
+
+</div>
+<script type="text/javascript">
+$("#tabs_"+<?php echo $this->formDetail->id->getValue();?>).tabs();
+</script>
+
+<?php echo $this->render('footer.phtml'); ?>

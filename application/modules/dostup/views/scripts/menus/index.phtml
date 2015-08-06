@@ -1,0 +1,77 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<div id="formAddMenu" style="display:none;" >
+	<form id="formAddMenuForm" action="./<?php echo $this->currentController; ?>/add" method="post">
+	Введите название нового пункта меню&nbsp;<input type="text" name="label" class="medinput">
+	<input type="submit" value="Создать">
+	</form>
+</div>
+
+<form id="formMenus" action="<?php echo $this->baseUrl; ?>/<?php echo $this->currentModuleName; ?>/<?php echo $this->currentController; ?>" method="post">
+
+<div class="toolbar">
+	<img class="imgLink" title="Добавить" alt="Добавить" onClick="toggleShowElement('formAddMenu')"
+		src="<?php echo $this->baseUrl; ?>/public/images/add1-48.png">
+	
+	<img class="imgLink" title="Копировать выбранное" alt="Копировать выбранное"
+		src="<?php echo $this->baseUrl; ?>/public/images/copy48.png">
+	<img class="imgLink" title="Перенести выбранное" alt="Перенести выбранное"
+		src="<?php echo $this->baseUrl; ?>/public/images/export48.png">
+	<img class="imgLink" title="Выключить выбранное" alt="Выключить выбранное"
+		src="<?php echo $this->baseUrl; ?>/public/images/event48.png">
+	<img class="imgLink" title="Включить выбранное" alt="Включить выбранное"
+		src="<?php echo $this->baseUrl; ?>/public/images/event48_green.png">
+	<img class="imgLink" title="Удалить выбранное" alt="Удалить выбранное"
+		src="<?php echo $this->baseUrl; ?>/public/images/delete48.png">
+</div>
+
+<div class="th">
+	<div class="td">&nbsp;</div>
+	<div class="td">ID</div>
+	<div class="td">Название</div>
+	<div class="td">порядок</div>
+	<div class="td">ACL ресурс</div>
+	<div class="td">ACL привелегия</div>
+	<div class="td">Модуль</div>
+	<div class="td">Контррллер</div>
+	<div class="td">Действие (Action)</div>
+	<div class="td">параметры</div>
+	<div class="td">&nbsp;</div>
+</div>
+
+<?php // нарисуем таблицу 
+$trclass=1;
+foreach ($this->items as $k=>$item) 
+{
+	?>
+<div class="tr<?php echo $trclass;?>">
+	<div class="Col_1"><input type="checkbox" name="id" value="<?php echo $item['id'];?>"></div>
+	<div class="Col_1"><?php echo $item['id'];?></div>
+	<div class="Col_2"><?php echo $item['label'];?></div>
+	<div class="Col_2"><?php echo $item['order'];?></div>
+	<div class="Col_2"><?php echo $item['resource'];?></div>
+	<div class="Col_2"><?php echo $item['privilege'];?></div>
+	<div class="Col_2"><?php echo $item['module'];?></div>
+	<div class="Col_2"><?php echo $item['controller'];?></div>
+	<div class="Col_2"><?php echo $item['action'];?></div>
+	<div class="Col_2"><?php echo $item['params'];?></div>
+	<div class="Col_2">
+		<a href="./<?php echo $this->currentController; ?>/edit/id/<?php echo $item['id'];?>">
+			<img class="imglink" src="<?php echo $this->baseUrl; ?>/public/images/oo_images_industrial/dbaccess/res/docedit_sc.png">
+		</a>
+
+		<a href="./<?php echo $this->currentController; ?>/delete/id/<?php echo $item['id'];?>">
+			<img
+				src="<?php echo $this->baseUrl; ?>/public/images/human_o2_16x16/actions/gtk-remove.png"
+				title="Удалить" alt="Удалить"></img>
+			</a>
+	</div>
+</div>
+	<?php 
+	$trclass=$trclass=1?2:1;
+}
+?>
+</form>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

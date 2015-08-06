@@ -1,0 +1,129 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<div class="toolbar">
+	<img class="imgLink" title="Добавить" alt="Добавить" onClick="toggleShowElement('formAddUser')"
+		src="<?php echo $this->baseUrl; ?>/public/images/add1-48.png">
+	<img class="imgLink" title="Копировать выбранное" alt="Копировать выбранное"
+		src="<?php echo $this->baseUrl; ?>/public/images/copy48.png">
+	<img class="imgLink" title="Перенести выбранное" alt="Перенести выбранное"
+		src="<?php echo $this->baseUrl; ?>/public/images/export48.png">
+	<img class="imgLink" title="Выключить выбранное" alt="Выключить выбранное"
+		src="<?php echo $this->baseUrl; ?>/public/images/event48.png">
+	<img class="imgLink" title="Включить выбранное" alt="Включить выбранное"
+		src="<?php echo $this->baseUrl; ?>/public/images/event48_green.png">
+	<img class="imgLink" title="Удалить выбранное" alt="Удалить выбранное"
+		src="<?php echo $this->baseUrl; ?>/public/images/delete48.png">
+</div>
+<div id="formAddUser" style="display:none;" >
+	<form id="formAddUserForm" action="./<?php echo $this->currentController; ?>/add" method="post">
+	Введите логин (латинские буквы, цифры)  &nbsp;<input type="text" name="loginName" class="medinput">
+	<input type="submit" value="Создать">
+	</form>
+</div>
+
+<form
+<?php 
+
+foreach ($this->userFilterForm->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?> >
+Фильтр: 
+<br>
+Имя содержит <?php echo $this->userFilterForm->filterLogin; ?>
+&nbsp;состояние<?php echo $this->userFilterForm->filterDisabled; ?>
+<br>группа<?php echo $this->userFilterForm->filterRole; ?>
+
+<?php echo $this->userFilterForm->filterActivated; ?>
+&nbsp;Коментарий содержит <?php echo $this->userFilterForm->filterComment; ?>
+<img class="imgLink" title="Применить" alt="Применить" onClick="userFilterForm.submit()"
+	src="<?php echo $this->baseUrl; ?>/public/images/apply.png">
+</form>
+
+
+<?php
+// список есть 
+if (count($this->items)>0)
+{
+	?>
+	
+
+
+<div class="th">
+	<div class="Col_1"></div>
+	<div class="Col_2">ID</div>
+	<div class="Col_2">Уч.запись</div>
+	<div class="Col_2">Группа</div>
+	<div class="Col_2">Комментарий</div>
+	<div class="Col_1"></div>
+</div>
+
+	<?php 
+	$tr=2;
+	foreach ($this->items as $k=>$item) 
+	{
+		$tr=$tr===1?2:1;
+		$disabled=$item["disabled"]==1?"disabled":"";
+		?>
+		<div class="tr<?php echo $tr;?>" id="<?php echo $disabled;?>">
+			<div class="Col_1"></div>
+			<div class="Col_2"><?php echo $item["id"]?></div>
+			<div class="Col_2"><?php echo $item["login"]?></div>
+			<div class="Col_2">
+				<?php
+				$roleTitle= ($item["roleTitle"]===0 || is_null($item["roleTitle"]))?"Гость":$item["roleTitle"];
+				echo $roleTitle;?>
+				</div>
+			<div class="Col_2"><?php echo $item["comment"]?></div>
+			<div class="Col_1">
+				<a href="./<?php echo $this->currentController; ?>/edit/id/<?php echo $item['id'];?>">
+					<img class="imglink" src="<?php echo $this->baseUrl; ?>/public/images/oo_images_industrial/dbaccess/res/docedit_sc.png">
+				</a>
+
+				<a href="./<?php echo $this->currentController; ?>/delete/id/<?php echo $item['id'];?>">
+					<img
+						src="<?php echo $this->baseUrl; ?>/public/images/human_o2_16x16/actions/gtk-remove.png"
+						title="Удалить" alt="Удалить"></img>
+				</a>
+				<?php
+				if ($item["disabled"]==1)
+				{
+					$flag_ico= 'event16.png';
+					$flag_title='Отключено. Включить';
+					$flag_action='enable';
+				}
+				else
+				{
+					$flag_ico= 'event16_green.png';
+					$flag_title='Включено. Отключить';
+					$flag_action='disable';
+				}
+				?>
+				<a href="./<?php echo $this->currentController; ?>/<?php echo $flag_action; ?>/id/<?php echo $item['id'];?>">
+				<img class="imglink" title="<?php echo $flag_title; ?>" alt="<?php echo $flag_title; ?>" src="<?php echo $this->baseUrl; ?>/public/images/<?php echo $flag_ico;?>">
+				</a>
+				
+			</div>
+		</div>
+		<?php 
+	}
+}
+//  нет
+else 
+{
+	?>
+<div class="notFound">
+	<div class="ico">
+		<img src="<?php echo $this->baseUrl; ?>/public/images/1272411835_warning_48.png">
+		</div>
+	<div class="msg">
+		Не найдено
+	</div>
+</div>
+	<?php 
+}
+?>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

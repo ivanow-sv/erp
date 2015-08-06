@@ -1,0 +1,24 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<h4>Скопированные из EXCEL студенты. Результат обработки</h4>
+<div class="th">
+	<div class="Col_1">Строка</div>
+	<div class="Col_2">результат</div>
+</div>
+<?php
+
+foreach ($this->process AS $line)
+{
+	$tr=$tr==1?2:1;
+	?>
+<div class="tr<?php echo $tr; ?>">
+	<div class="Col_1"><pre><?php echo $line["line"]; ?></pre></div>
+	<div class="Col_2 <?php echo $line["status"]; ?>"><small><?php echo $line["reason"]; ?></small></div>
+</div>
+	<?php 
+} 
+?>
+
+<a href="<?php echo $this->baseLink;?>">Продолжить работу</a>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

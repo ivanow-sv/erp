@@ -1,0 +1,15 @@
+			<div id="assignInfo">
+			<?php // покажем сопоставление техники с тем что есть в базе
+			// @FIXME не всем можно показывать ссылку и не всем форму
+			if (!is_null($this->info["unitid"]))
+			{
+				$u_title=$this->info["typeTitle"].". Инв.№ ".$this->info["inumb"];
+				$u_href=$this->baseUrl."/".$this->currentModuleName."/departments/edit/id/".$this->info["unitid"]; 
+				?>
+				
+				<a href="<?php echo $u_href;?>"><?php echo $u_title?></a>
+				<?php 
+			} 
+			?>
+			</div>
+			

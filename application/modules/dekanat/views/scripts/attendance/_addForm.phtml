@@ -1,0 +1,26 @@
+<div id="formAddWrapper" style="display: none;">
+<p class="close_popup2" onclick='$("#formAddWrapper").togglePopup(); ' title="отмена"></p>
+<h4>Новый аттестационный лист</h4>
+<form
+<?php
+
+foreach ($this->formAdd->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php echo $this->formAdd->kurs;?>  
+<?php echo $this->formAdd->group;?>
+<?php //echo $this->formAdd->osnov; ?>
+<?php //echo $this->formAdd->studyYearStart;?>
+
+<p>Семестр <?php echo $this->formAdd->semestr;?>&nbsp;Номер <?php echo $this->formAdd->numb;?>
+</p>
+<p>
+	с<?php echo $this->formAdd->begins;?>&nbsp; по<?php echo $this->formAdd->ends;?>
+</p>
+<?php echo $this->formAdd->OK;?>
+
+
+</form>
+</div>

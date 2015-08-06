@@ -1,0 +1,34 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_filterForm.phtml'); ?>
+
+
+<div id="formWrapper" style="display:none;">
+<p class="close_popup2" onclick='$("#formWrapper").togglePopup(); ' title="отмена"></p>
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_form.phtml'); ?>
+
+</div>
+<div id="formDeleteWrapper" style="display:none;">
+
+<p class="close_popup2" onclick='$("#formDeleteWrapper").togglePopup(); ' title="отмена"></p>
+<form name="formDelete" id="formDelete" method="post" 
+action="<?php echo $this->selfLink; ?>/del/">
+	<input type="hidden" value="" id="id" name="id">
+	Удалить запись <br>«<strong id="title"></strong>»
+	<br>для поддверждения операции введите фразу «<strong><?php echo $this->confirmWord; ?></strong>»
+	<br><input id="confirmWord" name="confirmWord" class="typic_input">
+	&nbsp;<input type="submit" class="apply_text" value="Подтвердить">
+	
+</form>
+
+</div>
+
+<h5>Перечень уже существующих
+
+<span onClick="spravGosChangeForm(0,1,1,false);" title="Создать новый" class="addIcoSmall"></span>
+</h5>
+
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_list.phtml'); ?>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

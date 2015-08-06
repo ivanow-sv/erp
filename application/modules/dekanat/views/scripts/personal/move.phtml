@@ -1,0 +1,10 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<h4>Перенос студентов</h4>
+<p>Результат - <?php echo $this->msg; ?></p>
+<p>Запрошено - <?php echo $this->reqCount; ?></p>
+<p>Выполнено - <?php echo $this->affCount; ?></p>
+<p>Проигнорировано - <?php echo $this->ignCount; ?></p>
+<a href="<?php echo $this->baseLink;?>">Продолжить работу</a>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

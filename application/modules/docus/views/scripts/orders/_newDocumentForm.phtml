@@ -1,0 +1,18 @@
+<div id="newDocumentWrapper" class="hidden">
+<p class="close_popup2"
+	onclick='$("#newDocumentWrapper").togglePopup(); ' title="отмена"></p>
+<form
+
+<?php
+foreach ($this->newDocumentForm->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<h5>Новый приказ</h5>
+<p>№<?php echo $this->newDocumentForm->titleNum; ?>-<?php echo $this->newDocumentForm->titleLetter; ?>
+от <?php echo $this->newDocumentForm->titleDate; ?></p>
+<p>Комментарий:<br><?php echo $this->newDocumentForm->comment; ?></p>
+<p><?php echo $this->newDocumentForm->OK; ?></p>
+</form>
+</div>

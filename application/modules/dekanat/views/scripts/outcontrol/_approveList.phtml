@@ -1,0 +1,24 @@
+	
+	<span id="stateList">
+		
+		<?php
+		if ($this->listState["dekan"]==1)
+		{
+			$_cl="lockedIcoSmall";
+			$_m="подписано";
+		}
+		else 
+		{
+			$_cl="unlockedIcoSmall";
+			$_m="не подписано";
+		}
+		
+		?>
+		Подпись декана:&nbsp;
+		<span class="<?php echo $_cl; ?> inlineLink" 
+		onclick="ocontrol_listDekanChange(<?php echo $this->listState["id"]; ?>);" >
+		</span>
+		&nbsp;<span ><?php echo $_m; ?></span> 
+		
+		
+	</span>

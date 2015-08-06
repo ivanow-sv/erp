@@ -1,0 +1,20 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<?php $_class=$this->res?"done":"error"; ?>
+<div id="workspace">
+<h4>Смена номера зачетной книжки</h4>
+<p>Прежний номер: <?php echo $this->oldnum;?></p>
+<p>Новый номер: <?php echo $this->num;?></p>
+<p><span class="<?php echo $_class; ?>">Результат: <?php echo $this->msg; ?></span>
+ <br>Учетная запись: 
+ <?php
+ $temp=empty($this->exists_login)?"свободна":$this->exists_login; 
+ echo $temp; ?>.
+ <br>Номер зачетной книжки: 
+ <?php 
+ $temp=empty($this->exists_zach)?"свободен":$this->exists_zach; 
+ echo $temp; 
+ ?>
+</p>
+<a href="<?php echo $this->baseLink;?>">Продолжить работу</a>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

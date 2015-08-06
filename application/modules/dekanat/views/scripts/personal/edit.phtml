@@ -1,0 +1,135 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<div id="changeZachWarp" style="display: none;">
+<!-- форма смены № зачетки -->
+<?php echo $this->render('personal'.DIRECTORY_SEPARATOR.'_zachChangeForm.phtml'); ?>
+</div>
+<a class="backButton" title="Вернуться к списку"
+	href="<?php echo $this->baseLink; ?>"> </a>
+<h5>Информация</h5>
+<div id="private">
+	<h5>
+		<span title="Личные даные" onclick="getPrivateForm(<?php echo $this->info["userid"]; ?>);" class="userEditButton"></span>
+		
+	</h5>
+	<div id="privateDetailsWrap" class="hidden">
+	<p
+	class="close_popup2" onclick='$("#privateDetailsWrap").togglePopup(); '
+	title="отмена"></p>
+	
+		<div id="privateDetails" ></div>
+	</div>
+</div>
+
+<form
+<?php
+
+foreach ($this->form->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<div class="tr1">
+	<div class="Col_1">№ зачетной книжки</div>
+	<div class="Col_2">
+		<?php echo $this->info["zach"]; ?>
+		<span class="editIcoSmall" title="Сменить номер"
+		onclick='$("#changeZachWarp").togglePopup();' 
+		></span>
+	</div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Фамилия</div>
+	<div class="Col_2"><?php echo $this->info["family"]; ?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Имя</div>
+	<div class="Col_2"><?php echo $this->info["name"]; ?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Отчество</div>
+	<div class="Col_2"><?php echo $this->info["otch"]; ?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Курс</div>
+	<div class="Col_2"><?php echo $this->info["kurs"]; ?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Группа</div>
+	<div class="Col_2"><?php echo $this->info["groupTitle"]; ?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Подгруппа</div>
+	<div class="Col_2"><?php echo $this->info["subgroupTitle"]; ?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Отделение</div>
+	<div class="Col_2"><?php echo $this->info["divTitle"]; ?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Специальность/направление</div>
+	<div class="Col_2"><?php echo $this->info["specTitle"]; ?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Являлся абитуриентом</div>
+	<div class="Col_2">рег. номер <?php echo $this->info["abitur_id"]; ?>. Год: <?php echo $this->info["abitur_year"]; ?></div>
+</div>
+</form>
+<div id="attendanceProcess">
+	<h5><span class="toggle collapsed"></span>Журнал посещаемости</h5>
+	<div class="content" style="display: none;">
+	<?php 
+	if (count($this->attendanceLog)>0)
+	{
+		$k=1;
+		?>
+		<div class="th">
+			<div class="Col_0">№</div>
+			<div class="Col_1">Дата</div>
+			<div class="Col_2">Дисциплина</div>
+			<div class="Col_3">состояние</div>
+			<div class="Col_4">атт. лист</div>
+			<div class="Col_5">уч. год</div>
+		</div>
+		<?php 
+		
+		foreach ($this->attendanceLog as $record) 
+		{
+			$tr=$tr==1?2:1;
+			?>		
+		<div class="tr<?php echo $tr; ?>">
+			<div class="Col_0"><?php echo $k; ?></div>
+			<div class="Col_1"><?php echo $record["modifydate"]; ?></div>
+			<div class="Col_2"><?php echo $record["disTitle"];  ?></div>
+			<div class="Col_3"><?php echo $record["stateTitle"];  ?></div>
+			<div class="Col_4"><?php echo $record["numb"];  ?></div>
+			<div class="Col_5"><?php echo $record["studyYearStart"]."-".($record["studyYearStart"]+1);   ?></div>
+		</div>
+			<?php 
+			$k++;
+		}
+	}
+	else 
+	{
+		echo "Нет данных";
+	}
+	?>
+	
+	</div>
+</div>
+
+<div id="studyProcess">
+	<h5><span class="toggle collapsed"></span>Журнал успеваемости</h5>
+	<?php // print_r($this->ocontrolLog); ?>
+	<?php echo $this->render('personal'.DIRECTORY_SEPARATOR.'_ocontrolProcess.phtml'); ?>
+</div>
+
+<div id="personProcess">
+	<h5><span class="toggle collapsed load_personLog(<?php echo $this->info["userid"]; ?>)"></span>
+		Журнал личного дела</h5>
+	<?php echo $this->render('personal'.DIRECTORY_SEPARATOR.'_personProcess.phtml'); ?>
+</div>
+
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

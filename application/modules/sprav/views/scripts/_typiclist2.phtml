@@ -1,0 +1,56 @@
+<div id="SpravChangeForm2">
+<p class="close_popup" onClick="hideSpravChangeForm2()">отмена</p>
+<div id="formOnly"></div>
+</div>
+<table>
+	<tr>
+		<th>№</th>
+		<th>Шифр</th>
+		<th>Наименование</th>
+		<th>Действие</th>
+	</tr>
+	<?php $k=1;?>
+	<?php $tr=1;
+	foreach($this->entries as $entry) : ?>
+	<tr class="tr<?php echo $tr;?>">
+
+		<td><?php echo $k;?></td>
+		<td><?php echo $this->escape($entry->numeric_title);?></td>
+		<td><?php echo $this->escape($entry->title);?></td>
+		<td><img title="Изменить" class="imglink"
+			onClick="showSpravChangeForm2('<?php echo $this->curcont;?>',<?php echo $entry->id; ?>);"
+			src="<?php echo $this->baseUrl; ?>/public/images/rename.png"
+			alt="Изменить"></img> 
+			<?php 
+			// если дисциплины студентов, то не показывать следуюущую кнопку
+			if ($this->curcont!=='disciplinestud') 
+			{?>
+			<a title="Подробнее"
+			href="<?php echo $this->baseUrl; ?>/sprav/<?php echo $this->curcont;?>/editadvance/id/<?php
+echo $entry->id;?>">
+			<img class="imglink"
+			src="<?php echo $this->baseUrl; ?>/public/images/oo_images_industrial/dbaccess/res/docedit_sc.png"
+			alt="Подробнее"></img> 
+			</a> 
+			<?php 
+			}
+			?>
+			&nbsp;
+			<a title="Удалить"
+			href="<?php echo $this->baseUrl; ?>/sprav/<?php echo $this->curcont;?>/del/id/<?php
+echo $entry->id;?>"> <img
+			src="<?php echo $this->baseUrl; ?>/public/images/human_o2_16x16/actions/gtk-remove.png"
+			alt="Удалить"></img> </a>
+			
+			&nbsp; 
+			
+			</td>
+	</tr>
+
+	<?php $k++; ?>
+	<?php
+	$tr=$tr===1?2:1;
+endforeach; 
+?>
+</table>
+

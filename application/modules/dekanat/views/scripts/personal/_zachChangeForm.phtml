@@ -1,0 +1,19 @@
+
+<p class="close_popup2"
+	onclick='$("#changeZachWarp").togglePopup(); ' title="отмена"></p>
+<h4>Новый номер зачетной книжки</h4>
+<form
+<?php
+
+foreach ($this->formZach->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php
+	echo $this->formZach->id;
+	echo $this->formZach->zach;
+
+
+?>  <?php echo $this->formZach->OK; ?>
+</form>

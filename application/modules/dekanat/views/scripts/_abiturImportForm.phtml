@@ -1,0 +1,23 @@
+<form
+<?php
+
+foreach ($this->formAbiturs->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?> />
+<div>
+<h4>Формирование номера зачетной книжки</h4>
+Всем выбранным будет назначен начиная с начального номера<br>
+год с ведущиим нолями <?php echo $this->formAbiturs->zach_year; ?>
+&nbsp;&nbsp;начальный №<?php echo $this->formAbiturs->zach_num; ?>
+
+</div>
+
+<h4>Список абитуриентов</h4>
+	<img title="Отметить все" class="imglink" onclick="markCheckBoxes('abitursForm','abiturients[]',true)" src="<?php echo $this->baseUrl; ?>/public/images/human_o2_16x16/actions/gtk-apply.png"/>
+	<img title="Снять отметки" class="imglink" onclick="markCheckBoxes('abitursForm','abiturients[]',false)" src="<?php echo $this->baseUrl; ?>/public/images/human_o2_16x16/actions/revert.png"/>
+<?php echo $this->formAbiturs->go; ?>
+<?php echo $this->formAbiturs->abiturients; ?>
+
+</form>

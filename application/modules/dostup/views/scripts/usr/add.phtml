@@ -1,0 +1,12 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<?php
+if (!empty($this->msg))
+{
+	echo '<div class="warning">'.$this->msg."</div>";
+	echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_formAdd.phtml');
+	
+} 
+?>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

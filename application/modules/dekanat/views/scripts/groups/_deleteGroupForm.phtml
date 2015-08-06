@@ -1,0 +1,22 @@
+<div id="formDeleteGroupWarp" style="display:none;">
+<p class="close_popup2" onclick='$("#formDeleteGroupWarp").togglePopup(); ' title="отмена"></p>
+удаление группы 
+<br><b id="titleForDel"></b>
+<br>для подтверждения,
+<br>введите <b><?php echo $this->confirmDelete; ?></b>
+
+<form 
+<?php
+
+foreach ($this->deleteFormGroup->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+
+<?php echo $this->deleteFormGroup->id; ?>
+<?php echo $this->deleteFormGroup->confirm; ?>
+
+<?php echo $this->deleteFormGroup->ok; ?>
+</form>
+</div>

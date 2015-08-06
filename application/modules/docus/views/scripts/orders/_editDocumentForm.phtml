@@ -1,0 +1,19 @@
+<form
+<?php
+foreach ($this->editDocumentForm->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?> >
+<?php echo $this->editDocumentForm->id; ?>
+
+<h5>Правка приказа созданного <?php echo $this->prikazCreated; ?></h5>
+<p>№<?php echo $this->editDocumentForm->titleNum; ?>-<?php echo $this->editDocumentForm->titleLetter; ?>
+от <?php echo $this->editDocumentForm->titleDate; ?></p>
+<p>Комментарий:<br><?php echo $this->editDocumentForm->comment; ?></p>
+<p><?php echo $this->editDocumentForm->OK; ?>&nbsp;&nbsp;&nbsp;<?php echo $this->editDocumentForm->RESET; ?></p>
+<!--<script type="text/javascript">-->
+<!--CKEDITOR.replace( 'editor1');-->
+<!--</script>-->
+</form>
+

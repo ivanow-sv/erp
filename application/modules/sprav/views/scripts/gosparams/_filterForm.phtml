@@ -1,0 +1,16 @@
+<h5>Найти </h5>
+<form
+<?php
+
+foreach ($this->formFilter->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<p>
+Направление подготовки <?php echo $this->formFilter->spec;?> 
+</p>
+
+
+
+</form>

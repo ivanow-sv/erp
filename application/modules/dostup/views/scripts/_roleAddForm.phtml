@@ -1,0 +1,16 @@
+<form
+<?php 
+
+foreach ($this->formAddRole->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+
+<?php echo $this->formAddRole->res_id;?>
+<?php echo $this->formAddRole->role;?>
+<?php echo $this->formAddRole->formSubmit;?>
+
+
+
+</form>

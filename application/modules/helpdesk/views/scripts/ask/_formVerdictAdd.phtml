@@ -1,0 +1,20 @@
+<div class="hidden" id="verdictFormWrapper">
+<h4>Ваше заключение</h4>
+<form
+<?php
+
+foreach ($this->formVerdict->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php 	echo $this->formVerdict->id->removeDecorator('Description'); ?>
+<div class="table">
+	<div class="tr">
+		<div class="Col_0"><?php 	echo $this->formVerdict->verdict->removeDecorator('Description'); ?></div>
+		<div  class="Col_0"><span class="button" onclick="ticketVerdictAdd();">ДОБАВИТЬ</span></div>
+	</div>
+</div>
+</form>
+<script type="text/javascript"> $('#verdictForm .button').button();</script>
+</div>

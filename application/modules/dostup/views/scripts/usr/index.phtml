@@ -1,0 +1,37 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+
+
+<div id="toolbar">
+	<span onclick='usrAdd();' class="addButtonMedium" title="Новый пользователь"></span>
+	<span onclick='' class="closeButtonMedium" title="Удалить"></span>
+	<span onclick='' class="exportButtonMedium" title="Переместить"></span>
+	<span onclick='' class="editcopyButtonMedium" title="Копировать"></span>
+	<span onclick='' class="lockButtonMedium" title="Отключить"></span>
+	<span onclick='' class="lockButtonMedium" title="Включить"></span>
+	<span onclick='roleManageShow();' class="userLockButton" title="Роли, назначенные выбранной группе"></span>
+</div>
+
+<div id="formAddWrapper" class="hidden">
+<p class="close_popup2"
+	onclick='$("#formAddWrapper").togglePopup(); ' title="отмена"></p>
+	<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_formAdd.phtml'); ?>
+</div>
+
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_formDel.phtml'); ?>
+<div id="formEditWrapper" class="hidden">
+<p class="close_popup2"
+	onclick='$("#formEditWrapper").togglePopup(); ' title="отмена"></p>
+	<div id="useredit"></div>
+</div>
+<div id="rolesManageWrapper" class="hidden">
+	<p class="close_popup2" onclick='$("#rolesManageWrapper").togglePopup(); ' title="отмена"></p>
+	<div id="rolesManage"></div>
+</div>
+
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_formMove.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_formCopy.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_formFilter.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_list.phtml'); ?>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

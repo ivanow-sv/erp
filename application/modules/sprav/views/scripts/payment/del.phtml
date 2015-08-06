@@ -1,0 +1,21 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<?php if ($this->entry) :?>
+<form action="<?php echo $this->baseUrl ?>/sprav/<?php echo $this->curcont; ?>/del" method="post">
+<p>Удалить запись
+    '<?php echo $this->escape($this->entry->title); ?>' ?
+    
+</p>
+<div>
+    <input type="hidden" name="id"
+        value="<?php echo $this->entry->id; ?>" />
+    <input type="submit" name="del" value="Yes" />
+    <input type="submit" name="del" value="No" />
+</div>
+</form>
+<?php else: ?>
+<p>Cannot find album.</p>
+<?php endif;?>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

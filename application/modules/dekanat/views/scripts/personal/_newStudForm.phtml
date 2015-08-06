@@ -1,0 +1,51 @@
+
+<h4>Добавление нового студента в подгруппу.
+<br>Шаг 1.</h4>
+<form
+<?php
+foreach ($this->formNewStud->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<div class="tr1">
+	<div class="Col_1">Фамилия</div>
+	<div class="Col_2"><?php echo $this->formNewStud->family;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Имя</div>
+	<div class="Col_2"><?php echo $this->formNewStud->name;?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Отчество</div>
+	<div class="Col_2"><?php echo $this->formNewStud->otch;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">№ зачетной книжки</div>
+	<div class="Col_2"><?php echo $this->formNewStud->zach;?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Способ оплаты</div>
+	<div class="Col_2"><?php echo $this->formNewStud->payment;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Тип операции</div>
+	<div class="Col_2"><?php echo $this->formNewStud->operation;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">На основании приказа</div>
+	<div class="Col_2">
+<!--		<span class="inlineLink" onclick="getDocuments();">Выбрать</span>-->
+		<?php echo $this->formNewStud->docid;?>
+		<div id="docInfo"></div>
+	</div>
+</div>
+<?php	
+	echo $this->formNewStud->group;
+	echo $this->formNewStud->subgroup;
+	echo $this->formNewStud->gosparam;
+	echo $this->formNewStud->osnov;
+	echo $this->formNewStud->kurs;
+	
+?><p><?php echo $this->formNewStud->OK; ?></p>
+</form>

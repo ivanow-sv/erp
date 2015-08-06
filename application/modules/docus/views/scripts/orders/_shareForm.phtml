@@ -1,0 +1,55 @@
+
+<p class="close_popup2"
+	onclick='$("#shareFormWrapper").togglePopup(); ' title="отмена">
+</p>
+<h5>Документ <span id="docInfo"></span></h5>
+Публикация и права доступа
+<table class="table">
+<tr>
+<td class="Col_1">
+<form
+<?php
+foreach ($this->shareForm->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+
+<?php echo $this->shareForm->id; ?>
+<p>1. Выберите группу
+<br><?php echo $this->shareForm->role; ?>
+</p>
+
+<p>2. Выберите пользователей
+<br>
+	<div id="usersList">
+		<?php echo $this->render('orders'.DIRECTORY_SEPARATOR.'_usersInRole.phtml'); ?>
+	</div>
+</p>
+
+
+</form>
+</td>
+
+<td class="Col_2">
+	<p>Опубликовано для пользователей</p>
+	<div id="usersGranted">
+	<?php echo $this->render('orders'.DIRECTORY_SEPARATOR.'_usersGranted.phtml'); ?>
+	</div>
+<p><?php echo $this->shareForm->OK; ?></p>	 
+</td>
+
+</tr>
+</table>
+
+<hr>
+<small id="legend"><b>Уровни доступа:</b><br>
+
+<?php
+foreach ($this->privList as $key=>$title) 
+{
+	echo "<LI>".$key."-".$this->privLList[$key]."</LI>\n";
+} 
+?>
+</small>
+<?php echo $this->render('orders'.DIRECTORY_SEPARATOR.'_usersGrantedTmpl.phtml'); ?>

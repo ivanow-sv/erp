@@ -1,0 +1,47 @@
+<div id="abitursList">
+<h4>Абитуриенты, удовлетворяющие условиям поиска</h4>
+<div class="table">
+	<div class="th">
+<?php 
+$i=0;
+foreach ($this->hdrs as $key => $title) 
+{
+?>
+	<div class="Col_<?php echo $i; ?>"><?php echo $title;?></div>
+<?php 
+$i++;
+}
+?>
+	</div>
+<?php 
+
+if ($this->abiturs==false)
+{
+	echo "Не обнаружено";	
+}
+else 
+{
+	
+
+foreach ($this->abiturs as $key => $d) 
+{
+	$tr=$tr==1?$tr=2:1;
+?>
+	<div class="tr<?php echo $tr;?>">
+<?php
+		$i=0;
+		foreach ($d as $key=>$value) 
+		{
+?>
+			<div class="Col_<?php echo $i; ?>"><?php echo $value; ?></div>
+<?php 
+		$i++;
+		} 
+?>
+	</div>
+<?php 
+}
+}
+?>
+</div>
+</div>

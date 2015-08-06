@@ -1,0 +1,52 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+Добавить нового сотрудника<?php echo $this->render('_peopleform.phtml'); ?>
+<hr>Перечень уже существующих
+
+<div id="SpravChangeForm3">
+<p class="close_popup" onClick="hideSpravChangeForm3()">отмена</p>
+<div id="formOnly"></div>
+</div>
+
+<table>
+<tr>
+<th>№</th>
+<th>Табельный №</th>
+<th>Фамилия</th>
+<th>Имя</th>
+<th>Отчество</th>
+<th>Действие</th>
+</tr>
+<?php $k=1;?>
+<?php $tr=1;
+ foreach($this->entries as $entry) : ?>
+<tr class="tr<?php echo $tr;?>">
+
+<td><?php echo $k;?></td>
+<td><?php echo $this->escape($entry->tabel);?></td>
+<td><?php echo $this->escape($entry->family);?></td>
+<td><?php echo $this->escape($entry->name);?></td>
+<td><?php echo $this->escape($entry->otch);?></td>
+<td>
+
+<img title="Изменить" class="imglink" onClick="showSpravChangeForm3('<?php echo $this->curcont;?>',<?php echo $entry->id; ?>);" src="<?php echo $this->baseUrl; ?>/public/images/oo_images_industrial/dbaccess/res/docedit_sc.png" alt="Изменить"></img>
+
+<a title="Удалить" href="<?php echo $this->baseUrl; ?>/sprav/<?php echo $this->curcont;?>/del/id/<?php
+echo $entry->id;?>">
+<img src="<?php echo $this->baseUrl; ?>/public/images/oo_images_industrial/sc/res/imglst/apptbx/sc26050.png" alt="Удалить"></img>
+</a>
+</td>
+</tr>
+
+<?php $k++; ?>
+<?php 
+$tr=$tr===1?2:1;
+endforeach; 
+?>
+</table>
+
+
+
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

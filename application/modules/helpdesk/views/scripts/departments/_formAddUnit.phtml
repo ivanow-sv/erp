@@ -1,0 +1,20 @@
+<div id="addUnitWrapper" class="hidden">
+<p class="close_popup2"
+	onclick='$("#addUnitWrapper").togglePopup(); ' title="отмена"></p>
+
+<form
+<?php
+
+foreach ($this->formAddUnit->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php 	echo $this->formAddUnit->department->removeDecorator('Description'); ?> 
+
+<p> Тип оборудования <?php 	echo $this->formAddUnit->utype->removeDecorator('Description'); ?> </p>
+<p> Инвентарный номер*<br><?php 	echo $this->formAddUnit->inumb->removeDecorator('Description'); ?> </p>
+<p> Комментарий<br><?php 	echo $this->formAddUnit->comment->removeDecorator('Description'); ?> </p>
+<p> <?php 	echo $this->formAddUnit->OK->removeDecorator('Description'); ?> </p>
+</form>
+</div>

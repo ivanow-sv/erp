@@ -1,0 +1,94 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<h5>Информация</h5>
+<form
+<?php
+
+foreach ($this->form->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+<div class="tr1">
+	<div class="Col_1">№ зачетной книжки</div>
+	<div class="Col_2"><?php echo $this->info["zach"]; ?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Фамилия</div>
+	<div class="Col_2"><?php echo $this->info["family"]; ?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Имя</div>
+	<div class="Col_2"><?php echo $this->info["name"]; ?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Отчество</div>
+	<div class="Col_2"><?php echo $this->info["otch"]; ?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Курс</div>
+	<div class="Col_2"><?php echo $this->info["kurs"]; ?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Группа</div>
+	<div class="Col_2"><?php echo $this->info["groupTitle"]; ?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Подгруппа</div>
+	<div class="Col_2"><?php echo $this->info["subgroupTitle"]; ?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Отделение</div>
+	<div class="Col_2"><?php echo $this->info["divTitle"]; ?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Специальность/направление</div>
+	<div class="Col_2"><?php echo $this->info["specTitle"]; ?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Являлся абитуриентом</div>
+	<div class="Col_2">рег. номер <?php echo $this->info["abitur_id"]; ?>. Год: <?php echo $this->info["abitur_year"]; ?></div>
+</div>
+</form>
+<div class="studyProcess">
+	<h5>Журнал обучения</h5>
+	<div class="content">
+	</div>
+</div>
+
+<div class="personProcess">
+<h5>Журнал личного дела</h5>
+<div class="content">
+	<?php //echo "<pre>".print_r($this->personLog,true)."</pre>"; ?>
+	<?php
+	if (count($this->personLog)>0)
+	{
+		?>
+		<div class="th">
+			<div class="Col_0">№</div>
+			<div class="Col_1">Дата/Время</div>
+			<div class="Col_2">Операция</div>
+			<div class="Col_3">Коментарий</div>
+			<div class="Col_4">Документ</div>
+		</div>
+		<?php 
+		foreach ($this->personLog as $koun => $personLog) 
+		{
+			$tr=$tr==1?2:1;
+			?>		
+		<div class="tr<?php echo $tr; ?>">
+			<div class="Col_0"><?php echo ($koun + 1); ?></div>
+			<div class="Col_1"><?php echo $personLog["createdate"]; ?></div>
+			<div class="Col_2"><?php echo $personLog["operTitle"]; ?></div>
+			<div class="Col_3"><?php //echo $personLog["comment"]; ?></div>
+			<div class="Col_4"><?php // echo $personLog["documentid"]; ?></div>
+		</div>
+			<?php 
+		}
+		
+	} 
+	?>
+	</div>
+</div>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

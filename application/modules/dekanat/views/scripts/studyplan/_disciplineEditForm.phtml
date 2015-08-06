@@ -1,0 +1,64 @@
+<div id="formEditDisciplineWarp" style="display:none;">
+<p class="close_popup2" onclick='$("#formEditDisciplineWarp").togglePopup(); ' title="отмена"></p>
+<form 
+<?php
+
+foreach ($this->formEditDis->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+
+<?php echo $this->formEditDis->id; ?>
+<?php echo $this->formEditDis->discipline_old; ?>
+<?php echo $this->formEditDis->discipline; ?>
+
+<div class="table">
+<div class="th">
+	<div class="Col_1">Выходной контроль</div>
+	<div class="Col_2">Количество</div>
+<!--	<div class="Col_3">Дата экзамена</div>-->
+<!--	<div class="Col_4">Дата переэкзаменовки</div>-->
+<!--	<div class="Col_5">Дата переэкзаменовки <br>c комиссией</div>-->
+</div>
+<?php
+foreach ($this->outControls as $coID => $title) 
+{
+	$varname="contrCount".$coID;
+	$tr=$tr==1?2:1;
+	?>
+<div class="tr<?php echo $tr; ?>">
+	<div class="Col_1"><?php echo $title; ?></div>	
+	<div class="Col_2">
+	<?php 
+		echo $this->formEditDis->$varname;
+	?>
+	</div>	
+	<?php 	// даты экзаменов
+//		if ($coID==7)
+//		{
+//			for ($i = 1; $i <= 3; $i++) 
+//			{
+//				$exam="examdate".$i;
+//				echo '<div class="Col_'.($i+2).'">'.$this->formEditDis->$exam.'</div>';
+//			}
+//		}
+//		else 
+//		{
+	?>
+<!--	<div class="Col_3"> </div>-->
+<!--	<div class="Col_4"> </div>-->
+<!--	<div class="Col_5"> </div>-->
+	<?php 
+//		}		 
+	?>
+		
+</div>
+	<?php 
+	
+} 
+?>
+</div>
+<br><?php echo $this->formDelete->OK; ?>
+</form>
+</div>

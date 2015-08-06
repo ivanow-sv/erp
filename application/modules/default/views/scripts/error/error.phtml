@@ -1,0 +1,6 @@
+<?php echo $this->render('header.phtml'); ?>
+
+Что-то не так.... Истина гдето рядом...
+<pre><?php echo print_r($this->request->error_handler->exception->getMessage(),true);?></pre>
+<pre><?php echo print_r($this->request->error_handler->exception->getTrace(),true);?></pre>
+<?php echo $this->render('footer.phtml'); ?>

@@ -1,0 +1,55 @@
+<?php echo $this->render('header.phtml'); ?>
+
+<div id="workspace">
+<div id="logWrapper" style="display:none;">
+	<div class="logContent"></div>
+</div>
+
+<?php
+if (count($this->list)>0)
+{
+?>
+<div class="table">
+<div class="th">
+	<div class="Col_1">Название</div>
+	<div class="Col_2">Описание</div>
+	<div class="Col_3">Действие</div>
+	<div class="Col_4">Результат</div>
+</div>
+<?php	
+	foreach ($this->list as $key=> $action) 
+	{
+		$tr=$tr==1?2:1;
+		?>
+		<div class="tr<?php echo $tr; ?>">
+			<div class="Col_1"><?php echo $key; ?></div>
+			<div class="Col_2"><?php echo $action["description"]; ?></div>
+			<div class="Col_3">
+				<a href="<?php echo $this->baseLink; ?>/<?php echo $key; ?>">Применить</a>
+			</div>
+			<div class="Col_4" >
+				<?php
+				$class=empty($action["log"])?"":"previewButton"; 
+				?>
+				<span class="<?php echo $class; ?>" onclick="logShow('<?php echo $key;?>');"></span>
+				<span id="log_<?php echo $key;?>" style="display:none;">
+					<?php // echo $action["log"]; ?>
+				</span>
+				
+			</div>
+		
+		</div>
+		<?php 		
+	}
+?>
+</div>
+<?php 
+} 
+?>
+<!--<ul>-->
+<!--<li><a href="<?php echo $this->baseUrl; ?>/sprav">Справочные данные ВУЗа</a></li>-->
+<!--<li><a href="<?php echo $this->baseUrl; ?>/dekanat">Деканат</a></li>-->
+<!--<li><a href="<?php echo $this->baseUrl; ?>/dostup">Права и доступ</a></li>-->
+<!--</ul>-->
+</div>
+<?php echo $this->render('footer.phtml'); ?>

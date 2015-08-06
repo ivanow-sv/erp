@@ -1,0 +1,57 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<!--<pre><?php // echo print_r($this->disAssoc,true);?></pre>-->
+
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_addForm.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_delForm.phtml'); ?>
+
+<?php 
+if (!empty($this->dis))
+{
+	$tr=1;
+	?>
+	<div class="th">
+		<div class="Col_1">Дисциплина</div>
+		<div class="Col_2">Преподаватели</div>
+	</div>
+	<?php 
+	foreach ($this->dis as $id => $title) 
+	{
+		$tr=$tr===1?2:1;
+		?>
+	<div class="tr<?php echo $tr; ?>">
+		<div class="Col_1"><?php echo $title; ?></div>
+		<div class="Col_2">
+			<div class="toolbar">
+			<span class="addIcoSmall" title="Добавить" onclick="teacherAdd(<?php echo $id;?>);">
+			</span>
+			</div>
+		<?php
+		if (!empty($this->disAssoc[$id]))
+		{
+			foreach ($this->disAssoc[$id] as $teachers) 
+			{
+				?>
+				<div class="item">
+					<span class="removeIcoSmall" title="Убрать из перечня" 
+					onclick="teacherDel(<?php echo $teachers["userid"]; ?> , <?php echo $id;?>);">
+					</span>				
+				<?php 
+				echo "".$teachers["login"].",&nbsp;"
+				.$teachers["family"]."&nbsp;".$teachers["name"]."&nbsp;".$teachers["otch"]."<br>";
+				?>
+				</div>
+				<?php 
+			}
+		} 
+		?>
+		</div>
+	</div>
+		<?php 
+		
+		;
+	}
+} 
+?>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

@@ -1,0 +1,26 @@
+<form
+<?php 
+
+foreach ($this->formResProperty->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+
+<?php echo $this->formResProperty->id;?>
+<div class="tr1">
+	<div class="Col_1">Название</div>
+	<div class="Col_2"><?php echo $this->formResProperty->title;?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Комментарий</div>
+	<div class="Col_2"><?php echo $this->formResProperty->comment;?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">&nbsp;</div>
+	<div class="Col_2"><?php echo $this->formResProperty->formSubmit;?></div>
+</div>
+
+
+
+</form>

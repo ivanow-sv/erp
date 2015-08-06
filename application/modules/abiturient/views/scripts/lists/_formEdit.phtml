@@ -1,0 +1,68 @@
+<div id="formEditWrapper" >
+<div class="toolbar">
+<div id="items_src">
+<span class="hidden"><span class="removeIcoSmall" onClick="filters_remove($(this));" id="removeBut"></span></span>
+<?php
+foreach ($this->valz as $key => $elem)
+{
+	echo $elem;
+	
+}
+echo $this->formNew->col;
+
+echo $this->formNew->cond;
+echo $this->formNew->sign;
+echo $this->formNew->cond_val;
+?>
+</div>
+</div>
+<form
+<?php
+$_removeButt='<span class="removeIcoSmall" onClick="filters_remove($(this));" id="removeBut"></span>';
+foreach ($this->formEdit->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?> >
+<?php echo $this->formEdit->listid; ?>
+<p>Название списка
+	<?php echo $this->formEdit->listname; ?>&nbsp;<?php echo $this->formEdit->OK; ?>&nbsp;
+	<span id="btnSaveAs" onclick="filters_saveAsNew();" class="apply_text">Сохранить как новый</span>
+</p>
+<h4>Названия столбцов для отображения в списке&nbsp;<span class="addIcoSmall" onclick="filters_addCol();"></span></h4>
+<div id="col_collector">
+<?php 
+foreach ($this->formEdit as $key => $elem)
+{
+	if ($elem->getName()=="col") echo "<p id='item_wrapper'>".$_removeButt.$elem."</p>";
+}
+?>
+</div>
+<h4>Условия для отбора&nbsp;<span class="addIcoSmall" onclick="filters_addCond();"></span></h4>
+<div id="cond_collector">
+<?php 
+$i=0;
+// перебор условий
+foreach ($this->formEdit as $key => $elem)
+{
+	
+	if ($elem->getName()=="cond")
+	{
+		// знак 
+		$_s="sign".$i;
+		// список с чем сравнивают
+		$_v="cond_val".$i;
+		echo "<p id='item_wrapper'>".$_removeButt.$elem.$this->formEdit->$_s.$this->formEdit->$_v."</P>";
+// 		echo $this->formEdit->$_v;
+// 		echo "<pre>".print_r($this->formEdit->$_v,true)."</pre>";
+		$i++;
+	}
+}
+?>
+</div>
+
+
+
+
+</form>
+</div>

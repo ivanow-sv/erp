@@ -1,0 +1,19 @@
+<div id="copyWrapper" class="hidden" >
+<p class="close_popup2"
+	onclick='$("#copyWrapper").togglePopup(); ' title="отмена"></p>
+<h5>Копия пользователя </h5>
+<form
+<?php
+
+foreach ($this->formCopy->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<p>Группа  получатель</p>
+<?php 	echo $this->formCopy->id->removeDecorator('Description'); ?> 
+<?php 	echo $this->formCopy->destination->removeDecorator('Description'); ?> 
+
+<p> <?php 	echo $this->formCopy->OK->removeDecorator('Description'); ?> </p>
+</form>
+</div>

@@ -1,0 +1,17 @@
+<div id="formDelWrapper" style="display:none;">
+<p class="close_popup2" onclick='$("#formDelWrapper").togglePopup(); ' title="отмена"></p>
+<h4>Удалить </h4>
+<form
+<?php
+
+foreach ($this->formDel->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php 	echo $this->formDel->id; ?>
+<p> Введите подтверждающее слово <br><b><?php echo $this->confirmWord; ?></b> 
+<?php 	echo $this->formDel->confirm->removeDecorator('Description'); ?> </p>
+<p><?php echo $this->formDel->OK; ?></p>
+</form>
+</div>

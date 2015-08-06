@@ -1,0 +1,38 @@
+<div id="editor_content">
+<?php 
+ if (empty($this->editForm))
+ {
+ 	echo "Нет данных";
+ }
+ else
+ {
+ 	?>
+
+
+<p class="close_popup2"
+	onclick='$("#addUnitWrapper").togglePopup(); ' title="отмена">
+</p>
+ 	
+<form
+<?php
+foreach ($this->editForm->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+ 	<?php 	echo $this->editForm->id->removeDecorator('Description'); ?>
+ 			<div id="editor_header">
+ 			<h3><?php echo $this->title;?></h3>
+ 			</div>
+ 			
+ 			<div id="editor_editor">
+			<?php 	echo $this->editForm->editor1->removeDecorator('Description'); ?> 
+			
+ 			</div>
+</form>
+
+<?php  	 	
+ }
+ ?>
+
+</div>

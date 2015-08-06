@@ -1,0 +1,29 @@
+<div id="formAddWrapper" style="display: none;">
+<p class="close_popup2" onclick='$("#formAddWrapper").togglePopup(); ' title="отмена"></p>
+<h4>Новый документ</h4>
+<form
+<?php
+
+foreach ($this->formAdd->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php echo $this->formAdd->kurs;?>
+<?php echo $this->formAdd->group;?>
+
+<p>Формируется документ<?php  echo $this->formAdd->doctype;?>&nbsp;Номер <?php echo $this->formAdd->numb;?></p>
+<p>Семестр<br>
+<?php echo $this->formAdd->semestr;?></p>  
+<p>Дисциплина<br>
+<?php echo $this->formAdd->discipline;?></p>  
+<p>Экзаменатор<br>
+<?php echo $this->formAdd->teacher;?></p>  
+<p>Форма выходного контроля <?php echo $this->formAdd->outcontrol;?></p>
+<p>Дата проведения<?php echo $this->formAdd->begins;?></p>
+
+<?php echo $this->formAdd->OK;?>
+
+
+</form>
+</div>

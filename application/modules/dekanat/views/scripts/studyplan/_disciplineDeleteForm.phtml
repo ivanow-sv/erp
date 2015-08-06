@@ -1,0 +1,20 @@
+<div id="formDisDeleteWarp" style="display:none;">
+<p class="close_popup2" onclick='$("#formDisDeleteWarp").togglePopup(); ' title="отмена"></p>
+<form 
+<?php
+
+foreach ($this->formDisDelete->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+
+<?php echo $this->formDisDelete->id; ?>
+<?php echo $this->formDisDelete->discipline; ?>
+Для подтверждения, 
+<br>введите (с учетом регистра) 
+<br>фразу&nbsp;«<strong><?php echo $this->confirmWord; ?></strong>» 
+<br><?php echo $this->formDisDelete->confirmWord; ?>
+<br><?php echo $this->formDisDelete->OK; ?>
+</form>
+</div>

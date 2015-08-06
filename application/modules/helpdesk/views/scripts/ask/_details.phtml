@@ -1,0 +1,90 @@
+<h4>Заявка ID=<?php echo $this->info["id"];?></h4>
+<div id="msg">
+	<div id="trashMsg">
+	<?php echo $this->trashMsg; ?>
+	</div>
+
+	<div id="formMsg" class="hidden">
+	<?php echo $this->formMsg; ?>
+	</div>
+</div>
+
+<div class="toolbar">
+		<a href="<?php echo $this->baseUrl."/".$this->currentModuleName."/ask/odt/id/".$this->info["id"]; ?>">
+		<span class="printerIcoMedium" title="Распечатать заявку">
+		</a>
+	
+	<span class="inserttextIcoMedium" title="Добавить заключение" onclick="$('#verdictFormWrapper').toggleClass('hidden');"></span>
+	<span class="shareIcoSmall" title="Назначить исполнителя"></span>
+	<span class="buttonApplyActive" title="Завершить заявку" onclick="toggleClose(<?php echo $this->info["id"]; ?>);"></span>
+	<span id="trashButton" class="<?php echo $this->trashClass; ?>" title="Неверно оформлена" onclick="toggleWrong(<?php echo $this->info["id"]; ?>);"></span>
+</div>
+
+<div class="table">
+	<div class="tr1">
+		<div class="Col_1">Тип заявки</div>
+		<div class="Col_2">
+			<input type="text" class="longinput" value="<?php echo $this->info["ticketTypeTitle"] ;?>" />
+			
+		</div>
+	</div>
+	<div class="tr2">
+		<div class="Col_1">Пользователь</div>
+		<div class="Col_2">
+			<input type="text" class="longinput" value="<?php echo empty($this->info["tfio"]) ? $this->info["fio"]:$this->info["tfio"]; ?>" />
+			<br><small>Учетная запись: <?php echo $this->info["login"] ;?></small>
+		</div>
+	</div>
+	<div class="tr1">
+		<div class="Col_1">Подразделение</div>
+		<div class="Col_2">
+			<input type="text" class="longinput" value="<?php echo empty($this->info["tdep"]) ? $this->info["depTitle"]:$this->info["tdep"]; ?>" />			
+		</div>
+	</div>
+	<div class="tr2">
+		<div class="Col_1">Оборудование</div>
+		<div class="Col_2">
+			<input type="text" class="longinput" value="<?php echo $this->info["subject"] ;?>" >
+			<?php echo $this->render($this->currentController."/".'_assignInfo.phtml'); ?>
+			<br>
+			<small class="inlineLink" onclick="unitAssignForm(<?php echo $this->info["id"];?>);">Уточнить</small>
+			<br>
+			<div class="hidden" id="assignFormWrapper">
+			</div>
+			
+		</div>
+	</div>
+	<div class="tr1">
+		<div class="Col_1">Расположение</div>
+		<div class="Col_2">
+			<input type="text" class="longinput" value="<?php echo $this->info["place"] ; ?>" id="place" name="place">			
+		</div>
+	</div>
+	
+	<div class="tr2">
+		<div class="Col_1">Проблема</div>
+		<div class="Col_2">
+			<textarea cols="40" rows="24" class="longinput2"><?php echo $this->info["problem"]; ?></textarea>			
+		</div>
+	</div>
+	<div class="tr1">
+		<div class="Col_1">Зарегистрировано</div>
+		<div class="Col_2"><?php echo substr($this->info["created"],0,10); ?></div>
+	</div>
+	<div class="tr2">
+		<div class="Col_1">Статус</div>
+		<div class="Col_2" id="stateMsg">
+			<?php
+			
+			$_closed=$this->info["closed"]==="0000-00-00 00:00:00"
+			? "в работе"
+			: "закрыто. Дата закрытия: ".substr($this->info["closed"],0,10);	
+			echo $_closed; 
+			?>
+		</div>
+	</div>
+</div>
+
+<h4>Заключение инженера</h4>
+<?php  echo $this->render($this->currentController."/".'_formVerdictAdd.phtml'); ?>
+<?php  echo $this->render($this->currentController."/".'_verdictList.phtml'); ?>

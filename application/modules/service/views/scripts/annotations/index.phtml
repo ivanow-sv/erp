@@ -1,0 +1,45 @@
+<?php echo $this->render('header.phtml'); ?>
+
+
+<div id="workspace">
+	<div id="contentWrapper"  style="display:none;">
+		
+		
+	</div>
+
+<?php
+if (!empty($this->tree))
+{
+	?>
+	<div class="table">
+		<div class="th">
+			<div class="Col_1">id</div>
+			<div class="Col_2">Название</div>
+			<div class="Col_3"></div>
+		</div>
+	<?php 
+	foreach ($this->tree as $module => $title) 
+	{
+		$tr=$tr==1?2:1;
+		?>
+		<div class="tr<?php echo $tr;?>">
+			<div class="Col_1"><?php echo $module; ?></div>
+			<div class="Col_2"><?php echo $title; ?></div>
+			<div class="Col_3">
+				<span class="editIcoSmall" title="Изменить" onclick="showAn('<?php echo $module; ?>');"></span>
+			</div>
+		</div>
+		
+		<?php 
+		;
+	}
+	?>
+	</div>
+	
+	<?php 
+		
+} 
+?>
+</div>
+
+<?php echo $this->render('footer.phtml'); ?>

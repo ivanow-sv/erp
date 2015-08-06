@@ -1,0 +1,21 @@
+<h5>Найти документ</h5>
+<form
+<?php
+
+foreach ($this->formFilter->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<p>
+Курс <?php echo $this->formFilter->kurs;?> &nbsp;  Семестр<?php  echo $this->formFilter->semestr; ?>
+</p>
+<p>Отделение&nbsp;<?php echo $this->formFilter->division;?></p>
+<p>Направление подготовки&nbsp;<?php echo $this->formFilter->spec;?></p>
+<p>форма обучения&nbsp;<?php echo $this->formFilter->osnov;?></p>
+<p>Дисциплина&nbsp;<?php echo $this->formFilter->discipline;?></p>
+
+
+
+
+</form>

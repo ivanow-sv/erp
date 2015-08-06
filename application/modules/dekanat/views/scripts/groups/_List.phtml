@@ -1,0 +1,126 @@
+<div id="peopleList">
+<h3>Список групп/подгрупп</h3>
+<div class="toolbar">
+	<span class="addGroupButton"
+	title="Новая группа"
+	onclick='groupAdd();'
+	></span>
+<!--	<span class="inlineLink" id="addLesson" onclick="sendCheckBoxes('peopleList','assign',1); ">Добавить занятие</span>-->
+	</div>
+	
+<?php 
+if (count($this->list)>0)
+{
+
+foreach ($this->list as $osnTitle => $osnContent) 
+{
+	?>
+<h5><?php echo $osnTitle; ?></h5>	
+
+<div class="table" >
+<div class="th">
+	<div class="Col_0"></div>
+	<div class="Col_1">Группа</div>
+	<div class="Col_2">Подгруппа</div>
+	<div class="Col_3">Студентов</div>
+	<div class="Col_4">Действие</div>
+</div>
+<?php 	
+
+//	$cur=$this->list[0]["id"];
+	$cur='';
+	foreach ($osnContent as $kk=>$item) 
+	{
+		$tr=$tr==1?$tr=2:1;
+		if ($item["id"]!=$cur) 
+		{
+		?>
+<div class="tr<?php echo $tr; ?>">
+	<div class="Col_0">
+		<input type="checkbox" name="group"
+		class="group<?php echo $item["id"]; ?>" 
+		id="group" value="<?php echo $item["id"]; ?>"
+		onclick="markUnmarkAll('group<?php echo $item["id"]; ?>','subgroup<?php echo $item["id"]; ?>');"
+		/> 
+	</div>
+	<div class="Col_1">	<?php echo $item["groupTitle"]; ?></div>
+	<div class="Col_3">	</div>
+	<div class="Col_4">	</div>
+	<div class="Col_3">	
+
+	<span class="renameIcoSmall" title="Переименовать группу"
+	onclick='groupRename(<?php echo $item["id"]; ?>,"<?php echo $item["groupTitle"]; ?>"); '
+	>
+	</span>		
+	<span class="removeIcoSmall"
+	onclick='groupDel(<?php echo $item["id"]?>,"<?php echo $item["groupTitle"]?>");'>
+	</span>
+	<a href="<?php echo $this->baseLink; ?>/members/groupid/<?php echo $item["id"]?>/subgroupid/0">
+	<img alt="Состав всей руппы" src="<?php echo $this->baseUrl; ?>/public/images/user_group_16x16.png" class="imglink" 
+		title="Состав всей руппы" 
+		/>
+	</a>
+	<a href="<?php echo $this->baseLink."/addsubgroup/id/".$item["id"]; ?>">
+		<img alt="Новая подгруппа в этой группе" src="<?php echo $this->baseUrl; ?>/public/images/add.gif" class="imglink" 
+			title="Новая подгруппа в этой группе" 
+			/>
+	</a>
+	</div>
+	
+</div>
+		<?php 
+		}
+		// если нету подгруппы - дальше
+		if (is_null($item["subgroupid"])) continue;
+			$tr=$tr==1?$tr=2:1; 
+		
+		?>
+<div class="tr<?php echo $tr; ?>">
+	<div class="Col_0">
+		<input type="checkbox" name="subgroup" 
+		class="subgroup<?php echo $item["id"]; ?>" 
+		value="<?php echo $item["subgroupid"]; ?>"/> 
+	</div>
+	<div class="Col_1">
+	</div>
+	<div class="Col_2">
+		<?php 
+			 echo $item["subgroupTitle"]; 
+		?>
+	</div>
+	<div class="Col_3">
+		<?php echo $item["numz"]; ?> 
+	</div>
+	<div class="Col_4">	
+	<span class="renameIcoSmall" title="Переименовать подгруппу"
+	onclick='subGroupRename(<?php echo $item["subgroupid"]; ?>,"<?php echo $item["subgroupTitle"]; ?>"); '
+	></span>
+	<span class="removeIcoSmall" title="Удалить подгруппу" 
+	onclick="subGroupDel(<?php echo $item["subgroupid"]; ?>,'<?php echo $item["subgroupTitle"]; ?>');"
+	></span>
+	<a href="<?php echo $this->baseLink; ?>/members/groupid/<?php echo $item["id"]?>/subgroupid/<?php echo $item["subgroupid"]?>">
+		<img alt="Состав подгруппы" src="<?php echo $this->baseUrl; ?>/public/images/user_group_16x16.png" class="imglink" 
+		title="Состав подгруппы" 
+		/>
+	</a>
+
+		</div>
+</div>
+		
+		<?php
+	$cur=$item["id"];
+	}
+	?>
+	</div>
+	<?php 
+}
+?>
+
+<?php 
+}
+else echo "Подходящих не найдено";
+?>
+
+</div>
+
+

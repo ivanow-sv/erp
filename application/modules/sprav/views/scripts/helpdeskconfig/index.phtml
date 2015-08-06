@@ -1,0 +1,53 @@
+<?php echo $this->render('header.phtml'); ?>
+
+
+<div id="workspace">
+<?php echo $this->render($this->currentController."/".'_formAdd.phtml'); ?>
+<?php echo $this->render($this->currentController."/".'_formEdit.phtml'); ?>
+<?php echo $this->render($this->currentController."/".'_formDel.phtml'); ?>
+
+<div id="toolbar">
+	<span class="addButtonMedium" title="Добавить новый тип" onclick="typeAdd();"></span>
+</div>
+<?php 
+	if (count($this->utypes) >0 )
+	{
+		?>
+		<div class="th">
+			<div class="Col_1">ID</div>
+			<div class="Col_2">Наименование</div>
+			<div class="Col_3">Таблица БД</div>
+			<div class="Col_4">Действие</div>
+		</div>
+		<?php
+		$tr=1; 
+		foreach ($this->utypes as $item) 
+		{
+			?>
+		<div class="tr<?php echo $tr; ?>" id="item<?php echo $item["id"];?>">
+			<div class="Col_1"><?php echo $item["id"]; ?></div>
+			<div class="Col_2"><?php echo $item["title"]; ?></div>
+			<div class="Col_3"><?php echo $item["tbl"]; ?></div>
+			<div class="Col_4">
+				<span class="editIcoSmall" title="Изменить запись" 
+				onclick="typeEdit(<?php echo $item["id"]; ?>);"
+				>
+				</span>
+				<span class="removeIcoSmall" title="Удалить запись" 
+				onclick="typeDel(<?php echo $item["id"]; ?>);"
+				>
+				</span>
+			</div>
+		</div>
+			
+			<?php 
+			;
+			$tr=$tr===1?2:1;			
+		}
+	} 
+	else 
+		echo "Не найдено";
+	 
+?>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

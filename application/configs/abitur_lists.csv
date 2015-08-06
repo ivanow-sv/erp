@@ -1,0 +1,57 @@
+KEYNAME;TABLE;COLUMN;TITLE;JOIN;WHERE
+regnum;;a.id;регистрационный номер;;
+advantage;advantage;af.advantage;Приоритет: Конкурсная группа ID;;af.advantage
+division;division;af.division;Приоритет: отделение ID;;af.division
+doccopy;doc_copy;af.doc_copy;Приоритет: оригинал/копия ID;;af.doc_copy
+osnov;osnov;af.osnov;Приоритет: форма обуч ID ;;af.osnov
+spec;specs;af.spec;Приоритет: напр. подготовки ID;;af.spec
+subspec;subspecs;af.subspec;Приоритет: Профиль подготовки ID;;af.subspec
+taketime;;af.taketime;дата забора документов;;
+taken;;(af.taketime <>0);документа забрал/не забрал;;
+advTitle;;adv.title;Приоритет: Конкурсная группа ;advantage AS adv ON af.advantage=adv.id;
+exam1_title;;d1.title;Экзамены: дисциплина1 ;discipline AS d1 ON d1.id=ex1.exam;
+exam2_title;;d2.title;Экзамены: дисциплина2 ;discipline AS d2 ON d2.id=ex2.exam;
+exam3_title;;d3.title;Экзамены: дисциплина3 ;discipline AS d3 ON d3.id=ex3.exam;
+divTitle;;divi.title;Приоритет: отделение ;division AS divi ON af.division=divi.id;
+doccopyTitle;;copy.title;Приоритет: оригинал/копия ;doc_copy AS copy ON af.doc_copy=copy.id;
+edudocTitle;;e.title;Образование: Документ об образовании ;edu_docs AS e ON p.edu_doc=e.id;
+exam1_typeTitle;;exam_type.title;Экзамены: Тип испытаний ;discipline AS d1 ON d1.id=ex1.exam;
+exam2_typeTitle;;exam_type.title;Экзамены: Тип испытаний ;discipline AS d2 ON d2.id=ex2.exam;
+exam3_typeTitle;;exam_type.title;Экзамены: Тип испытаний ;discipline AS d3 ON d3.id=ex3.exam;
+exam1_ege;;ex1.ege_svid;Экзамены: св-во ЕГЭ;;
+exam2_ege;;ex2.ege_svid;Экзамены: св-во ЕГЭ;;
+exam3_ege;;ex3.ege_svid;Экзамены: св-во ЕГЭ;;
+exam1;discipline;ex1.exam;Экзамены: дисциплина ID;;
+exam2;discipline;ex2.exam;Экзамены: дисциплина ID;;
+exam3;discipline;ex3.exam;Экзамены: дисциплина ID;;
+exam1_date;;ex1.exam_date;Экзамены: дата экзамена;;
+exam2_date;;ex2.exam_date;Экзамены: дата экзамена;;
+exam3_date;;ex3.exam_date;Экзамены: дата экзамена;;
+exam1_type;exam_type;ex1.exam_type;Экзамены: тип испытаний ID;;ex1.exam_type
+exam2_type;exam_type;ex2.exam_type;Экзамены: тип испытаний ID;;ex2.exam_type
+exam3_type;exam_type;ex3.exam_type;Экзамены: тип испытаний ID;;ex3.exam_type
+exam1_value;;ex1.exam_value;Экзамены: дисциплина1 балл;exams2 AS ex1 ON ex.userid=a.userid;ex1.exam
+exam2_value;;ex2.exam_value;Экзамены: дисциплина2 балл;exams2 AS ex2 ON ex.userid=a.userid;ex2.exam
+exam3_value;;ex3.exam_value;Экзамены: дисциплина3 балл;exams2 AS ex3 ON ex.userid=a.userid;ex3.exam
+identityTitle;;i.title;ПДн: удост. Личности ;identity AS i ON p.identity=i.id;
+osnTitle;;osn.title;Приоритет: форма обучения;osnov AS osn ON osn.id=af.osnov;
+edudoc;edu_docs;p.edu_doc;Образование: Документ об образовании ID ;;p.edu_doc
+fio;;CONCAT_WS(" ",p.family,p.name,p.otch);ПДн: ФИО;;
+family;;p.family;ПДн: фамилия;;
+iden_num;;p.iden_num;ПДн: удост. личности номер;;
+iden_serial;;p.iden_serial;ПДн: удост. личности серия;;
+identity;identity;p.identity;ПДн: удост. личности ID;;
+misc;;p.misc;ПДн: дополнительно;;
+name;;p.name;ПДн: имя;;
+otch;;p.otch;ПДн: отчество;;
+phone;;p.phone;ПДн: телефон;;
+room;room;p.room;Разное: потр. в общежитии ID;;p.room
+stateFilter;states;rez.state_id;Комиссия: решение комиссии ID (любое, не расм.);results2 AS rez ON rez.abitur=af.id;rez.state_id
+roomTitle;;r.title;Разное: потр. в общежитии ;room AS r ON p.room=r.id;
+specTitle;;s.title;Приоритет: напр. подготовки ;;
+specNumTitle;;s.numeric_title;Приоритет: напр. подготовки шифр;;
+specFullTitle;;CONCAT_WS(" ",s.numeric_title,s.title);Приоритет: направление подготовки с шифром;;
+stateFiltTitle;;st.title;Комиссия: решение комиссии ;states AS st ON st.id=rez.state_id;
+subspecTitle;;ss.title;Приоритет: напр. подготовки профиль ;;
+exam_sum;;SUM(exam1_value,exam2_value, exam3_value) AS bally;Экзамены: сумма баллов;;SUM(exam1_value,exam2_value, exam3_value)
+eduYear;;YEAR(p.edu_date);Образование: год окончания;;YEAR(p.edu_date)

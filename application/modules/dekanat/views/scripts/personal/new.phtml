@@ -1,0 +1,32 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<a class="backButton" title="Вернуться к списку"
+	href="<?php echo $this->baseLink; ?>"> </a>
+<?php 
+if (!$this->ok) 
+{
+?>
+
+
+<div>
+<?php echo $this->render('personal'.DIRECTORY_SEPARATOR.'_newStudForm.phtml'); ?>
+</div>
+
+<?php 
+}
+else 
+{
+	?>
+	<h4>Добавление нового студента в подгруппу.
+	<br>Шаг 2.</h4>
+	<?php 
+	echo $this->render('personal'.DIRECTORY_SEPARATOR.'_privateViewForm.phtml');
+	// выполним скрипт создания табов
+	?>
+	<script type="text/javascript">$("#tabs").tabs();</script>
+	<?php 
+	
+}
+?>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

@@ -1,0 +1,240 @@
+
+
+<!--<h4>Личные данные</h4>-->
+
+<form
+<?php
+foreach ($this->formPrivateInfo->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?> >
+
+<?php
+echo $this->formPrivateInfo->userid;
+?>
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">Личные данные</a></li>
+			<li><a href="#tabs-2">Образование</a></li>
+			<li><a href="#tabs-3">Льготы при поступлении</a></li>
+			<li><a href="#tabs-4">Прочее</a></li>
+			
+		</ul>
+		
+<!-- 1-ый таб -->
+		<div id="tabs-1">
+			<div class="tr1">
+				<div class="Col_1">Фамилия</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->family;?>
+				</div>
+			</div>
+			<div class="tr2">
+				<div class="Col_1">Имя</div>
+				<div class="Col_2">
+				<?php echo  $this->formPrivateInfo->name;?>
+				</div>
+			</div>
+			<div class="tr1">
+				<div class="Col_1">Отчество</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->otch;?>
+				</div>
+			</div>
+			<div class="tr2">
+				<div class="Col_1">Пол</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->gender;?>
+				</div>
+			</div>
+			<div class="tr1">
+				<div class="Col_1">Дата рождения</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->birth_date;?>
+				</div>
+			</div>
+			<div class="tr2">
+				<div class="Col_1">Место рождения</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->birth_place;?>
+				</div>
+			</div>
+			
+
+			<div class="tr1">
+				<div class="Col_1">Удостоверение личности</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->identity;?>
+				</div>
+			</div>
+
+			<div class="tr2">
+				<div class="Col_1">Серия</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->iden_serial;?>
+				</div>
+			</div>
+			<div class="tr1">
+				<div class="Col_1">Номер</div>
+				<div class="Col_2">
+				<?php echo  $this->formPrivateInfo->iden_num;?>
+				</div>
+			</div>
+			<div class="tr2">
+				<div class="Col_1">Выдан</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->iden_give;?>
+				</div>
+			</div>
+			<div class="tr1">
+				<div class="Col_1">Зарегистрирован</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->iden_reg;?>
+				</div>
+			</div>
+			<div class="tr2">
+				<div class="Col_1">Проживает</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->iden_live;?>
+				</div>
+			</div>
+		</div>
+
+<!-- 2 ый таб -->
+		<div id="tabs-2">
+			<div class="tr1">
+				<div class="Col_1">Док. об образовании</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->edu_doc;?>
+				</div>
+			</div>
+			<div class="tr2">
+				<div class="Col_1">Серия</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->edu_serial;?>
+				</div>
+			</div>
+			<div class="tr1">
+				<div class="Col_1">Номер</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->edu_num;?>
+				</div>
+			</div>
+			<div class="tr2">
+				<div class="Col_1">Выдан</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->edu_give;?>
+				</div>
+			</div>
+			<div class="tr1">
+				<div class="Col_1">Дата получения</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->edu_date;?>
+				</div>
+			</div>
+			<div class="tr2">
+				<div class="Col_1">Средний балл по документу</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->edu_res;?>
+				</div>
+			</div>
+			<div class="tr1">
+				<div class="Col_1">Изучаемый язык</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->lang;?>
+				</div>
+			</div>
+			<div class="tr2">
+				<div class="Col_1">доп. сведения об образовании</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->edu_info;?>
+				</div>
+			</div>
+
+		</div>
+
+<!-- 3-ый таб -->
+		<div id="tabs-3">
+			<div class="tr1">
+				<div class="Col_1">Категория</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->category;?>
+				</div>
+			</div>
+			<div class="tr2">
+				<div class="Col_1">Документ подтверждающий</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->category_detail;?>
+				</div>
+			</div>
+			<div class="tr1">
+				<div class="Col_1">Награды/медали</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->award;?>
+				</div>
+			</div>
+			<div class="tr2">
+				<div class="Col_1">Олимпиады/конкурсы</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->olympic_detail;?>
+				</div>
+			</div>
+		</div>
+
+<!-- 4-ый таб -->
+		<div id="tabs-4">
+			<div class="tr1">
+				<div class="Col_1">В общежитии</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->room;?>
+				</div>
+			</div>
+			<div class="tr2">
+				<div class="Col_1">Служба в армии</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->army;?>
+				</div>
+			</div>
+			<div class="tr1">
+				<div class="Col_1">Фото</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->photos;?>
+				</div>
+			</div>
+			<div class="tr2">
+				<div class="Col_1">Место работы</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->work;?>
+				</div>
+			</div>
+			<div class="tr1">
+				<div class="Col_1">Стаж работы</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->work_age;?>
+				</div>
+			</div>
+			<div class="tr2">
+				<div class="Col_1">Контактный телефон</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->phone;?>
+				</div>
+			</div>
+			<div class="tr1">
+				<div class="Col_1">Прочее</div>
+				<div class="Col_2">
+				<?php echo $this->formPrivateInfo->misc;?>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div id="formMsg" class="hidden">
+	</div>
+	<p>
+	<span class="buttonApplyActive" title="Сохранить" onclick="savePrivateForm($(this));"></span>
+	<span class="undoButton" title="Вернуть" onclick='$("form#formPrivateInfo").get(0).reset();'></span>
+	<?php //echo $this->formPrivateInfo->OK; ?>
+	<?php //echo $this->formPrivateInfo->RES; ?>	
+	</p>
+</form>

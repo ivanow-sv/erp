@@ -1,0 +1,38 @@
+<div class="th">
+	<div class="Col_1">Действие</div>
+	<div class="Col_2">Логин</div>
+	<div class="Col_3">ФИО</div>
+	<div class="Col_4">Доступ</div>
+</div>
+
+<?php
+//echo "<pre>".print_r($this->usersGranted,true)."</pre>";
+if (count($this->usersGranted >0))
+{
+?>
+<?php
+$tr=1;
+//echo "<pre>".print_r(get_class_methods($this->privSelList),TRUE)."</pre>";
+foreach ($this->usersGranted as $user) 
+{
+	$tr=$tr==1?2:1;
+	$list=$this->privSelList;
+	$list->setValue($user["action"]);
+	$list->setIsArray(true);
+	?>
+	<div class="tr<?php echo $tr;?>" id="granted_<?php echo $user["userid"]; ?>">
+		<div class="Col_1">
+			<span class="leftArrowIcoMedium" title="Убрать"
+			onclick="moveNode('usersGranted',false,$(this));">
+			<input type="hidden" name="userid[]" value="<?php echo $user["userid"]; ?>">
+			</span>
+		</div>
+		<div class="Col_2"><?php echo $user["login"];?></div>
+		<div class="Col_3"><?php echo $user["fio"];?></div>
+		<div class="Col_4"><?php echo $list;?></div>
+	</div>
+	<?php 
+	;
+} 
+}
+?>

@@ -1,0 +1,21 @@
+<form
+	action="<?php echo $this->baseUrl ?>/sprav/<?php echo $this->curcont; ?>/<?php echo $this->curact; ?>"
+	method="post">
+
+<table>
+	<tr>
+		<th>Табельный №</th>
+		<th>Фамилия</th>
+		<th>Имя</th>
+		<th>Отчество</th>
+		<td rowspan="2"><input type="submit" name="add" value="&nbsp;&nbsp;"
+			class="apply_button" title="Применить" /></td>
+	</tr>
+	<tr>
+		<td><input type="text" name="tabel" /></td>
+		<td><input type="text" name="family" /></td>
+		<td><input type="text" name="name" /></td>
+		<td><input type="text" name="otch" /></td>
+	</tr>
+</table>
+<input type="hidden" name="id" value="<?php echo $this->id; ?>" /></form>

@@ -1,0 +1,10 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_filterform.phtml'); ?>
+
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_addForm.phtml'); ?>
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_editForm.phtml'); ?>
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_delForm.phtml'); ?>
+<?php echo $this->render($this->curcont.DIRECTORY_SEPARATOR.'_list.phtml'); ?>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

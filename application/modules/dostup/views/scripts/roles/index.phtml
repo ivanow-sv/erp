@@ -1,0 +1,112 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+
+<?php
+// роли заданы 
+if (count($this->items)>0)
+{
+	?>
+<div id="formAddRole" style="display:none;" >
+	<form id="formAddRoleForm" action="./<?php echo $this->currentController; ?>/add" method="post">
+	Введите название &nbsp;<input type="text" name="title" class="medinput">
+	<input type="submit" value="Создать">
+	</form>
+</div>
+	
+	<div class="toolbar">
+	<img class="imgLink" title="Добавить" alt="Добавить" onClick="toggleShowElement('formAddRole')"
+		src="<?php echo $this->baseUrl; ?>/public/images/add1-48.png">
+	<img class="imgLink" title="Копировать выбранное" alt="Копировать выбранное"
+		src="<?php echo $this->baseUrl; ?>/public/images/copy48.png">
+	<img class="imgLink" title="Выключить выбранное" alt="Выключить выбранное"
+		src="<?php echo $this->baseUrl; ?>/public/images/event48.png">
+	<img class="imgLink" title="Включить выбранное" alt="Включить выбранное"
+		src="<?php echo $this->baseUrl; ?>/public/images/event48_green.png">
+	<img class="imgLink" title="Удалить выбранное" alt="Удалить выбранное"
+		src="<?php echo $this->baseUrl; ?>/public/images/delete48.png">
+</div>
+
+<div class="th">
+	<div class="Col_1"></div>
+	<div class="Col_2">ID</div>
+	<div class="Col_2">Название</div>
+	<div class="Col_2">Комментарий</div>
+<!--	<div class="Col_2">выкл.?</div>-->
+	<div class="Col_1"></div>
+</div>
+
+	<?php
+
+	// это потому, что $this внутри функции не пользуется никак :(
+	$sys=array(
+	'baseUrl'=>$this->baseUrl,
+	'currentController'=>$this->currentController,
+	);
+	
+	
+	function showRow(&$item,&$tr,&$deep,$sys)
+	{
+		if (is_array($item))
+		{
+		$tr=$tr===1?2:1;
+			?>
+		<div class="tr<?php echo $tr;?>">
+<!--		для чекбокса-->
+			<div class="Col_1"></div>
+			<div class="Col_2"><?php echo $item["id"]?></div>
+			<div class="Col_2">
+				<?php
+				//				echo "<pre>".print_r($deep,true)."</pre>";
+				echo $deep.$item["title"]?>
+				</div>
+			<div class="Col_2"><?php echo $item["comment"]?></div>
+<!--			<div class="Col_2"><?php echo $item["disabled"]==1?'Да':'';?></div>-->
+			<div class="Col_1">
+				<a class="editIcoSmall" title="Детали" 
+				href="./<?php echo $sys["currentController"]; ?>/edit/id/<?php echo $item['id'];?>">
+				</a>
+				<a class="removeIcoSmall" title="Удалить" 
+				href="./<?php echo $sys["currentController"]; ?>/delete/id/<?php echo $item['id'];?>">
+				</a>
+			</div>
+		</div>
+		<?php 
+		}
+		//если есть "дети"
+		if (isset($item["child"])) 
+		{
+			// если нет родителей - занчит начало ветки
+			if (is_null($item["parent"])) $deep="";
+
+			// переберем "детей"
+			$childs=explode(" ",$item["child"]);
+			foreach ($childs as $name) 
+			{
+				// если нижеследующий прямой потомок
+				if ($item[$name]["parent"]==$item['id']) $dp="|".ltrim($deep."--","|");
+				else $dp=$deep;
+				showRow($item[$name],$tr,$dp,$sys);
+			}
+			
+			
+		}
+//		array_merge ();
+	}
+	
+	$tr=2;
+	$deep='';
+	foreach ($this->items as $k=>$item) 
+	{
+		showRow($item,$tr,$deep,$sys);
+
+	}
+}
+// ролей нет
+else 
+{
+	
+}
+?>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

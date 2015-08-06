@@ -1,0 +1,20 @@
+<div id="formEditDateWrapper" style="display: none;">
+<p class="close_popup2" onclick='$("#formEditDateWrapper").togglePopup(); ' title="отмена"></p>
+<h4>Новые сроки</h4>
+<form
+<?php
+
+foreach ($this->formEditDate->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php echo $this->formEditDate->id;?>  
+<p>
+	с<?php echo $this->formEditDate->begins;?>&nbsp; по<?php echo $this->formEditDate->ends;?>
+</p>
+<?php echo $this->formEditDate->OK;?>
+
+
+</form>
+</div>

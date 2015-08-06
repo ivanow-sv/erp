@@ -1,0 +1,27 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+
+<div id="workspace">
+<div id="confirmWarp" style="display:none">Обновить список</div>
+<h3>Поиск зачисленных абитуриентов</h3>
+
+<form
+<?php
+
+foreach ($this->formFilter->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'"';
+}
+?>>
+<p>Номер протокола комисии</p>
+<?php echo $this->formFilter->prot_id;?>
+<br>Направление подготовки <?php echo $this->formFilter->spec;?>
+<?php echo $this->formFilter->docid->removeDecorator;?>
+</form>
+
+<div>
+	<h3>Список</h3>
+	<?php echo $this->render($this->currentController."/".'_abiturList.phtml'); ?>
+</div>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

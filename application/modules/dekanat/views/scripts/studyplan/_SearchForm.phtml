@@ -1,0 +1,12 @@
+<form
+<?php
+
+foreach ($this->form->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+Учебный год&nbsp;<?php echo $this->form->studyYearStart;?>-<span id="studyYearEnd"><?php echo $this->studyYearEnd;?></span>
+<br><?php echo $this->form->gosparam;?>
+<br>Форма обучения <?php echo $this->form->osnov;?>
+</form>

@@ -1,0 +1,66 @@
+
+<p class="close_popup2"
+	onclick='$("#formMoveWarp").togglePopup(); ' title="отмена"></p>
+<h4>Выберите подгруппу, куда перенести выбранных студентов</h4>
+<form
+<?php
+/*
+// Recursively traverses a multi-dimensional array.
+function traverseArray($array,&$out,&$k,&$l)
+{
+	// Loops through each element. If element again is array, function is recalled. If not, result is echoed.
+	foreach($array as $key=>$value)
+	{
+		if(is_array($value))
+		{
+			$out.="\n <UL class='treeLv".$l." treeNode'>".$key;
+			$l++;
+			if (count($value)>0) traverseArray($value,$out,$k,$l);
+			else $out.="<li>список пуст</li>";
+			$out.="\n </UL>";
+			$l--;
+		}
+		else
+		{
+			$out.="\n<li class='treeElem'>"
+			."\n<input value='".$key."' name='subgroupTo' type='radio' id='subgroupTo".$k."'>"
+			."\n<label for='subgroupTo".$k."'>"
+			."\n".$value
+			."\n</label>"
+			."\n</li>";
+			$k++;
+		}
+	}
+}
+*/
+
+foreach ($this->formMove->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php
+// ID студентов
+	for ($k=0;$k<=$this->idCount;$k++)
+	{
+		$n="id".$k;
+		echo $this->formMove->$n;	
+	}
+	 
+//if (count($this->tree)>0)
+//{
+//	$k=1; // счетчик для LABEL
+//	$l=1; // счетчик уровней
+//	$out="";
+//	traverseArray($this->tree,$out,$k,$l);
+//	$out.="";
+//	echo $out;
+//
+//	//		array_walk_recursive($this->tree,'show');
+//
+//}
+	echo $this->formMove->subgroupTo;
+
+
+?>  <?php echo $this->formMove->OK; ?>
+</form>

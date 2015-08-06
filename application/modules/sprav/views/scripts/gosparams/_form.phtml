@@ -1,0 +1,19 @@
+<h5>Добавить запись</h5>
+<form
+<?php
+foreach ($this->formEdit->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php echo $this->formEdit->id; ?>
+<?php echo $this->formEdit->spec; ?>
+<p>Отделение:&nbsp; <?php echo $this->formEdit->division; ?></p>
+<p>Срок обучения:&nbsp; <?php echo $this->formEdit->years2study; ?></p>
+<p>Год начала действия:&nbsp; <?php echo $this->formEdit->yearStart; ?></p>
+<p>Год конец действия:&nbsp; <?php echo $this->formEdit->yearLast; ?></p>
+<p>Факультет где будет преподаваться:&nbsp;<?php echo $this->formEdit->facult; ?></p>
+<p><?php echo $this->formEdit->OK; ?></p>
+
+
+</form>

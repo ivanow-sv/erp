@@ -1,0 +1,51 @@
+<div id="list">
+<!--<pre><?php //echo print_r(get_object_vars($this),true) ;?></pre>-->
+<table>
+	<tr>
+		<th class="Col_0">код</th>
+		<th class="Col_1">Отделение</th>
+<!-- 		<th class="Col_2">Направление подготовки</th> -->
+		<th class="Col_3">Срок обучения, лет</th>
+		<th class="Col_4">Год принятия<br>(год первой <br>приемной кампании)</th>
+		<th class="Col_5">Год отмены <br><small>(год последнего<br>принятого студента)</small> </th>
+		<th class="Col_6">Факультет</th>
+		<th class="Col_7">Действие</th>
+	</tr>
+	<?php $k=1;?>
+	<?php $tr=1;
+	foreach($this->entries as $entry) : ?>
+	<tr class="tr<?php echo $tr;?>" id="row_<?php echo $entry["id"];?>">
+
+		<td class="Col_0"><?php echo $entry["id"];?></td>
+		<td class="Col_1"><?php echo $this->escape($entry["divTitle"]);?></td>
+<!--  		<td class="Col_2"><?php // echo $this->escape($entry["specTitle"]);?></td> -->
+		<td class="Col_3"><?php echo $this->escape($entry["years2study"]);?></td>
+		<td class="Col_4"><?php echo $this->escape($entry["yearStart"]);?></td>
+		<td class="Col_5">
+		<?php 
+			$_val=intval($entry["yearLast"]);
+			if (empty($_val))
+				echo "не указан";
+			else echo $_val;
+		?>
+		</td>
+		<td class="Col_6"><?php echo $this->escape($entry["facTitle"]);?></td>
+		<td class="Col_7"><span title="Изменить" class="editIcoSmall"
+			onClick="spravGosChangeForm(<?php echo $entry["id"];?>,<?php echo $entry["division"]; ?>,<?php echo $entry["facult"]; ?>,true);"
+
+			
+ 			title="Изменить"></span> 
+ 			&nbsp; 
+			<img title="Удалить" class="imglink"
+			onclick='$("#formDelete #title").html("<?php echo $this->escape($entry["title"]);?>"); $("#formDelete #id").val(<?php echo $entry["id"]; ?>); $("#formDeleteWrapper").togglePopup();' 
+			src="<?php echo $this->icoPath; ?>/human_o2_16x16/actions/gtk-remove.png"
+			alt="Удалить"></img> </td>
+	</tr>
+
+	<?php $k++; ?>
+	<?php
+	$tr=$tr===1?2:1;
+endforeach; 
+?>
+</table>
+</div>

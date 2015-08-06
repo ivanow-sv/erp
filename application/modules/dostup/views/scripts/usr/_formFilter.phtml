@@ -1,0 +1,13 @@
+<div id="filter">
+<p>Выберите группу</p>
+<form
+<?php
+
+foreach ($this->formFilter->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php 	echo $this->formFilter->aclgroup->removeDecorator('Description'); ?>
+</form>
+</div>

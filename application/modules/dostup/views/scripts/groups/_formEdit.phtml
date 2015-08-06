@@ -1,0 +1,60 @@
+<script type="text/javascript">
+<!--
+$(function() {
+	$( "input[type=submit], button, .button" )
+	.button()
+	});
+
+//-->
+</script>
+
+<h4>Изменение группы</h4>
+
+<form
+<?php
+
+foreach ($this->formEdit->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php 	echo $this->formEdit->id->removeDecorator('Description'); ?>
+
+<p>
+Наименование<br>
+<?php 	echo $this->formEdit->title->removeDecorator('Description'); ?>
+</p>
+<p>
+Короткое наименовение<br>
+<?php 	echo $this->formEdit->title_small->removeDecorator('Description'); ?>
+</p>
+<div class="table">
+	<div class="tr">
+		<div class="Col_1">
+		Перечень параметров ИМЯ=ЗНАЧЕНИЕ через ";" (точка с запятой )
+		</div>
+		<div class="Col_2">
+		Комментарии
+		</div>
+	</div>
+	<div class="tr">
+		<div class="Col_1">
+			<?php 	echo $this->formEdit->paramz->removeDecorator('Description'); ?>
+		</div>
+		<div class="Col_2">
+			<?php 	echo $this->formEdit->comment->removeDecorator('Description'); ?>
+		</div>
+	</div>
+</div>
+
+<p>
+<?php 	echo $this->formEdit->disabled->removeDecorator('Description'); ?> Отключить
+</p>
+<p> <?php 	// echo $this->formEdit->OK->removeDecorator('Description'); ?> </p>
+<p> <span class="button" onclick="grpEdit(<?php 	echo $this->formEdit->id->getValue() ; ?>);" >ПРИМЕНИТЬ</span> </p>
+</form>
+<div id="msgWrapper" class="hidden">
+<p class="close_popup2"
+	onclick='$("#msgWrapper").fadeOut("slow");' title="отмена"></p>
+<div id="formMsg"></div>
+</div>

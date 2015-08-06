@@ -1,0 +1,40 @@
+<div class="content" style="display: none;">
+<!--<pre><?php //echo print_r($this->ocontrolTODO,true); ?></pre>-->
+<!--<pre><?php // echo print_r($this->ocontrolLog,true); ?></pre>-->
+	<?php //echo "<pre>".print_r($this->personLog,true)."</pre>"; ?>
+	<?php
+	if (count($this->ocontrolLog)>0)
+	{
+		?>
+		<div class="th">
+			<div class="Col_0">№</div>
+			<div class="Col_1">Дата/Время</div>
+			<div class="Col_2">Документ</div>
+			<div class="Col_3">Выходной контроль</div>
+			<div class="Col_4">Дисциплина</div>
+			<div class="Col_5">Итог</div>
+		</div>
+		<?php 
+		foreach ($this->ocontrolLog as $koun => $_log) 
+		{
+			$tr=$tr==1?2:1;
+			?>		
+		<div class="tr<?php echo $tr; ?>">
+			<div class="Col_0"><?php echo ($koun + 1); ?></div>
+			<div class="Col_1"><?php echo $_log["docDate"]; ?></div>
+			<div class="Col_2"><?php echo $_log["doctypeTitle"]; ?>&nbsp;№<?php echo $_log["numb"]; ?></div>
+			<div class="Col_3"><?php echo $_log["typeTitle"]; ?></div>
+			<div class="Col_4"><?php echo $_log["disTitle"]; ?></div>
+			<div class="Col_5"><?php  echo $_log["itog"]; ?></div>
+		</div>
+			<?php 
+		}
+		
+	}
+	else 
+	{
+		echo "Нет данных";
+	}
+	?>
+<?php // echo $this->render('personal'.DIRECTORY_SEPARATOR.'_ocontrolTODO.phtml'); ?>	
+	</div>

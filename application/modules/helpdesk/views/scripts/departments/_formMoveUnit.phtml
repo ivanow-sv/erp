@@ -1,0 +1,19 @@
+<div id="moveUnitWrapper" class="hidden" >
+<p class="close_popup2"
+	onclick='$("#moveUnitWrapper").togglePopup(); ' title="отмена"></p>
+<h5>Переместить технику</h5>
+<form
+<?php
+
+foreach ($this->formMoveUnit->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<p>Подразделение получатель</p>
+<?php 	echo $this->formMoveUnit->id->removeDecorator('Description'); ?> 
+<?php 	echo $this->formMoveUnit->department->removeDecorator('Description'); ?> 
+
+<p> <?php 	echo $this->formMoveUnit->OK->removeDecorator('Description'); ?> </p>
+</form>
+</div>

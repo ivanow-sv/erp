@@ -1,0 +1,20 @@
+<div id="formAddWrapper" class="hidden">
+<p class="close_popup2"
+	onclick='$("#formAddWrapper").togglePopup(); ' title="отмена"></p>
+<h4>Создание новой группы</h4>
+<form
+<?php
+
+foreach ($this->formAdd->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php 	echo $this->formAdd->id->removeDecorator('Description'); ?>
+<p>
+Наименование<br>
+<?php 	echo $this->formAdd->title->removeDecorator('Description'); ?>
+</p>
+<p> <?php 	echo $this->formAdd->OK->removeDecorator('Description'); ?> </p>
+</form>
+</div>

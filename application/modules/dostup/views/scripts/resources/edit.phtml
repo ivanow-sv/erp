@@ -1,0 +1,95 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+
+<?php echo $this->render('_resourcesTree.phtml'); ?>
+
+<div class="acl_resources_property">
+<?php echo $this->render('_resourcesFormProperty.phtml'); ?>
+	<img class="imgLink" title="Добавить" alt="Добавить" onClick="toggleShowElement('formAddRole')"
+		src="<?php echo $this->baseUrl; ?>/public/images/add1-48.png">
+<?php echo $this->render('_roleAddForm.phtml'); ?>
+<h5>Доступ описан для</h5>
+<?php
+// если задано чонить
+if (is_array($this->roles))
+{
+	?>
+		
+	<?php 
+	$tr=1;
+	foreach ($this->roles as $key => $role) 
+	{
+		$elementID="form_role".$role["role"];
+		?>
+<!-- следующая роль-->
+	<div class="tr<?php echo $tr;?>" >
+		<div class="Col_1">
+			<?php 
+			$roleTitle=$role["role"]==0?"Гость":$role["roleTitle"];
+				echo $roleTitle;
+			?>
+		</div>
+		<div class="Col_2" >
+			<img class="imgLink" title="Настроить" alt="Настроить"
+			src="<?php echo $this->baseUrl; ?>/public/images/oo_images_industrial/dbaccess/res/docedit_sc.png"
+			onclick="showElement('<?php echo $elementID;?>');formpPivileges(<?php echo $role["role"];?>,<?php echo $this->res_id;?>)">
+			<a href="<?php echo $this->selfLink;?>/delete/id/<?php echo $role["role"];?>/res_id/<?php echo $this->res_id;?>">
+			<img alt="Удалить" title="Удалить" class="imgLink"  
+			src="<?php echo $this->baseUrl; ?>/public/images/human_o2_16x16/actions/gtk-remove.png">
+			</a>
+		</div>
+	</div>
+	<div class="rolePrivileges" id="<?php echo $elementID; ?>" style="display:none;">
+	Загрузка...
+	</div>
+		
+	<?php 
+	$tr=$tr==1?2:1;
+	}
+	?>	
+	<?php 
+	
+}
+// привилегий явно заданных к текущему ресурсу нет
+else
+{ 
+	?>
+	<p>Нет</p>
+	<?php 
+}
+?>
+
+<!--<h5>Привилегии унаследованные</h5>-->
+
+</div> <!-- END PROPERTY-->
+
+</div> <!-- END WORKSPACE-->
+
+<?php echo $this->render('footer.phtml');
+
+/*
+ * рекурсивный обход массива
+ */
+/*
+ doit('',$this->tree,$out);
+ function doit($key,$val,&$out)
+ {
+ if(is_array($val) )
+ {
+ $out.=($key!=="")?"<ul>\n".'<li class="tree_parent">'
+ .$key.'<span class="buttonInlineRight"></span>'
+ ."</li>\n"."<ul>\n":"";
+ foreach($val as $key2=>$val2) doit($key2,$val2,$out);
+ $out.="</ul>\n";
+ $out.=($key!=="")?"</ul>\n":"";
+ }
+ else
+ {
+ $out.='<li class="tree_element">'
+ .$val.'<span class="buttonInlineRight"></span>'
+ ."</li>\n";
+ }
+ }
+ */
+//$out.="</ul>";
+?>

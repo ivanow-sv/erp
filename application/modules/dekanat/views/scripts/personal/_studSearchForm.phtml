@@ -1,0 +1,64 @@
+<form
+<?php
+
+foreach ($this->form->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<table>
+	<tr>
+		<td colspan="2">
+		<?php echo $this->form->gosparam;?>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		Форма обучения
+		</td>
+		<td >
+		<?php echo $this->form->osnov;?>
+		</td>
+	</tr>
+	<tr>
+		<td>Курс</td>
+		<td><?php echo $this->form->kurs;?></td>
+	</tr>
+	<tr>
+		<td>По всему курсу</td>
+		<td><?php echo $this->form->allfacult;?></td>
+	</tr>
+	
+	<tr>
+		<td>Группа</td>
+		<td><?php echo $this->form->group;?></td>
+	</tr>
+	
+	<tr>
+		<td>Подгруппа</td>
+		<td><?php echo $this->form->subgroup;?></td>
+	</tr>
+
+	<tr>
+		<td>№ студ. билета</td>
+		<td><?php echo $this->form->zach;?></td>
+		<td rowspan="4"><small>Введите критерии<br>
+		и нажмите на картинку</small><br>
+			<img onClick="filterForm.submit();" class="imgLink" src="<?php echo $this->baseUrl; ?>/public/images/search_user.png" />
+			</td>
+	</tr>
+	<tr>
+		<td>Фамилия</td>
+		<td><?php echo $this->form->family;?></td>
+	</tr>
+	<tr>
+		<td>Имя</td>
+		<td><?php echo $this->form->name;?></td>
+	</tr>
+	<tr>
+		<td>Отчество</td>
+		<td><?php echo $this->form->otch;?></td>
+	</tr>
+
+</table>
+</form>

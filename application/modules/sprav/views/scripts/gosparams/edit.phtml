@@ -1,0 +1,22 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<h5>Результат обработки данных</h5>
+<?php echo $this->err; ?>
+<?php if ($this->err!=="OK") 
+{
+	foreach ($this->m as $varname=>$text)
+			
+	{
+		?>
+		<div class="tr">
+		<div class="Col_1"><?php echo $varname; ?></div>
+		<div class="Col_2"><?php echo current($text); ?></div>
+		</div>
+		<?php 
+	}
+}
+?>
+<br></br>
+<a href="<?php echo $this->baseUrl ?>/sprav/<?php echo $this->curcont; ?>">Продолжить работу</a>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

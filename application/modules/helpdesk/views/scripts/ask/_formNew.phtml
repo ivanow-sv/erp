@@ -1,0 +1,38 @@
+<form
+<?php
+
+foreach ($this->formNew->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+Представьтесь
+<div class="table">
+	<div class="tr1">
+		<div class="Col_1">ФИО</div> 
+		<div class="Col_2"><?php 	echo $this->formNew->fio->removeDecorator('Description'); ?></div>
+	</div>
+	<div class="tr2">
+		<div class="Col_1">Подразделение</div>
+		<div class="Col_2"><?php 	echo $this->formNew->dep->removeDecorator('Description'); ?></div>
+	</div>
+</div>
+
+<p>Местонахождение проблемы (кабинет)<br>
+<?php 	echo $this->formNew->place->removeDecorator('Description'); ?>
+</p>
+<p>
+Укажите тип заявки<br>
+<?php 	echo $this->formNew->typeid->removeDecorator('Description'); ?>
+</p>
+<p>
+Укажите оборудование<br>
+<?php 	echo $this->formNew->subject->removeDecorator('Description'); ?>
+</p>
+<p> 
+Опишите проблему<br>
+<?php 	echo $this->formNew->problem->removeDecorator('Description'); ?> 
+</p>
+<p> <?php 	echo $this->formNew->OK->removeDecorator('Description'); ?> </p>
+<p><span class="warningIcoSmall"></span>Все поля обязательны для заполнения</p>
+</form>

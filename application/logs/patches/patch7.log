@@ -1,0 +1,28 @@
+
+========= 2012-06-16 15:00:02, Sat =========
+2012-06-16 15:00:02, Sat	 Начало
+2012-06-16 15:00:02, Sat	 новая таблица - departments - подразделения предприятия 
+2012-06-16 15:00:02, Sat	 SQL-запрос: CREATE TABLE IF NOT EXISTS `departments` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `title` varchar(200) default NULL,
+  `title_small` varchar(15) default NULL COMMENT 'сокращенное название кафедры',
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `title_small` (`title_small`)
+) TYPE=InnoDB COMMENT='перечень подразделений';
+		 
+2012-06-16 15:00:02, Sat	 Успешно 
+2012-06-16 15:00:02, Sat	 Завершение
+
+========= 2012-06-18 12:15:28, Mon =========
+2012-06-18 12:15:28, Mon	 Начало
+2012-06-18 12:15:28, Mon	 новая таблица - departments - подразделения предприятия 
+2012-06-18 12:15:28, Mon	 SQL-запрос: CREATE TABLE IF NOT EXISTS `departments` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `title` varchar(200) default NULL,
+  `title_small` varchar(15) default NULL COMMENT 'сокращенное название кафедры',
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `title_small` (`title_small`)
+) TYPE=InnoDB COMMENT='перечень подразделений';
+		 
+2012-06-18 12:15:28, Mon	 Успешно 
+2012-06-18 12:15:28, Mon	 Завершение

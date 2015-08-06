@@ -1,0 +1,76 @@
+<form
+<?php
+foreach ($this->formedit->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?> >
+<h4>Изменение данных</h4>
+<?php 	echo $this->formedit->userid->removeDecorator('Description'); ?>
+<div class="table">
+<div class="tr2">
+	<div class="Col_1">Состояние</div>
+	<div class="Col_2"><?php 	echo $this->formedit->disabled->removeDecorator('Description'); ?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Имя учетной записи (LOGIN)</div>
+	<div class="Col_2"><?php 	echo $this->formedit->login->removeDecorator('Description'); ?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Фамилия</div>
+	<div class="Col_2"><?php 	echo $this->formedit->family->removeDecorator('Description'); ?>
+	</div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Имя</div>
+	<div class="Col_2"><?php 	echo $this->formedit->name->removeDecorator('Description'); ?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Отчество</div>
+	<div class="Col_2"><?php 	echo $this->formedit->otch->removeDecorator('Description'); ?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Комментарий</div>
+	<div class="Col_2"><?php 	echo $this->formedit->comment->removeDecorator('Description'); ?></div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Добавить E-mail</div>
+	<div class="Col_2"><?php 	echo $this->formedit->email->removeDecorator('Description'); ?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Прописанные E-mail</div>
+	<div class="Col_2">
+		<?php
+		if (!empty($this->emails))
+		{
+			foreach ($this->emails as $mail) 
+			{
+				echo "".$mail."<br>";
+			}
+		} 
+		else 
+		{
+			echo "Не найдены";
+		}
+		?>
+	</div>
+</div>
+<div class="tr2">
+	<div class="Col_1">Пароль</div>
+	<div class="Col_2"><?php 	echo $this->formedit->pass->removeDecorator('Description'); ?></div>
+</div>
+<div class="tr1">
+	<div class="Col_1">Подтверждение пароля</div>
+	<div class="Col_2"><?php 	echo $this->formedit->passconfirm->removeDecorator('Description'); ?></div>
+</div>
+
+<div class="tr1">
+	<div class="Col_1"> </div>
+	<div class="Col_2">
+		<?php 	echo $this->formedit->RES->removeDecorator('Description'); ?>
+		<?php 	echo $this->formedit->OK->removeDecorator('Description'); ?>
+	</div>
+</div>
+</div>
+
+</form>

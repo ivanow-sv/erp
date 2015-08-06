@@ -1,0 +1,87 @@
+<form action="<?= $this->escape($this->element->getAction())  ?>"
+	method="<?= $this->escape($this->element->getMethod())  ?>"
+	name="<?= $this->escape($this->element->getName())  ?>"
+	id="<?= $this->escape($this->element->getId())  ?>">
+<div class="toolbarInlineRight">	
+	<img src="<?php echo $this->element->getAttrib("baseUrl"); ?>/public/images/human_o2_16x16/actions/dialog-apply.png" 
+		class="imgLink" alt="Применить" title="Применить"
+		onClick="privilegesApply('<?= $this->escape($this->element->getId()) ?>');">		
+	<img src="<?php echo $this->element->getAttrib("baseUrl"); ?>/public/images/human_o2_16x16/actions/edit-undo.png" 
+		class="imgLink" alt="Вернуть" title="Вернуть"
+		onClick="<?= $this->escape($this->element->getId()) ?>.reset();">
+	<img src="<?php echo $this->element->getAttrib("baseUrl"); ?>/public/images/human_o2_16x16/actions/window-close.png" 
+		class="imgLink" alt="Закрыть" title="Закрыть"
+		onClick="removeHideParentElement('<?= $this->escape($this->element->getId()) ?>');">
+</div>
+
+<!--<pre>-->
+<?php  //echo $this->element->getAttrib("baseUrl"); ?>
+<?php  //echo print_r(get_class_methods($this->element),true); ?>
+<!--</pre>-->
+
+<div class="th">
+<div class="Col_1">Привилегия</div>
+<div class="Col_1">Параметры</div>
+<div class="Col_2">
+	<img class="imgLink" src="<?php echo $this->element->getAttrib("baseUrl");; ?>/public/images/Stop_sign_24x24.png" 
+	alt="Запретить" title="Запретить"
+	onclick="privilegesAll('<?= $this->escape($this->element->getId()) ?>',0)">
+</div>
+<div class="Col_2">
+	<img class="imgLink" src="<?php echo $this->element->getAttrib("baseUrl");; ?>/public/images/OK_24x24.png" 
+	alt="Разрешить" title="Разрешить"
+	onclick="privilegesAll('<?= $this->escape($this->element->getId()) ?>',1)">
+</div>
+<div class="Col_2">
+	<img class="imgLink" src="<?php echo $this->element->getAttrib("baseUrl"); ?>/public/images/link_white_24x24.png" 
+	alt="Наследовать" title="Наследовать"
+	onclick="privilegesAll('<?= $this->escape($this->element->getId()) ?>','')">
+</div>
+</div>
+<?php
+$tr=1;
+// перебираются все элементы
+foreach ($this->element as $name=>$el)
+{
+//	echo $this->element->$name->getType();
+//	continue;
+	// если не скрытый элемент
+	if ($this->element->$name->getType() !=='Zend_Form_Element_Hidden')
+	{
+		// если это элемент с параметром - то пропускаем, он выводится в другом месте
+		if (strpos ($this->element->$name->getName(),'param')!==false)		continue; 
+		?>
+
+<div class="tr<?= $tr ?>"><!--begin tr-->
+<div class="Col_1">
+	<?=  $this->element->$name->getLabel() ?>
+</div>
+<div class="Col_1">
+	<?php 
+	// элемент с доп. параметром
+	$name_param=$name."_param";
+	echo  $this->element->$name_param;
+	
+	 ?>
+</div>
+<?php
+	echo $this->element->$name;
+?>
+	
+</div><!--end tr-->
+
+		<?php
+		$tr=$tr==1?2:1;
+	}
+	else
+	{
+		echo  $this->element->$name;
+	}
+}
+
+//	echo "<pre>".print_r($this->element->edit->getMultiOptions(),true)."</pre>";
+//	echo "<pre>".print_r(get_class_methods($this->element->edit),true)."</pre>";
+	
+?>
+
+</form>

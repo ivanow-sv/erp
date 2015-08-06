@@ -1,0 +1,11 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<h3>Выходной контроль. </h3>
+<?php  echo $this->render($this->currentController .DIRECTORY_SEPARATOR.'_filterForm.phtml'); ?>
+<?php echo $this->render($this->currentController .DIRECTORY_SEPARATOR.'_addForm.phtml'); ?>
+<?php // echo $this->render($this->currentController .DIRECTORY_SEPARATOR.'_editDateForm.phtml'); ?>
+<?php  echo $this->render($this->currentController .DIRECTORY_SEPARATOR.'_deleteForm.phtml'); ?>
+<?php  echo $this->render($this->currentController .DIRECTORY_SEPARATOR.'_list.phtml'); ?>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

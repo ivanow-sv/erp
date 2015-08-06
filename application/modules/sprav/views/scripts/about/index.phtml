@@ -1,0 +1,21 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<form action="<?php echo $this->baseUrl; ?>/<?php echo $this->modulename; ?>/<?php echo $this->curcont; ?>/edit" method="post">
+<table>
+	<tr class="tr2">
+		<td >Название ВУЗа</td>
+		<td><textarea class="typicadd" name="orgname"><?php echo $this->entry["orgname"];?></textarea></td>
+	</tr>
+	<tr class="tr1">
+		<td >Адрес</td>
+		<td><textarea class="typicadd" name="adress"><?php echo $this->entry["adress"];?></textarea></td>
+	</tr>
+	<tr class="tr1">
+		<td >ФИО ректора</td>
+		<td><textarea class="typicadd" name="rektor_FIO"><?php echo $this->entry["rektor_FIO"];?></textarea></td>
+	</tr>
+</table>
+<input type="submit" value="Применить" class="apply_text" />
+</form>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

@@ -1,0 +1,62 @@
+<div id="list">
+<h4>
+	Список документов
+<!--	<span title="Добавить" class="addIcoSmall" -->
+<!--	onclick="attendanceAdd();">&nbsp;</span>-->
+</h4>
+<?php 
+	if (count ($this->list)<1) echo "Не найдено";
+	else 
+	{
+		$k=1;
+		$tr=1;
+		?>
+		<div class="th">
+			<div class="Col_1">№</div>
+			<div class="Col_2">Группа</div>
+			<div class="Col_3">Дисциплина</div>
+			<div class="Col_4">выходной контроль</div>
+			<div class="Col_5">документ</div>
+			<div class="Col_6">дата</div>
+			<div class="Col_7">подп.</div>
+			<div class="Col_8">декан</div>
+			<div class="Col_9"></div>
+		</div>
+		<?php 
+		foreach ($this->list as $item) 
+		{
+			$tr=$tr==1?2:1;
+			?>
+		<div class="tr<?php echo $tr; ?>">
+			<div class="Col_1"><?php echo $item["numb"]; ?></div>
+			<div class="Col_2"><?php echo $item["groupTitle"]; ?></div>
+			<div class="Col_3"><?php echo $item["disTitle"]; ?></div>
+			<div class="Col_4"><?php echo $item["typeTitle"]; ?></div>
+			<div class="Col_5"><?php echo $item["docTypeTitle"]; ?></div>
+			<div class="Col_6"><?php echo $item["eventdate"]; ?></div>
+			<div class="Col_7">
+				<?php $_cl=$item["state"]==1?"lockedIcoSmall":"unlockedIcoSmall";?>
+				<span class="<?php echo $_cl; ?>"></span>
+			</div>
+			<div class="Col_8">
+				<?php $_cl=$item["approved"]==1?"lockedIcoSmall":"unlockedIcoSmall"; ?>
+				<span class="<?php echo $_cl; ?>"></span>
+			</div>
+			<div class="Col_9">
+				<span class="removeIcoSmall" title="Удалить"
+				onclick="ocontrolDel(<?php echo $item["id"]?>,<?php echo $item["numb"]; ?>)"
+				>
+				</span>
+				<a class="viewIcoSmall" title="Подробнее"
+				href="<?php echo $this->baseLink."/edit/id/".$item["id"] ; ?>"
+				>
+				</a>
+			</div>
+		</div>
+			
+			<?php 
+			
+		}
+	} 
+?>
+</div>

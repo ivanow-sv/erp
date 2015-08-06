@@ -1,0 +1,194 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+
+<div
+	id="workspace"><?php
+	if (count($this->details)<1) echo "Нет прикрепленных студентов";
+	else
+	{
+		echo $this->render($this->currentController .DIRECTORY_SEPARATOR.'_formStateChange.phtml');
+		echo $this->render($this->currentController .DIRECTORY_SEPARATOR.'_formStateChangeMass.phtml');
+		?> <a class="backButton" title="Вернуться к списку"
+	href="<?php echo $this->baseLink; ?>"> </a> <a
+	class="attachmentOOWriter" title="Скачать в формате OpenOffice Calc"
+	href="<?php echo $this->baseLink; ?>/odt/id/<?php echo $this->listInfo["id"]; ?>">
+</a>
+
+<h4>Аттестационный лист №<?php echo $this->listInfo["numb"]; ?></h4>
+		<?php
+		//  еси чего то не хватает
+		if ($this->diffz)
+		{
+			?>
+<div class="notFound">
+<div class="ico"><img src="/public/images/1272411835_warning_48.png"></div>
+<div class="msg"><b>ВНИМАНИЕ!&nbsp;Данный аттестационный лист не
+актуален.</b> <?php 
+if (is_array($this->disDiffAdded) && count($this->disDiffAdded)>0)
+{
+	?>
+<p>Причина - в учебный план были добавлены дисциплины:</p>
+<ul>
+<?php
+foreach ($this->disDiffAdded as $title)
+{
+	echo "\n<li>".$title."</li>";
+}
+?>
+</ul>
+<?php
+}
+//  еси чего то убрали
+if (is_array($this->disDiffDeleted) && count($this->disDiffDeleted)>0)
+{
+	?>
+<p>Причина - из учебного плана были убраны дисциплины:</p>
+<ul>
+<?php
+foreach ($this->disDiffDeleted as $title)
+{
+	echo "\n<li>".$title."</li>";
+}
+?>
+</ul>
+<?php
+}
+if (!empty($this->diffGr))
+{
+	?>
+<p>Причина - не указаны студенты:</p>
+<ul>
+<?php
+foreach ($this->diffGr as $userid=>$fio)
+{
+	echo "\n<li>".$fio."</li>";
+}
+?>
+</ul>
+<?php
+
+}
+if (!empty($this->diffAtt))
+{
+	?>
+<p>Причина - студенты из другой группы:</p>
+<ul>
+<?php
+foreach ($this->diffAtt as $userid=>$fio)
+{
+	echo "\n<li>".$fio."</li>";
+}
+?>
+</ul>
+<?php
+
+}
+?> <a href="<?php echo $this->fixLink; ?>">Исправить</a></div>
+</div>
+<?php
+		}
+		?>
+<p><strong><?php echo $this->listInfo["groupTitle"]; ?></strong>&nbsp;группы&nbsp;<strong>
+		<?php echo $this->listInfo["kurs"]; ?></strong>&nbsp;курса за период
+с&nbsp;<?php echo $this->listInfo["starts"]; ?>&nbsp;по&nbsp;<?php echo $this->listInfo["ends"]; ?>
+</p>
+<table class="attendance_list">
+
+<?php
+$n=1;
+foreach ($this->details as $subGrTitle => $students)
+{
+	?>
+	<tr>
+		<td colspan=<?php echo count($this->disciplinesList) + 2; ?>><?php echo $subGrTitle;?>&nbsp;подгруппа</td>
+	</tr>
+	<tr class="th">
+		<th rowspan="2">№</th>
+		<th rowspan="2">ФИО</th>
+		<th colspan="<?php echo count($this->disciplinesList); ?>">Учебные
+		дисциплины</th>
+	</tr>
+	<tr class="th">
+	<?php
+	foreach ($this->disciplinesList as $id=>$disTitle)
+	{
+		?>
+		<th id="disTitleID_<?php echo $id; ?>"
+			onclick="attendanceStateMassForm(0,<?php echo $id; ?>);" class="hand"
+			title="Все на данной дисциплине"><?php echo $disTitle; ?></th>
+			<?php
+	}
+	?>
+
+	</tr>
+	<?php
+	foreach ($students as $fio => $info)
+	{
+		$tr=$tr==1?2:1;
+		$_info=$info;
+		$_info=array_shift($_info);
+		$userid=$_info["userid"];
+		?>
+	<tr class="tr<?php echo $tr; ?>">
+		<td class="Col_1"><?php echo $n; ?></td>
+		<td class="Col_2 hand" id="fio<?php echo $userid; ?>"
+			onclick="attendanceStateMassForm(<?php echo $userid; ?>,0);"><?php echo $fio ?>
+		</td>
+		<?php
+		$col=2;
+			
+		foreach ($this->disciplinesList as $disID =>$disTitle)
+		{
+			//				echo "<pre>".print_r()
+			$col++;
+			$cellID="d".$disID."u".$info[$disID]["userid"];
+			$val=( !isset($info[$disID])
+			|| is_null($info[$disID])
+			|| empty($info[$disID]["title_letter"])
+			|| $info[$disID]["title_letter"]==="" )
+			?	"-"
+			:	$info[$disID]["title_letter"]
+			;
+			switch ($info[$disID]["stateid"])
+			{
+				case 1:
+					$val='<span class="done">'.$val."</span>";
+					break;
+
+				case 2:
+					$val='<span class="warning">'.$val."</span>";
+					break;
+
+				case 3:
+					$val='<span class="error">'.$val."</span>";
+					break;
+
+				default:
+
+					break;
+			}
+
+
+			$val.=$this->Utf8strlen($info[$disID]["comment"])>=1
+			?	"\n <br><small>".$info[$disID]["comment"]."</small>"
+			:	"";
+			?>
+		<td class="Col_<?php echo $col; ?> state" id="<?php echo $cellID; ?>"
+			onclick="attendanceStateForm(<?php echo $info[$disID]["userid"]; ?>, <?php echo $info[$disID]["discipline"]; ?>);"><?php echo $val ;?></td>
+			<?php
+		}
+		$n++;
+		?>
+	</tr>
+	<?php
+	}
+	?>
+	<?php
+
+}
+?>
+</table>
+<?php
+
+	}
+	?> <!--<pre><?php  //echo print_r($this->details,true); ?></pre>--></div>
+	<?php echo $this->render('footer.phtml'); ?>

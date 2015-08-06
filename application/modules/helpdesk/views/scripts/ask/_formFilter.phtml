@@ -1,0 +1,14 @@
+
+<form
+<?php
+
+foreach ($this->formFilter->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+ <h4>Найти заявку</h4>
+ Подано за:<?php 	echo $this->formFilter->days->removeDecorator('Description'); ?>
+ Статус:<?php 	echo $this->formFilter->state->removeDecorator('Description'); ?> 
+ <br>Тип: <?php 	echo $this->formFilter->type->removeDecorator('Description'); ?> 
+</form>

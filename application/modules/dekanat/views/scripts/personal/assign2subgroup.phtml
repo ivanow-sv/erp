@@ -1,0 +1,45 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<h5><?php echo $this->title2; ?></h5>
+<p>Результат: <?php echo $this->message; ?></p>
+<?php 	
+if (count($this->processing)>0)
+{
+?>
+<p>Обработано человек: <?php echo $this->studReq; ?></p>
+<p>выполнено операций: 
+<br>- переименовано учетных записей&nbsp;-&nbsp;<?php echo $this->afLogin; ?>
+<br>- скорректировано номеров зачеток&nbsp;-&nbsp;<?php echo $this->afZach; ?>
+<br>- корректировок номера подгруппы &nbsp;-&nbsp;<?php echo $this->afMove; ?>
+</p>
+<h5>Подробности</h5>
+	<div class="tr1">
+		<div class="Col_1">номер</div>
+		<div class="Col_2">Ф.И.О.</div>
+		<div class="Col_3">результат</div>
+		<div class="Col_4">кем занят, Ф.И.О.</div>
+	</div>
+	<?php
+	$tr=1;
+	foreach ($this->processing as $aid=>$u)
+	{
+		$tr=$tr===1?2:1;
+		$highlight=(!$u["result"])?"warning":"done";
+		?>
+	<div class="tr<?php echo $tr;?>">
+		<div class="Col_1"><?php echo $u["login"];?></div>
+		<div class="Col_2"><?php echo $u["fio"];?></div>
+		<div class="Col_3 <?php echo $highlight; ?>"><?php echo $u["result"]?"OK":"пропущен";?></div>
+		<div class="Col_4"><?php echo $u["vacancy"];?></div>
+	</div>
+	<?php 
+	}
+	?>
+	
+	<?php 
+}
+?>
+
+<a href="<?php echo $this->baseLink;?>">Продолжить работу</a>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

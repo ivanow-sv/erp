@@ -1,0 +1,65 @@
+<form
+<?php
+foreach ($this->formManage->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?> >
+
+<?php 	echo $this->formManage->aclgroup->removeDecorator('Description'); ?>
+<div class="table">
+	<div class="th">
+		<div class="Col_1">Назначенные роли</div>
+		<div class="Col_2">Дейсвия</div>
+		<div class="Col_3">Свободные роли</div>
+	</div>
+	<div class="tr1">
+		<div class="Col_1">
+			Выбрать: 
+			<span class="inlineLink" onclick='$("#added option:selected").each(
+				function(){
+					$(this).removeAttr("selected");
+				});'>
+				ни одного
+			</span>
+			&nbsp;|&nbsp;
+			<span class="inlineLink" onclick='$("#added option").each(
+				function(){
+					$(this).attr("selected","selected");
+				});'>
+				всех
+			</span>
+		</div>
+		<div class="Col_2"></div>
+		<div class="Col_3">
+			Выбрать: 
+			<span class="inlineLink" onclick='$("#other option:selected").each(
+				function(){
+					$(this).removeAttr("selected");
+				});'>
+				ни одного
+			</span>
+			&nbsp;|&nbsp;
+			<span class="inlineLink" onclick='$("#other option").each(
+				function(){
+					$(this).attr("selected","selected");
+				});'>
+				всех
+			</span>
+		</div>
+	</div>
+	<div class="tr2">
+		<div class="Col_1"><?php 	echo $this->formManage->added->removeDecorator('Description'); ?></div>
+		<div class="Col_2" align="center">
+			<span onclick="roleManageLeft();" title="Добавить" class="leftArrowIcoMedium"></span>
+			<br>
+			<span onclick="roleManageRight();" title="Убрать" class="rightArrowIcoMedium"></span>
+		</div>
+		<div class="Col_3"><?php 	echo $this->formManage->other->removeDecorator('Description'); ?></div>
+	</div>
+</div>
+<div id="msgWrapper" class="hidden">
+	<div id="formMsg"></div>
+</div>
+<div id="knopka" onclick="roleManageSave();">Сохранить</div>
+</form>

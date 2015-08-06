@@ -1,0 +1,37 @@
+<script type="text/javascript">
+<!--
+$(function() {
+	$( "input[type=submit], button, .button" )
+	.button()
+	});
+
+//-->
+</script>
+
+<h4>Изменение записи</h4>
+
+<form
+<?php
+
+foreach ($this->formEdit->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php 	echo $this->formEdit->id->removeDecorator('Description'); ?>
+
+<p>
+Наименование<br>
+<?php 	echo $this->formEdit->title->removeDecorator('Description'); ?>
+</p>
+<p>
+Описание<br>
+<?php 	echo $this->formEdit->comment->removeDecorator('Description'); ?>
+</p>
+<p> <?php 	echo $this->formEdit->OK->removeDecorator('Description'); ?> </p>
+</form>
+<div id="msgWrapper" class="hidden">
+<p class="close_popup2"
+	onclick='$("#msgWrapper").fadeOut("slow");' title="отмена"></p>
+<div id="formMsg"></div>
+</div>

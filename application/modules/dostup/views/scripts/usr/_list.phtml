@@ -1,0 +1,74 @@
+<div id="userslist">
+<?php
+// роли заданы 
+if (count($this->items)>0)
+{
+// 	echo "<pre>".print_r($this->items,true)."</pre>";
+	?>
+
+	
+
+<div class="th">
+	<div class="Col_1"><input type="checkbox" ></div>
+	<div class="Col_2">ID</div>
+	<div class="Col_3">login</div>
+	<div class="Col_4">ФИО</div>
+	<div class="Col_5">комментарий</div>
+	<div class="Col_6"></div>
+</div>
+
+	<?php
+	
+	foreach ($this->items as $v) 
+	{
+		$tr=$tr==1?2:1;
+		if ($v["disabled"]==1)
+		{
+			$dis="disabled";
+			$stateIco="lockedIcoSmall";
+			$stateTitle="Отключено. Включить";
+			$stateNew="0";
+		}
+		else
+		{
+			$dis="";
+			$stateIco="unlockedIcoSmall";
+			$stateTitle="Включено. Отключить";
+			$stateNew="1";
+		}
+
+		?>
+<div class="tr<?php echo $tr;?> <?php echo $dis; ?>" id="uid_<?php echo $v["id"]; ?>"  >
+	<div class="Col_1">
+		<input type="checkbox" name="userid[]" value="<?php echo $v["id"]; ?>">
+	</div>
+	<div class="Col_2"><?php echo $v["id"]; ?></div>
+	<div class="Col_3"><?php echo $v["login"]; ?></div>
+	<div class="Col_4"><?php echo $v["fio"]; ?></div>
+	<div class="Col_5"><?php echo $v["comment"]; ?></div>
+	<div class="Col_6">
+		<span class="editIcoSmall" title="Детали" onclick="usrShow(<?php echo $v["id"]; ?>);">
+		</span>
+		<span class="removeIcoSmall" title="Удалить" onclick="usrDel(<?php echo $v["id"]; ?>,'<?php echo $v["login"]; ?>');"></span>
+		<span class="exportIcoSmall" title="Переместить" onclick="usrMove(<?php echo $v["id"]; ?>); "></span>
+		<span class="dublicateIcoSmall" title="Копировать" onclick="usrCopy(<?php echo $v["id"]; ?>); "></span>
+		<span class="state <?php echo $stateIco; ?> inlineLink" 
+			title="<?php echo $stateTitle; ?>" 
+			onclick="usrState(<?php echo $v["id"]; ?>,<?php echo $stateNew; ?>);">
+		</span>
+	</div>
+</div>
+		<?php 
+		;
+	}
+	
+}
+// ролей нет
+else 
+{
+	?>
+	<p>Не найдено</p>
+	<?php 
+}
+?>
+</div>

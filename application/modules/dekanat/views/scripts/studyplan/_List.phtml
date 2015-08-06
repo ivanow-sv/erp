@@ -1,0 +1,106 @@
+<div id="List">
+<h3>Рабочие учебные планы 
+<span title="Добавить запись" class="addIcoSmall"
+onclick='$("#formNewWarp").togglePopup(); '
+></span> 
+<span title="Загрузить XLS из костромской программы - один курс" class="openIcoSmall"
+onclick='$("#importxlskostromaWarp").togglePopup(); '
+>
+</span>
+</h3>
+<!--<pre><?php //echo print_r($this->list,true); ?></pre>-->
+
+<!--<table class="table">
+	<tr class="th">
+		<th class="Col_0"></th>
+		<th class="Col_1">курс</th>
+		<th class="Col_2">время</th>
+	</tr>
+	
+</table>
+-->
+
+<div class="table planList" >
+<?php 
+
+if (count($this->list)>0)
+{
+	
+//	echo $this->formD;
+	?>
+	
+<div class="th">
+	<div class="Col_0"> курс</div>
+	<div class="Col_1">1-ый семестр</div>
+	<div class="Col_2">2-ой семестр</div>
+</div>
+<?php 	
+//	$cur=$this->list[0]["id"];
+	$cur=0;
+	$rows=$this->list;
+		// курс => семестр => детали семестра => дисциплины => форма выходного контроля => детали 
+	
+	foreach ($rows as $kurs=>$item) 
+	{
+		$tr=$tr==1?$tr=2:1;
+		?>
+<div class="tr<?php echo $tr; ?>">
+	<div class="Col_0"><?php echo $kurs ;?></div>
+		<?php
+		// переберем два семестра
+		for ($sem=1;$sem<=2;$sem++)
+		{
+			// если есть семестр
+			if (isset($item[$sem]))
+			{
+				$semContent=$item[$sem];
+				?>
+	<div class="Col_1">
+		с&nbsp;<strong><?php echo $semContent["begins"]; ?></strong>&nbsp;по&nbsp;<strong><?php echo $semContent["ends"]; ?></strong>
+		<span class="removeIcoSmall" title="Удалить запись" 
+		onClick='$("#formDelete #id").val("<?php echo $semContent["id"]; ?>"); $("#formDeleteWarp").togglePopup(); '> 
+		</span>
+		<span 
+		onclick='$("#formEditDates #id").val(<?php echo $semContent["id"]; ?>) ; $("#formEditDatesWarp").togglePopup();' 
+		title="Поменять сроки" class="calendarIcoSmall"> 
+		</span>
+		<span 
+		onclick='editDiscipline(<?php echo $semContent["id"]; ?>);' 
+		title="Добавить дисциплину" class="addIcoSmall"> 
+		</span>
+		
+		<?php
+		// есть дисциплины 
+		if (isset($semContent["disciplines"]))
+		{
+			// перебрать каждую жисциплину в контексте каждой формы выходного контроля
+			echo $this->buildDisciplines($semContent["disciplines"],$this->outControls);
+		}
+		?>
+	</div>
+				<?php 				
+			}
+			// семестр не определен, кнопка добавки
+			else
+			{
+				?>
+	<div class="Col_2">
+		
+	</div>
+				<?php 
+			}
+		}
+?>
+</div>		
+<?php 
+	}
+ 
+}
+else echo "Подходящих не найдено";
+
+
+?>
+</div>
+</div>
+
+

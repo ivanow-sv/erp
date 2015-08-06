@@ -1,0 +1,19 @@
+
+<form
+<?php
+
+foreach ($this->formFilter->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<p>
+Учебный год <?php echo $this->formFilter->studyYearStart;?>-<span id="studyYearEnd"><?php echo $this->studyYearEnd;?>.</span>
+&nbsp;Курс <?php echo $this->formFilter->kurs;?> &nbsp;  Семестр<?php echo $this->formFilter->semestr; ?>
+</p>
+<p>форма обучения&nbsp;<?php echo $this->formFilter->osnov;?></p>
+<p>группа <?php echo $this->formFilter->group;?>
+</p>
+
+
+</form>

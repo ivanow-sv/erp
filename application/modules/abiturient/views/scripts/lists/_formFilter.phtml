@@ -1,0 +1,11 @@
+<form
+<?php
+foreach ($this->formFilter->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<span class="expandIco" title="Скрыть" onclick='$("#formEditWrapper").toggle();'>&nbsp;</span>
+<?php echo $this->formFilter->listid->removeDecorator("Description");?>
+<!--  <span class="removeIcoSmall" title="Удалить этот список" onClick="filters_del();"></span> -->
+</form>

@@ -1,0 +1,22 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+
+<div id="workspace">
+<?php 
+if ($this->assError>0)
+{
+	?>
+	Ошибка при обработке:
+	<?php 	
+	echo $this->assMsg;
+}
+else
+{
+?>
+Добавлена запись ID=<?php echo $this->insertID; ?>
+<br>Затронуто студентов&nbsp;<?php echo $this->affected["users"]; ?>
+<br>Затронуто дисциплин&nbsp;<?php echo $this->affected["disciplines"]; ?>
+<?php  
+}
+?>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

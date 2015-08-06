@@ -1,0 +1,63 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<div id="shareFormWrapper" class="hidden"></div>
+<div id="delWrapper" class="hidden"></div>
+
+<?php echo $this->render('orders'.DIRECTORY_SEPARATOR.'_newDocumentForm.phtml'); ?>
+<h5>Фильтр</h5>
+<?php echo $this->render('orders'.DIRECTORY_SEPARATOR.'_filterForm.phtml'); ?>
+<h5>Перечень существующих 
+	<span class="addIcoSmall" title="Создать новый"
+	onclick='$("#newDocumentWrapper").togglePopup(); '
+	></span>
+</h5>
+<div class="toolbar">
+	</div>
+<div id="orders">
+<?php
+$tr=1;
+if (empty($this->list)) echo "Не найдено"; 
+else 
+{
+	?>
+	<div class="th">
+		<div class="Col_1"></div>			
+		<div class="Col_2">Приказ</div>			
+		<div class="Col_3">Дата</div>			
+		<div class="Col_4">Автор</div>			
+		<div class="Col_5">Создан</div>			
+		<div class="Col_6">Комментарий</div>			
+		<div class="Col_7">Действия</div>			
+	</div>
+	<?php 
+	$k=1;
+	foreach ($this->list as $_list) 
+	{
+		$tr=$tr===1?2:1;
+		?>
+	<div class="tr<?php echo $tr; ?>">
+		<div class="Col_1"><?php echo $k; ?></div>			
+		<div class="Col_2"><?php echo $_list["titleNum"]; ?>-<?php echo $_list["titleLetter"]; ?></div>			
+		<div class="Col_3"><?php echo $_list["titleDate"]; ?></div>			
+		<div class="Col_4"><?php echo empty($_list["fio"])?$_list["login"]:$_list["fio"]; ?></div>			
+		<div class="Col_5"><?php echo $_list["createtime"]; ?></div>			
+		<div class="Col_6"><?php echo $_list["comment"]; ?></div>			
+		<div class="Col_7">
+<!--			<span class="shareIcoSmall" title="Опубликовать или поменять права доступа" -->
+<!--				onclick="getShareDocumentForm(<?php // echo $_list["id"]?>,this); ">-->
+<!--			</span>-->
+			<span class="removeIcoSmall" title="Удалить" 
+				onclick="del(<?php echo $_list["id"]?>,this); ">
+			</span>
+			<a class="editIcoSmall" title="Изменить" href="orders/edit/id/<?php echo $_list["id"]; ?>" >
+			</a>
+		</div>			
+	</div>
+		<?php
+		$k++; 
+	}
+}
+?>
+</div>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

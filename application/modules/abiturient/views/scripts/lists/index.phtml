@@ -1,0 +1,15 @@
+<?php echo $this->render('header.phtml'); ?>
+<div id="workspace">
+<strong>Перечень настроенных списков&nbsp;</strong><?php echo $this->render($this->currentController."/".'_formFilter.phtml'); ?>
+
+
+<!-- форма  правки -->
+<?php echo $this->render($this->currentController."/".'_formEdit.phtml'); ?>
+<!-- конец форма добавления -->
+
+<!-- Результат -->
+<?php echo $this->render($this->currentController."/".'_abitursList.phtml'); ?>
+<!-- конец результат -->
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

@@ -1,0 +1,13 @@
+<div id="formWrapper" style="display:none;">
+
+<p class="close_popup2" onclick='$("#formWrapper").togglePopup(); ' title="отмена"></p>
+<form name="SpravChangeForm" id="SpravChangeForm" method="post" 
+action="<?php echo $this->selfLink; ?>/edit/">
+	<input type="hidden" value="" id="id" name="id">
+	Введите новое значение
+	<br><textarea name="title"></textarea>
+	<br>Шифр&nbsp;<input class="inputSmall2" value="" name="numeric_title" id="numeric_title" >
+	<br><input type="submit" class="apply_text" value="Применить">
+	
+</form>
+</div>

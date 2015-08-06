@@ -1,0 +1,15 @@
+
+<form
+<?php
+
+foreach ($this->formFilter->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<p>
+Группа<?php echo $this->formFilter->role;?><?php //echo $this->formFilter->OK;?>
+</p>
+
+
+</form>

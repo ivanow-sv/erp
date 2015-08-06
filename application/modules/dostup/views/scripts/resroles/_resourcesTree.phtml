@@ -1,0 +1,133 @@
+<div class="acl_resources_tree">
+
+<?php
+				$logger=Zend_Registry::get("logger");
+
+/*
+ * @todo переделать на двухуровневое дерево
+ *
+ */
+
+// нарисуем дерево и расставим согласно ACL значки
+//$out="";
+foreach ($this->resources as $module=>$childs)
+{
+	$lnk=$this->selfLink."/edit/id/".$module;
+//	$signClass=$this->roleAcl->isAllowed($this->role,$module)
+//	? "okSign"
+//	: "stopSign"
+//	;
+	?>
+	<ul class="treeLv1 treeNode">
+		<li>
+			<div class="access">
+				<span class="<?php echo $this->accessSigns[$module]; ?>"></span>
+			</div>
+			<p class="treeElem" onClick="AclResdetails('<?php echo $module; ?>');">
+				<?php echo $this->restitles[$module]; ?>
+				<br><small><?php echo $module; ?></small>
+			</p>
+	<?php 
+	
+    if (is_array($childs) && count($childs)>0)
+    {
+    	?>
+    	<ul class="treeLv2 treeNode">
+    	<?php 
+        foreach ($childs as $resId=>$resName) 
+        {
+        	$lnk=$this->selfLink."/edit/id/".$resId;
+        	$_allow=0;
+        	
+        	// проверим на доступ, учитывая доступы к ACTION
+        	// если есть в перечне ACTION текущий ресурс
+        	/*
+        	if (isset($this->accessSigns[$resId]))
+        	{
+//					$logger->log($resId, Zend_Log::INFO);
+//					$logger->log(count($this->aclActions), Zend_Log::INFO);
+//					$logger->log($priv, Zend_Log::INFO);
+        		
+        		// если все привилегии доступны - доступ полный
+        		// если ктото нет - значет частичный
+        		// если везде закрыто - значит доступа нет
+        		$chkAllow=0; //  сколько разрешенных
+        		$chkDeny=0;//  сколько запрещенных
+        		foreach ($this->aclActions[$resId] as $priv=> $a) 
+        		{
+        			$priv=$priv=="_ALL_"?null:$priv;
+					if ($this->roleAcl->isAllowed($this->role,$resId,$priv))
+					{
+						$chkAllow++;
+					}
+					else 
+					{
+						$chkDeny++;
+					}
+//					$logger->log($chk, Zend_Log::INFO);
+//					if ($chk) $_allow++;
+//					$logger->log($_allow, Zend_Log::INFO);
+        			;
+        		}
+//        		$logger->log($resId, Zend_Log::DEBUG);
+//        		$logger->log(count($this->aclActions[$resId]), Zend_Log::DEBUG);
+//        		$logger->log($chkAllow, Zend_Log::DEBUG);
+//        		$logger->log($chkDeny, Zend_Log::DEBUG);
+				// если кол-во ACTION совпадает с кол-во разрещенных - значит полный доступ
+        		if ($chkAllow==count($this->aclActions[$resId])) $_allow=1;
+				// если кол-во ACTION совпадает с кол-во запрещенных - значит полный запрет
+        		elseif ($chkDeny==count($this->aclActions[$resId])) $_allow=0;
+				// иначе - частичный 
+        		else $_allow=2;
+        	}
+        	else
+        	{
+        		$_allow=$this->roleAcl->isAllowed($this->role,$resId)
+        		? 1
+        		: 0
+        		;
+        	}
+       		switch ($_allow) 
+       		{
+       			case 0:
+       				$signClass="stopSign";
+       			break;
+
+       			case 1:
+       				$signClass="okSign";
+       			break;
+       			
+       			default:
+       				$signClass="partialSign";;
+       			break;
+       		}
+//			$signClass=$_allow ? "okSign": "stopSign"
+			;
+        	*/
+        	?>
+        	<li>
+        		<div class="access">
+        			<span class="<?php echo $this->accessSigns[$resId]; ?>"></span>
+        		</div>
+        		<p class="treeElem" onClick="AclResdetails('<?php echo $resId; ?>');">
+					<?php  echo $resName; ?>
+        			<br><small><?php echo $resId; ?></small>
+        		</p>
+        	</li>
+        	<?php 
+        	;
+        }
+        ?>
+        </ul>
+        <?php 
+    }
+?>
+		</li>
+	</ul>
+<?php 
+
+}
+//echo $out; 
+?>
+
+</div>

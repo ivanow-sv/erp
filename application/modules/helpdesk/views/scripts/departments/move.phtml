@@ -1,0 +1,15 @@
+<?php echo $this->render('header.phtml'); ?>
+
+
+<div id="workspace">
+<?php echo $this->msg;?>
+<?php
+ if ($this->status===true)
+ {
+ 	?>
+ 	<br><a href="<?php echo $this->nextLink; ?>">Перейти к подразделению-получателю</a>
+ 	<?php 
+ }
+	?>
+</div>
+<?php echo $this->render('footer.phtml'); ?>

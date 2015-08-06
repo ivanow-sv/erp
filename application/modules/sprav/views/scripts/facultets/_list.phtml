@@ -1,0 +1,60 @@
+<div id="formWrapper" style="display:none;">
+
+<p class="close_popup2" onclick='$("#formWrapper").togglePopup(); ' title="отмена"></p>
+<form name="SpravChangeForm" id="SpravChangeForm" method="post" 
+action="<?php echo $this->selfLink; ?>/edit/">
+	<input type="hidden" value="" id="id" name="id">
+	Введите новое значение
+	<br><textarea name="title"></textarea>
+	<br><input type="submit" class="apply_text" value="Применить">
+	
+</form>
+</div>
+<div id="formDeleteWrapper" style="display:none;">
+
+<p class="close_popup2" onclick='$("#formDeleteWrapper").togglePopup(); ' title="отмена"></p>
+<form name="formDelete" id="formDelete" method="post" 
+action="<?php echo $this->selfLink; ?>/del/">
+	<input type="hidden" value="" id="id" name="id">
+	Удалить запись <br>«<strong id="title"></strong>»
+	<br>для поддверждения операции введите фразу «<strong><?php echo $this->confirmWord; ?></strong>»
+	<br><input id="confirmWord" name="confirmWord" class="typic_input">
+	&nbsp;<input type="submit" class="apply_text" value="Подтвердить">
+	
+</form>
+
+</div>
+<!--<pre><?php //echo print_r(get_object_vars($this),true) ;?></pre>-->
+<table>
+	<tr>
+		<th>№</th>
+		<th>Наименование</th>
+		<th>Действие</th>
+	</tr>
+	<?php $k=1;?>
+	<?php $tr=1;
+	foreach($this->entries as $entry) : ?>
+	<tr class="tr<?php echo $tr;?>">
+
+		<td><?php echo $k;?></td>
+		<td><?php echo $this->escape($entry["title"]);?></td>
+		<td>
+			<span class="removeIcoSmall"
+			onclick='$("#formDelete #title").html("<?php echo $this->escape($entry["title"]);?>"); $("#formDelete #id").val(<?php echo $entry["id"]; ?>); $("#formDeleteWrapper").togglePopup();'
+			title="Удалить"
+			>
+			</span>
+			<span class="renameIcoSmall"
+			onClick="showSpravChangeForm('formWrapper',<?php echo $entry["id"]; ?>,'<?php echo $this->escape($entry["title"]);?>');"
+			 title="Переименовать">
+			</span>
+		</td>
+	</tr>
+
+	<?php $k++; ?>
+	<?php
+	$tr=$tr===1?2:1;
+endforeach; 
+?>
+</table>
+

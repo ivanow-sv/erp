@@ -1,0 +1,61 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<p>Загружен файл: <?php echo $this->info["name"]; ?></p>
+<p>Размер: <?php echo $this->info["size"]; ?> байт</p>
+<h3>Результат обработки</h3>
+<?php
+if (count($this->log)>0 )
+{
+	
+	foreach ($this->log as $key=>$_log) 
+	{
+		
+		$status=array_shift($_log);
+		$msg=$status?"OK":$_log["msg"];
+		$class=$status!==false?"done":"error";
+		?>
+		<p>Курс:&nbsp;<?php echo $this->plans[$key]["kurs"]?>&nbsp;
+			Семестр:&nbsp;<?php echo $this->plans[$key]["semestr"];?>
+			&nbsp;Результат:&nbsp;<span class="<?php echo $class; ?>"><?php echo $msg; ?></span>
+		</p>
+		<?php
+		if ($status)
+		{
+			?>
+			<div class="th">
+				<div class="Col_1">Дисциплина</div>
+				<div class="Col_2">Результат</div>
+			</div>
+			<?php
+			$tr=1; 
+			foreach ($_log as $disTitle=>$res) 
+			{
+				$tr=$tr===1?2:1;
+				
+				$msgDis=$res["status"]?"OK":$res["msg"];
+				$class=$res["status"]!==false?"done":"error";
+			?>
+			<div class="tr<?php echo $tr; ?>">
+				<div class="Col_1"><?php echo $disTitle; ?></div>
+				<div class="Col_2 <?php echo $class; ?>"><?php echo $msgDis; ?></div>
+			</div>
+			<?php 
+				
+			}
+		} 
+		;
+	}
+}
+else {
+	?>
+	<p class="warning">Не подходящий файл</p>
+	<?php 
+}
+?>
+<a href="<?php echo $this->baseLink;?>" >Продолжить работу</a> 
+<!--<pre><?php // echo print_r($this->plans,true); ?></pre>-->
+<!--<pre><?php // echo print_r($this->dicsiplines,true); ?></pre>-->
+<!--<pre><?php // echo print_r($this->log,true); ?></pre>-->
+<!--<pre><?php // echo print_r($this->ids,true); ?></pre>-->
+</div>
+<?php echo $this->render('footer.phtml'); ?>

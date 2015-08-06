@@ -1,0 +1,52 @@
+<div>
+<h5>Требуется сдать работ</h5>
+<!--<pre><?php // echo print_r($this->ocontrolTODO,true); ?></pre>-->
+<!--<pre><?php // echo print_r($this->ocontrolLog,true); ?></pre>-->
+	<?php //echo "<pre>".print_r($this->personLog,true)."</pre>"; ?>
+	<?php
+	if (count($this->ocontrolTODO)>0)
+	{
+		?>
+		<div class="th">
+			<div class="Col_0">Курс</div>
+			<div class="Col_1">Семестр</div>
+			<div class="Col_2">Дисциплина</div>
+			<div class="Col_3">Выходной контроль</div>
+			<div class="Col_4">Кол-во</div>
+		</div>
+		<?php 
+			$_kurs=$this->ocontrolTODO[0]["kurs"];
+			$_semestr=$this->ocontrolTODO[0]["semestr"];
+			$_kursTitle=$_kurs;
+			$_semTitle=$_semestr;
+		
+		foreach ($this->ocontrolTODO as $koun => $_log) 
+		{
+			$tr=$tr==1?2:1;
+			if ($_log["kurs"]==$_kurs) $_kursTitle=$koun ==0?$_kurs:'';
+			else $_kursTitle=$_log["kurs"];
+			if ($_log["semestr"]==$_semestr) $_semTitle=$koun ==0?$_semestr:'';
+			else $_semTitle=$_log["semestr"];
+			?>		
+		<div class="tr<?php echo $tr; ?>">
+			<div class="Col_0"><?php echo $_kursTitle; ?></div>
+			<div class="Col_1"><?php echo $_semTitle; ?></div>
+			<div class="Col_2"><?php echo $_log["disTitle"]; ?></div>
+			<div class="Col_3"><?php echo $_log["otypeTitle"]; ?></div>
+			<div class="Col_4"><?php echo $_log["contrCount"]; ?></div>
+		</div>
+			<?php
+			$_kurs=$_log["kurs"];
+			$_semestr=$_log["semestr"];
+			
+			
+			
+		}
+		
+	}
+	else 
+	{
+		echo "Нет данных";
+	}
+	?>
+	</div>

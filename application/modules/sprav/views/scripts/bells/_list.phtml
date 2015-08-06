@@ -1,0 +1,48 @@
+<div id="list">
+<h4>Занятия
+	<span class="addIcoSmall" onclick='$("#formAddWrapper").togglePopup(); '>
+	</span>
+</h4>
+<?php 
+if (count($this->list)<1)
+{
+	?> не заданы 
+	<?php
+}
+else
+{
+		?>
+		<div class="th">
+			<div class="Col_0">Пара</div>
+			<div class="Col_1">Начинается</div>
+			<div class="Col_2">заканчивается</div>
+			<div class="Col_3">действия</div>
+		</div>
+		<?php 
+	
+	$tr=1;
+	$para=1;
+	foreach ($this->list as $item) 
+	{
+		$tr=$tr==1?2:1;
+		?>
+		<div class="tr<?php echo $tr; ?>">
+			<div class="Col_0"><?php echo $para;?></div>
+			<div class="Col_1" id="starts_<?php echo $item["id"]; ?>"><?php echo $item["starts"];?></div>
+			<div class="Col_2" id="ends_<?php echo $item["id"]; ?>"><?php echo $item["ends"];?></div>
+			<div class="Col_3">
+				<span class="removeIcoSmall" onclick='deleteBells(<?php echo $item["id"];?>);'>
+				</span>				
+				<span class="editIcoSmall" onclick='editBells(<?php echo $item["id"];?>);'>
+				</span>
+			</div>
+		</div>
+		<?php 
+		$para++;	
+	}
+	?>
+	 
+	<?php
+}
+?>
+</div>

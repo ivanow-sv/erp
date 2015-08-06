@@ -1,0 +1,22 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<div id="toolbar">
+	<span onclick='$("#formAddWrapper").togglePopup(); ' class="addGroupButton" title="Новая группа"></span>
+</div>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_formAdd.phtml'); ?>
+<div id="formEditWrapper" class="hidden">
+<p class="close_popup2"
+	onclick='$("#formEditWrapper").togglePopup(); ' title="отмена"></p>
+	<div id="details">
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_formEdit.phtml'); ?>
+	</div>
+</div>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_formDel.phtml'); ?>
+
+<h5>Перечень уже существующих</h5>
+
+<?php  echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_list.phtml'); ?>
+
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

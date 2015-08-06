@@ -1,0 +1,20 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+ <div id="opaco" class="hidden"></div>
+ <div id="popup" class="hidden"></div>
+ <div id="assign" class="hidden"></div>
+
+<div id="workspace">
+<h3>Выберите учебный год, направление подготовки и форму обучения</h3>
+<?php echo $this->render('studyplan'.DIRECTORY_SEPARATOR.'_SearchForm.phtml'); ?>
+<?php //echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_EditForm.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_importxlskostromaForm.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_AddForm.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_editDatesForm.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_DeleteForm.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_disciplineEditForm.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_disciplineDeleteForm.phtml'); ?>
+<?php echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_List.phtml'); ?>
+<?php // echo $this->render($this->currentController.DIRECTORY_SEPARATOR.'_EditPlanDisciplinePosition.phtml'); ?>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

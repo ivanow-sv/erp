@@ -1,0 +1,75 @@
+
+<div id="abiturList">
+<?php
+if (!empty($this->list))
+{
+	?>
+	<div class="toolbar">
+	</div>
+	
+<form
+<?php
+
+foreach ($this->formOrders->getAttribs() as $key => $atribute)
+{
+	echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<?php
+	echo $this->formOrders->spec;
+	echo $this->formOrders->prot_id;
+?>  
+	
+	приказ <?php echo $this->formOrders->docid;?>
+	<span class="buttonApplyActive" onclick="applyorder();" title="Назначить"></span>
+		
+	<div class="th">
+		<div class="Col_0">
+			<input type="checkbox" id="checkAll"
+				onclick="toggleCheck('userid','abiturList',$(this))">
+		</div>
+		
+		<div class="Col_1">Рег.<br>номер</div>
+		<div class="Col_2">Ф.И.О.</div>
+		<div class="Col_3">Дата рождения</div>
+		<div class="Col_4">Протокол зачисления</div>
+		<div class="Col_5">Специальность</div>
+	</div>
+	<?php
+	foreach ($this->list as $item)
+	{
+		$tr=$tr==1?$tr=2:1;
+		?>
+	<div class="tr<?php echo $tr; ?>">
+		<div class="Col_0">
+			<input type="checkbox" id="userid" name="userid[]"
+				value="<?php echo $item["userid"]; ?>">
+		</div>
+		<div class="Col_1"><?php echo $item["id"]; ?></div>
+		<div class="Col_2">
+			<?php echo $item["family"]; ?>
+			<br><?php echo $item["name"]; ?>
+			<br><?php echo $item["otch"]; ?>
+		</div>
+		<div class="Col_3"><?php echo $item["birth_date"]; ?></div>
+		<div class="Col_4">№<?php echo $item["prot_num"]; ?>
+			<br>от <?php echo $item["prot_date"]; ?></div>
+		<div class="Col_5"><?php echo $item["specTitle"]; ?></div>
+	</div>
+		<?php
+		;
+	}
+	?>
+	
+	</form>
+	<?php 
+}
+else
+{
+	?>
+	Список пуст
+	<?php	
+} 
+
+?>
+	</div>

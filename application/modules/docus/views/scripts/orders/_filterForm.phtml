@@ -1,0 +1,31 @@
+<form
+<?php
+
+foreach ($this->form->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<div class="tr2">
+	<div class="Col_0">Приказ №</div>
+	<div class="Col_1"><?php echo $this->form->titleNum; ?>-</div>
+	<div class="Col_2"><?php echo $this->form->titleLetter; ?></div>
+</div>
+<div class="table">
+<div class="tr1">
+	<div class="Col_0">Был создан<br> в интервале</div>
+	<div class="Col_1">с </div>
+	<div class="Col_2"><?php echo $this->form->createDate1; ?></div>
+	<div class="Col_3">по </div>
+	<div class="Col_4"><?php echo $this->form->createDate2; ?></div>
+</div>
+<div class="tr2">
+	<div class="Col_0">Дата, указанная<br>в "шапке" документа</div>
+	<div class="Col_1">с </div>
+	<div class="Col_2"><?php echo $this->form->titleDate1; ?></div>
+	<div class="Col_3">по </div>
+	<div class="Col_4"><?php echo $this->form->titleDate2; ?></div>
+</div>
+</div>
+<?php echo $this->form->OK; ?>
+</form>

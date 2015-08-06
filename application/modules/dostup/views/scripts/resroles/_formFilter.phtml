@@ -1,0 +1,20 @@
+
+<form
+<?php
+
+foreach ($this->formFilter->getAttribs() as $key => $atribute)
+{
+    echo $key.'='.'"'.$atribute.'" ';
+}
+?>>
+<p>
+Выбрать роль<?php echo $this->formFilter->role;?>
+	<span class="addIcoSmall" onclick="roleAdd();"></span>
+	<span class="removeIcoSmall" onclick="roleDel();" ></span>
+	<span class="editIcoSmall" onclick="roleEdit();" ></span>
+<br><small>Описание: <?php echo $this->roleInfo["comment"]; ?></small>
+</p>
+
+
+
+</form>

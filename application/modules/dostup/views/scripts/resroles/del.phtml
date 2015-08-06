@@ -1,0 +1,13 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+<div id="workspace">
+<div class="toolbar">
+	<a href="<?php echo $this->selfLink; ?>" title="Вернуться к списку">
+		<span class="backButton"></span>
+	</a>
+</div>
+
+<?php  echo $this->msg;?>
+<?php  echo $this->formDel ;?>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

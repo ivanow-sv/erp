@@ -1,0 +1,24 @@
+<?php echo $this->render('header.phtml'); ?>
+
+<div id="workspace">
+<div class="toolbar">
+	<button onClick="ticketNewForm();" title="Подать заявку">Подать заявку</button>
+</div>
+
+<div id="ticketNewWrapper" class="hidden">
+</div>
+
+<div id="ticketDetailWrapper" class="hidden">
+	<p class="close_popup2"
+		onclick='$("#ticketDetailWrapper").togglePopup(); ' title="отмена"></p>
+		<div id="ticketDetail">
+		<?php  echo $this->render($this->currentController."/".'_details.phtml'); ?>
+		</div>
+</div>
+<?php  echo $this->render($this->currentController."/".'_formFilter.phtml'); ?>
+<?php
+echo $this->render($this->currentController."/".'_list.phtml'); 
+?>
+
+</div>
+<?php echo $this->render('footer.phtml'); ?>

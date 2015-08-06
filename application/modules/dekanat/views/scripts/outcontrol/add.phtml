@@ -1,0 +1,8 @@
+<?php echo $this->render('_HeadAndMenu.phtml'); ?>
+
+<div id="workspace">
+Добавлена запись ID=<?php echo $this->insertID; ?>
+<br>Добавлено параметров&nbsp;<?php echo $this->affected; ?>
+<p>Ошибки:&nbsp;<?php echo $this->msg; ?></p>
+</div>
+<?php echo $this->render('footer.phtml'); ?>
